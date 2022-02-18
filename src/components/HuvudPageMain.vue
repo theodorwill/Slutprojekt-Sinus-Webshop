@@ -76,7 +76,6 @@ export default {
 <style lang="scss" scoped>
 .top-main{
     width: 1440px;
-    width: 100%;
     height: 800px;
     background-image: url(../assets/huvud-img.jpg);
     background-position: center;
