@@ -46,14 +46,14 @@ export default {};
 #nav > section:nth-child(1) > input {
   width: 500px;
   border-radius: 2rem;
-  border: 1.3px solid;
+  border: 1.33px solid;
   border-color: #ff6e40;
 }
 #nav > section:nth-child(1) > button {
   width: 35px;
   height: 35px;
   border-radius: 0.3rem;
-  border: 1.3px solid;
+  border: 1.33px solid;
   background-color: rgba(0, 0, 0, 0);
 }
 
