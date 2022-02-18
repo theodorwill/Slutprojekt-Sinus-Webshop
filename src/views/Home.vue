@@ -2,7 +2,7 @@
   <div class="huvud-page-main">
       <div class="top-main">
             <h1>Välkommen till Sveriges största online Skateboards butik. Vi har allt du önska dig och lite till.</h1>
-            <button >KOLLA IN SHOPPEN</button>
+            <button to="/products">KOLLA IN SHOPPEN</button>
       </div>
       <h2>scroll down</h2>
       <div class="middle-main">
@@ -68,6 +68,7 @@
 </template>
 
 <script>
+
 export default {
     name:'Home'
 }
@@ -75,7 +76,7 @@ export default {
 
 <style lang="scss" scoped>
 .top-main{
-    width: 1440px;
+    // width: 1440px;
     width: 100%;
     height: 800px;
     background-image: url(../assets/huvud-img.jpg);
