@@ -1,28 +1,20 @@
 <template>
   <div id="app">
-
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-
-
-       
-    <router-view/>
+    <Header />
     <HuvudPageMain />
     <HuvudPageFooter/>
   </div>
 </template>
 <script>
 
-
+import Header from '@/components/Header.vue'
 import HuvudPageMain from '@/components/HuvudPageMain.vue'
 import HuvudPageFooter from '@/components/HuvudPageFooter.vue'
 
 export default {
   components: {
-    HuvudPageMain, HuvudPageFooter
+    HuvudPageMain, HuvudPageFooter,
+    Header
   }
 }
 </script>
@@ -45,14 +37,13 @@ margin:0rem auto 0rem auto;
 }
 
 #nav {
-  padding: 30px;
+
 
   a {
-    font-weight: bold;
-    color: #2c3e50;
+    color: #ffffff;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #eb9d36;
     }
   }
 
