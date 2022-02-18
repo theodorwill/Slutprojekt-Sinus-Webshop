@@ -40,8 +40,8 @@
 </template>
 
 <script>
-// Mutation
-export default {};
+
+
 </script>
 
 <style lang="scss" scoped>
