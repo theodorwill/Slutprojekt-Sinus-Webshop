@@ -172,7 +172,6 @@ padding: 2rem 9rem;
     box-shadow: 6px 7px 7px 4px rgba(0,0,0,0.63);
     color: white;
 
-   
     p{
         width: 200px;
         text-align: center;

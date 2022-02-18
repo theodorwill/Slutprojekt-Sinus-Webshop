@@ -3,8 +3,10 @@
     <section>
       <div class="logo" />
       <input type="text" />
+
       <button></button>
       <button></button>
+
     </section>
 
     <section>
@@ -25,9 +27,9 @@ export default {};
 .logo {
   display: block;
   background-image: url("~@/assets/sinus_logo.svg");
-  width: 200px;
-  
-  background-size: 200px 30px;
+  width: 100px;
+
+  background-size: 100px 30px;
 }
 
 #nav > section:nth-child(1) {
@@ -37,20 +39,26 @@ export default {};
   padding: 0.5rem;
 }
 
+#nav > section:nth-child(1) * {
+  margin: 0 0.4rem;
+}
+
 #nav > section:nth-child(1) > input {
-  width: 350px;
-  border-radius: 1rem;
-  border: 1.4px solid;
+  width: 500px;
+  border-radius: 2rem;
+  border: 1.33px solid;
+  border-color: #ff6e40;
 }
 #nav > section:nth-child(1) > button {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   border-radius: 0.3rem;
-  border: 1.4px solid;
+  border: 1.33px solid;
   background-color: rgba(0, 0, 0, 0);
 }
 
 #nav > section:last-of-type {
+  color: #ff6e40;
   display: flex;
   flex-flow: row;
   justify-content: space-evenly;
