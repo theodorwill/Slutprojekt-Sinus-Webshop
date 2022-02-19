@@ -1,6 +1,6 @@
 <template>
     <div id="login-register">
-
+<!-- Creating login page-->
         <section id="login-register-one">
         
     <form class="login-form">
