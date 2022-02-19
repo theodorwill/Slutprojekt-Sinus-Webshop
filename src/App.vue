@@ -3,6 +3,7 @@
     <Header />
     <HuvudPageMain />
     <HuvudPageFooter />
+    
   </div>
 </template>
 <script>
@@ -10,11 +11,16 @@ import Header from "@/components/Header.vue";
 import HuvudPageMain from "@/components/HuvudPageMain.vue";
 import HuvudPageFooter from "@/components/HuvudPageFooter.vue";
 
+
+
+
 export default {
   components: {
     HuvudPageMain,
     HuvudPageFooter,
     Header,
+  
+  
   },
 };
 </script>
