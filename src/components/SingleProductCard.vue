@@ -18,12 +18,15 @@ export default {};
 
 <style scoped>
 .product-card {
+    margin: 0 3.5rem;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
+  width: 500px;
+  height: 400px;
   min-width: 500px;
   min-height: 400px;
-  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.274);
+  box-shadow: 0 4px 15px rgba(119, 119, 119, 0.151);
   text-align: left;
 }
 

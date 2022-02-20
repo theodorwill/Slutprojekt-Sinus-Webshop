@@ -1,9 +1,13 @@
 <template>
   <div class="single-product-view">
-    <SingleProductCard />
-    <SingleProductInfo />
-    <SingleProductReview />
+    <section>
+      <SingleProductCard />
+      <SingleProductInfo />
+    </section>
 
+    <section>
+      <SingleProductReview />
+    </section>
   </div>
 </template>
 
@@ -19,6 +23,13 @@ export default {
 <style>
 .single-product-view {
   display: flex;
+  flex-flow: column wrap;
+}
+
+.single-product-view > section:nth-of-type(1) {
+  display: flex;
   flex-flow: row;
+  justify-content: center;
+  margin: 5rem;
 }
 </style>
