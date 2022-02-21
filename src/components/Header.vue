@@ -3,8 +3,8 @@
     <section>
       <div class="logo" />
       <input type="text" />
-      <button></button>
-      <button></button>
+      <button>User</button>
+      <button>Login</button>
     </section>
 
     <section>
