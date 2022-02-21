@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Header />
+    <router-view />
     <HuvudPageFooter />
   </div>
 </template>
@@ -19,9 +20,25 @@ export default {
 
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap');
+:root{
+  --showcase-fontfamily: 'Lora', serif;
+  --navbar-fontfamily: 'Oswald', sans-serif;
+  --allheadlines-fontfamily: 'Oswald', sans-serif;
+  --paragraph-fontfamily: 'Oswald', sans-serif;
+  --primery-color: #0076C4;
+  --secondary-color: #f69e03;
+  --color-Btn: #1c1c1c;
+  --pagebar-color:  #eb5509;
+}
 html body {
+
   width: 1440px;
   margin: auto;
+
+  display: flex;
+  flex-flow: column;
+
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -30,6 +47,7 @@ html body {
   text-align: center;
   color: #2c3e50;
   position: relative;
+
   height: 100%;
 }
 
@@ -50,4 +68,5 @@ html body {
     right: 0px;
   }
 }
+
 </style>
