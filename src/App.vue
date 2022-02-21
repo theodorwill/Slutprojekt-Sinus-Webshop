@@ -32,6 +32,8 @@ export default {
   --pagebar-color:  #eb5509;
 }
 html body {
+  display: flex;
+  flex-flow: column;
 
 }
 #app {
@@ -42,23 +44,6 @@ html body {
   color: #2c3e50;
   position: relative;
   height: 100vh;
-}
-
-#nav {
-  a {
-    color: #ffffff;
-    text-decoration: none;
-
-    &.router-link-exact-active {
-      color: #ff6e40;
-    }
-  }
-
-  .footer-container {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-  }
-}
+} 
+  
 </style>
