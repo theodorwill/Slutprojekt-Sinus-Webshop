@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Header />
+    <router-view />
     <HuvudPageFooter />
   </div>
 </template>
