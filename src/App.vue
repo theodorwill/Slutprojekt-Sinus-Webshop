@@ -20,7 +20,8 @@ export default {
 
 <style lang="scss">
 html body {
-  margin: 0rem auto 0rem auto;
+  width: 1440px;
+  margin: auto;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -29,7 +30,7 @@ html body {
   text-align: center;
   color: #2c3e50;
   position: relative;
-  height: 100vh;
+  height: 100%;
 }
 
 #nav {
