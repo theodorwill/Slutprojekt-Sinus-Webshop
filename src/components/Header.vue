@@ -3,10 +3,8 @@
     <section>
       <div class="logo" />
       <input type="text" />
-
       <button></button>
       <button></button>
-
     </section>
 
     <section>
@@ -22,52 +20,49 @@
 
 <script>
 export default {
-  name: 'contact',
-  
+  name: "contact",
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .logo {
   display: block;
   background-image: url("~@/assets/sinus_logo.svg");
   width: 100px;
-
   background-size: 100px 30px;
 }
-
-#nav > section:nth-child(1) {
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  padding: 0.5rem;
-}
-
-#nav > section:nth-child(1) * {
-  margin: 0 0.4rem;
-}
-
-#nav > section:nth-child(1) > input {
-  width: 500px;
-  border-radius: 2rem;
-  border: 1.33px solid;
-  border-color: #ff6e40;
-}
-#nav > section:nth-child(1) > button {
-  width: 35px;
-  height: 35px;
-  border-radius: 0.3rem;
-  border: 1.33px solid;
-  background-color: rgba(0, 0, 0, 0);
-}
-
-#nav > section:last-of-type {
-  color: #ff6e40;
-  display: flex;
-  flex-flow: row;
-  justify-content: space-evenly;
-  padding: 0.6rem;
-  /* width: 100%; */
-  background-color: rgb(34, 34, 34);
+#nav {
+  > section {
+    &:nth-child(1) {
+      display: flex;
+      flex-flow: row;
+      justify-content: center;
+      padding: 0.5rem;
+      * {
+        margin: 0 0.4rem;
+      }
+      > input {
+        width: 500px;
+        border-radius: 2rem;
+        border: 1.33px solid;
+        border-color: #ff6e40;
+      }
+      > button {
+        width: 35px;
+        height: 35px;
+        border-radius: 0.3rem;
+        border: 1.33px solid;
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+    &:last-of-type {
+      color: #ff6e40;
+      display: flex;
+      flex-flow: row;
+      justify-content: space-evenly;
+      padding: 0.6rem;
+      background-color: rgb(34, 34, 34);
+    }
+  }
 }
 </style>
