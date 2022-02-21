@@ -16,9 +16,9 @@
 export default {};
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .product-card {
-    margin: 0 3.5rem;
+  margin: 0 3.5rem;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -28,41 +28,42 @@ export default {};
   min-height: 400px;
   box-shadow: 0 4px 15px rgba(119, 119, 119, 0.151);
   text-align: left;
-}
 
-.product-card > section:nth-of-type(1) {
-  background-color: rgb(207, 207, 207);
-  width: 100%;
-  height: 65%;
-}
+  > section {
+    &:nth-of-type(1) {
+      background-color: rgb(207, 207, 207);
+      width: 100%;
+      height: 65%;
+    }
 
-.product-card > section:last-of-type {
-  width: 100%;
-  margin: 1.8rem 0;
-  display: grid;
-  grid-row-gap: 0.6rem;
-  grid-template-columns: 25% 25% 25% 25%;
-  grid-template-areas:
-    "header header header heart "
-    "size size size size"
-    "price price price stars";
-  background-color: white;
-}
+    &:last-of-type {
+      width: 100%;
+      margin: 1.8rem 0;
+      display: grid;
+      grid-row-gap: 0.6rem;
+      grid-template-columns: 25% 25% 25% 25%;
+      grid-template-areas: "header header header heart " "size size size size" "price price price stars";
+      background-color: white;
 
-.product-card > section:last-of-type * {
-  margin: 0 1.5rem;
-}
+      * {
+        margin: 0 1.5rem;
+      }
 
-.product-card > section:last-of-type > h3 {
-  grid-area: header;
-}
+      > {
+        h3 {
+          grid-area: header;
+        }
 
-.product-card > section:last-of-type > p {
-  grid-area: size;
-}
+        p {
+          grid-area: size;
+        }
 
-.product-card > section:last-of-type > h4 {
-  grid-area: price;
+        h4 {
+          grid-area: price;
+        }
+      }
+    }
+  }
 }
 
 .product-image {
