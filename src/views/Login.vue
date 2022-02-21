@@ -51,25 +51,25 @@ export default {};
 
 <style  lang= "scss" scoped>
 .login-register{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:auto;
+  
 
    .login-register-one {
-                /* background: linear-gradient(#1845ad, #23a2f6); */
-                left: -80px;
-                top: -80px;
-
+               
+                 /* display:none; */
                  .login-form {
-                  height: 580px;
+                  height:580px;
                   width: 400px;
-                  /* background-color: rgba(23, 75, 207, 0.898); */
-                  position:relative;
-                  transform: translate(-160%, +30%);
-                  top: 100%;
-                  left: 50%;
                   border-radius: 10px;
                   backdrop-filter: blur(10px);
                   border: 2px solid rgba(255, 255, 255, 0.1);
                   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
                   padding: 50px 35px;
+                  margin-top: 100px;
+                  margin-bottom: 360px;
                 
                  font-family: "Poppins", sans-serif;
                  color: #070303;
@@ -90,7 +90,7 @@ export default {};
                       width: 100%;
                       background-color: rgba(255, 255, 255, 0.7);
                       border-radius: 3px;
-                      padding: 0 10px;
+                      padding: 0 10px 10 10px;
                       margin-top: 8px;
                       font-size: 14px;
                       font-weight: 300;
@@ -114,7 +114,7 @@ export default {};
                       width: 100%;
                       background-color: rgba(255, 255, 255, 0.7);
                       border-radius: 3px;
-                      padding: 0 10px;
+                      padding: 0 10px 10 10px;
                       margin-top: 8px;
                       font-size: 14px;
                       font-weight: 300;
@@ -161,23 +161,24 @@ export default {};
                 }
 
                  .login-register-two {
-                 /* background: linear-gradient(to right, #ff512f, #f09819); */
-                right: -30px;
-                bottom: -80px;
+                 display:none;
+                 align-items: center;
+                 
 
                 .register-form {
-                  height: 680px;
+                   height:680px;
                   width: 400px;
-                  /* background-color: rgba(23, 75, 207, 0.898); */
-                  position: relative;
-                  transform: translate(+50%, -60%);
-                  top: 200%;
-                  left: 50%;
                   border-radius: 10px;
                   backdrop-filter: blur(10px);
                   border: 2px solid rgba(255, 255, 255, 0.1);
                   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-                  padding: 70px 35px;
+                  padding: 50px 35px;
+                  margin-top: 180px;
+                  margin-bottom: 360px;
+                
+                 font-family: "Poppins", sans-serif;
+                 color: #070303;
+                 letter-spacing: 0.5px;
                   
                 
                  font-family: "Poppins", sans-serif;
@@ -199,7 +200,7 @@ export default {};
                       width: 100%;
                       background-color: rgba(255, 255, 255, 0.7);
                       border-radius: 3px;
-                      padding: 0 10px;
+                     padding: 0 10px 10 10px;
                       margin-top: 8px;
                       font-size: 14px;
                       font-weight: 300;
@@ -223,7 +224,7 @@ export default {};
                       width: 100%;
                       background-color: rgba(255, 255, 255, 0.7);
                       border-radius: 3px;
-                      padding: 0 10px;
+                      padding: 0 10px 10 10px;
                       margin-top: 8px;
                       font-size: 14px;
                       font-weight: 300;
@@ -242,7 +243,7 @@ export default {};
                       width: 100%;
                       background-color: rgba(255, 255, 255, 0.7);
                       border-radius: 3px;
-                      padding: 0 10px;
+                      padding: 0 10px 10 10px;
                       margin-top: 8px;
                       font-size: 14px;
                       font-weight: 300;
