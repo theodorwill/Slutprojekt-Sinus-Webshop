@@ -67,7 +67,7 @@ export default {
   flex-flow: row;
   justify-content: space-evenly;
   padding: 0.6rem;
-  width: 100%;
+  /* width: 100%; */
   background-color: rgb(34, 34, 34);
 }
 </style>

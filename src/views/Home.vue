@@ -89,6 +89,7 @@ export default {
         text-align: center;
         font-size: 3rem;
         color: white;
+        font-family: --showcase-fontfamily;
     }
     button{
         width: 300px;
@@ -102,6 +103,8 @@ export default {
         border-radius: 50px;
         background: none;
         color: white;
+        font-family: var(--);
+
     }
 }
 h2{
@@ -181,12 +184,13 @@ padding: 2rem 9rem;
 
 }
 .mission-1{
-    background-color: rgb(12, 69, 143);
+    background-color: #0076C4;
+    
 }
 .mission-2{
-    background-color: rgb(165, 206, 17);
+    background-color: #f69e03;
 }
 .mission-3{
-    background-color: rgb(197, 78, 22);
+    background-color: #eb5509;
 }
 </style>

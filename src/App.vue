@@ -19,8 +19,19 @@ export default {
 
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap');
+:root{
+  --showcase-fontfamily: 'Lora', serif;
+  --navbar-fontfamily: 'Oswald', sans-serif;
+  --allheadlines-fontfamily: 'Oswald', sans-serif;
+  --paragraph-fontfamily: 'Oswald', sans-serif;
+  --primery-color: #0076C4;
+  --secondary-color: #f69e03;
+  --color-Btn: #1c1c1c;
+  --pagebar-color:  #eb5509;
+}
 html body {
-  margin: 0rem auto 0rem auto;
+
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
