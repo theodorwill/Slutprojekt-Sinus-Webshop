@@ -3,10 +3,8 @@
     <section>
       <div class="logo" />
       <input type="text" />
-
       <button></button>
       <button></button>
-
     </section>
 
     <section>
