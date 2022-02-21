@@ -2,7 +2,7 @@
   <div class="huvud-page-main">
       <div class="top-main">
             <h1>Välkommen till Sveriges största online Skateboards butik. Vi har allt du önska dig och lite till.</h1>
-            <button to="/products">KOLLA IN SHOPPEN</button>
+            <button >KOLLA IN SHOPPEN</button>
       </div>
       <h2>scroll down</h2>
       <div class="middle-main">
@@ -68,16 +68,14 @@
 </template>
 
 <script>
-
 export default {
-    name:'Home'
+
 }
 </script>
 
 <style lang="scss" scoped>
 .top-main{
-    // width: 1440px;
-    width: 100%;
+    width: 1440px;
     height: 800px;
     background-image: url(../assets/huvud-img.jpg);
     background-position: center;
@@ -89,7 +87,6 @@ export default {
         text-align: center;
         font-size: 3rem;
         color: white;
-        font-family: --showcase-fontfamily;
     }
     button{
         width: 300px;
@@ -103,8 +100,6 @@ export default {
         border-radius: 50px;
         background: none;
         color: white;
-        font-family: var(--);
-
     }
 }
 h2{
@@ -176,6 +171,9 @@ padding: 2rem 9rem;
     box-shadow: 6px 7px 7px 4px rgba(0,0,0,0.63);
     color: white;
 
+    h3{
+        
+    }
     p{
         width: 200px;
         text-align: center;
@@ -184,13 +182,12 @@ padding: 2rem 9rem;
 
 }
 .mission-1{
-    background-color: #0076C4;
-    
+    background-color: rgb(12, 69, 143);
 }
 .mission-2{
-    background-color: #f69e03;
+    background-color: rgb(165, 206, 17);
 }
 .mission-3{
-    background-color: #eb5509;
+    background-color: rgb(197, 78, 22);
 }
 </style>
