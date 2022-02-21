@@ -20,16 +20,16 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .single-product-view {
   display: flex;
   flex-flow: column wrap;
-}
 
-.single-product-view > section:nth-of-type(1) {
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  margin: 5rem;
+  > section:nth-of-type(1) {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    margin: 5rem;
+  }
 }
 </style>
