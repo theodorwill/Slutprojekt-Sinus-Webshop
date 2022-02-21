@@ -71,7 +71,6 @@ export default {};
   height: 100%;
   border: none;
   overflow: hidden;
-  background-image: url(../assets/logo.png);
   background-repeat: no-repeat;
   background-size: 45%;
   background-position: bottom center;

@@ -25,13 +25,28 @@ export default {
 
 <style lang="scss" scoped>
 .logo {
-  display: block;
+  width: 200px;
+  height: 50px;
   background-image: url("~@/assets/sinus_logo.svg");
-  width: 100px;
-  background-size: 100px 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
 }
 #nav {
   > section {
+    a {
+      color: #ffffff;
+      text-decoration: none;
+      &.router-link-exact-active {
+        color: #ff6e40;
+        text-decoration: underline;
+        text-decoration-thickness: 0.15rem;
+      }
+      & a:hover {
+        color: #ff6e40;
+      }
+    }
+
     &:nth-child(1) {
       display: flex;
       flex-flow: row;
@@ -47,8 +62,8 @@ export default {
         border-color: #ff6e40;
       }
       > button {
-        width: 35px;
-        height: 35px;
+        width: 50px;
+        height: 50px;
         border-radius: 0.3rem;
         border: 1.33px solid;
         background-color: rgba(0, 0, 0, 0);
@@ -59,7 +74,8 @@ export default {
       display: flex;
       flex-flow: row;
       justify-content: space-evenly;
-      padding: 0.6rem;
+      padding: 1rem;
+      font-size: 1.1rem;
       background-color: rgb(34, 34, 34);
     }
   }
