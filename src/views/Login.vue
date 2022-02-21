@@ -1,6 +1,6 @@
 <template>
-  <div id="login-register">
-    <section id="login-register-one">
+  <div class="login-register">
+    <section class="login-register-one">
       <form class="login-form">
         <div class="login-email">
           <label for="Email1">Email address</label>
@@ -19,12 +19,12 @@
       </form>
     </section>
 
-    <section id="login-register-two">
+    <section class="login-register-two">
       <form class="register-form">
         <div class="register-email">
           <label for="Email1">Email address</label>
           <input  type="email" />
-          <div id="textOne">We'll never share your email with anyone else.</div>
+          <div class="textOne">We'll never share your email with anyone else.</div>
         </div>
         <div class="register-password">
           <label  for="password">Password</label>
@@ -50,19 +50,19 @@ export default {};
 </script>
 
 <style  lang= "scss" scoped>
-#login-register{
+.login-register{
 
-   #login-register-one {
-                background: linear-gradient(#1845ad, #23a2f6);
+   .login-register-one {
+                /* background: linear-gradient(#1845ad, #23a2f6); */
                 left: -80px;
                 top: -80px;
 
                  .login-form {
-                  height: 600px;
+                  height: 580px;
                   width: 400px;
                   /* background-color: rgba(23, 75, 207, 0.898); */
-                  position: absolute;
-                  transform: translate(-50%, -50%);
+                  position:relative;
+                  transform: translate(-160%, +30%);
                   top: 100%;
                   left: 50%;
                   border-radius: 10px;
@@ -74,8 +74,8 @@ export default {};
                  font-family: "Poppins", sans-serif;
                  color: #070303;
                  letter-spacing: 0.5px;
-                 outline: none;
-                  border: none;
+                 
+                  
 
                   .login-email {
                     label {
@@ -95,7 +95,7 @@ export default {};
                       font-size: 14px;
                       font-weight: 300;
                     }
-                    #text{
+                    .text{
                       padding-top: 20px;
                       display: block;
                     }
@@ -160,8 +160,8 @@ export default {};
                 
                 }
 
-                 #login-register-two {
-                 background: linear-gradient(to right, #ff512f, #f09819);
+                 .login-register-two {
+                 /* background: linear-gradient(to right, #ff512f, #f09819); */
                 right: -30px;
                 bottom: -80px;
 
@@ -169,8 +169,8 @@ export default {};
                   height: 680px;
                   width: 400px;
                   /* background-color: rgba(23, 75, 207, 0.898); */
-                  position: absolute;
-                  transform: translate(-50%, -50%);
+                  position: relative;
+                  transform: translate(+50%, -60%);
                   top: 200%;
                   left: 50%;
                   border-radius: 10px;
@@ -204,7 +204,7 @@ export default {};
                       font-size: 14px;
                       font-weight: 300;
                     }
-                    #textOne{
+                    .textOne{
                       padding-top: 20px;
                       display: block;
                     }
