@@ -60,7 +60,7 @@ export default {};
                  .login-form {
                   height: 600px;
                   width: 400px;
-                  background-color: rgba(23, 75, 207, 0.898);
+                  /* background-color: rgba(23, 75, 207, 0.898); */
                   position: absolute;
                   transform: translate(-50%, -50%);
                   top: 100%;
@@ -168,7 +168,7 @@ export default {};
                 .register-form {
                   height: 680px;
                   width: 400px;
-                  background-color: rgba(23, 75, 207, 0.898);
+                  /* background-color: rgba(23, 75, 207, 0.898); */
                   position: absolute;
                   transform: translate(-50%, -50%);
                   top: 200%;
