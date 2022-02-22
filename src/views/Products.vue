@@ -4,28 +4,46 @@
     <div class="main-gallery">
       <div class="side-bar">
         <h3>Fixas efter grupp diskussion</h3>
+         <button @click="productsList">Get Products</button>
       </div>
+   
 
-      <!-- Här kommer router link v-for syntax och div bortas-->
       <div class="product-list">
-        <ModelCardProductsList />
-        <ModelCardProductsList />
-        <ModelCardProductsList />
-        <ModelCardProductsList />
-        <ModelCardProductsList />
-        <ModelCardProductsList />
-        <ModelCardProductsList />
+        <router-link to='/about'
+         
+          v-for="product in products"
+          :key="product.id">
+          <ModelCardProductsList  :product="product"/>
+        </router-link>
+      
       </div>
+       
     </div>
+     
   </div>
 </template>
 
 <script>
-import ModelCardProductsList from "../components/ModelCardProductsList.vue";
+import ModelCardProductsList from '../components/ModelCardProductsList.vue'
 export default {
   components: { ModelCardProductsList },
-};
+
+  computed:{
+    products(){
+      return this.$store.state.products.products
+    },
+
+    
+  },
+
+  methods:{
+      productsList(){
+      this.$store.dispatch('fetchItems')
+    }
+    }
+}
 </script>
+
 
 <style lang="scss" scoped>
 * {
