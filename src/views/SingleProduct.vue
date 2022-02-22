@@ -4,10 +4,7 @@
       <SingleProductCard />
       <SingleProductInfo />
     </section>
-
-    <section>
       <SingleProductReview />
-    </section>
   </div>
 </template>
 
@@ -22,8 +19,11 @@ export default {
 
 <style lang="scss" scoped>
 .single-product-view {
+  width: 80%;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 
   > section:nth-of-type(1) {
     display: flex;
