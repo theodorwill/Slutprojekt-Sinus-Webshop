@@ -38,7 +38,7 @@ const routes = [
     component: () => import('../views/SingleProduct.vue')
   },
   {
-    path: '/login-page',
+    path: '/login',
     name: 'LoginPage',
     component: LoginPage
   },

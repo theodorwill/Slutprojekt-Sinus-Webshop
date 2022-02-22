@@ -1,5 +1,5 @@
 <template>  
-  <div class="login-page" v-if="logen-page">
+  <div class="login-page" >
     <section class="top">
       <h1>Login</h1>
     </section>
