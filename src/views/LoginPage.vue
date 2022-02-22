@@ -51,9 +51,9 @@
         </div>
     </section>
   </div>
-  <div class="register-page">
+  <!-- <div class="register-page">
       
-  </div>
+  </div> -->
 </template>
 
 <script>
