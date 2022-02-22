@@ -5,6 +5,7 @@
             <button to="/products">KOLLA IN SHOPPEN</button>
       </div>
       <h2>scroll down</h2>
+      <img src="../assets/down.svg" alt="">
       <div class="middle-main">
           <article class="personas-1">
               <div class="top">
@@ -44,25 +45,21 @@
       <hr class="solid">
       <div class="bottom-main">
           <article class="mission-1">
-              <i class="fab fa-accessible-icon"></i>
+              <img src="../assets/visibility.svg" alt="">
               <h3>Vision</h3>
               <p>Alla ska kunna hitta något som passar ens egan stil.</p>
           </article>
           <article class="mission-2">
-              <h3>Vision</h3>
-              <p>Alla ska kunna hitta något som passar ens egan stil.</p>
+              <img src="../assets/rocket.svg" alt="">
+              <h3>Mission</h3>
+              <p>Vi vill göra vårt sortument så tillgängligt som möjligt för alla genom att öppna fler butiker runt om hela landet.</p>
           </article>
           <article class="mission-3">
-              <h3>Vision</h3>
-              <p>Alla ska kunna hitta något som passar ens egan stil.</p>
+              <img src="../assets/values.svg" alt="">
+              <h3>Values</h3>
+              <p>Behåll priset så prisvärd som möjligt med väldigt hög kvalite.</p>
           </article>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
+    
       </div>
   </div>
 </template>
@@ -109,10 +106,11 @@ export default {
 }
 h2{
     width: 200px;
-    margin: auto;
-    padding: 1rem;
+    margin: 0 auto;
+    // padding: 1rem;
     text-align: center;
     font-size: 2rem;
+
 }
 .middle-main{
 display: grid;
@@ -175,10 +173,18 @@ padding: 2rem 9rem;
     align-items: center;
     box-shadow: 6px 7px 7px 4px rgba(0,0,0,0.63);
     color: white;
-
+    img{
+        width: 70px;
+        height: 70px;
+    }
+    h3{
+        font-size: 1.7rem;
+        margin: 0;
+    }
     p{
         width: 200px;
         text-align: center;
+        margin: 0;
         
     }
 

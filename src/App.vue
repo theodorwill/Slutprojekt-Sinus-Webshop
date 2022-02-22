@@ -32,10 +32,8 @@ export default {
   --pagebar-color:  #eb5509;
 }
 html body {
-
   width: 1440px;
   margin: auto;
-
   display: flex;
   flex-flow: column;
 
