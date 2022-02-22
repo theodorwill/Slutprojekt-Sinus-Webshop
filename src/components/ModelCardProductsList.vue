@@ -5,16 +5,16 @@
       <!-- Här kommer dynamiska bilder istället för hoodie_red -->
       <img
         class="product-image"
-        src="@/assets/hoodie_red.svg"
+        :src="`http://localhost:5000/images/${product.imgFile}`"
         alt="Product's image"
       />
     </div>
     <div class="product-info">
       <!-- Alla plats med * ska vara {{dynamisk}} sen -->
       <img src="@/assets/love_icon.svg" alt="icon" />
-      <h3 class="product-name">*Hoodie</h3>
-      <p class="product-size">*s, m, x, xl</p>
-      <p class="product-price">SEK *599:-</p>
+      <h3 class="product-name">{{product.category}}</h3>
+      <p class="product-size">{{product.shortDesc}}</p>
+      <p class="product-price">{{product.price}}</p>
       <button class="btn">VIEW DETAILS</button>
       <h3 class="rating">*****</h3>
     </div>
@@ -22,7 +22,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props:{product:Object}
+};
 </script>
 
 <style lang="scss" scoped>

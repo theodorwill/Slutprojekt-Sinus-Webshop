@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:8000/api/v1'
+axios.defaults.baseURL = 'http://localhost:5000/api'
 
 
 export function saveToken(token){
@@ -11,6 +11,6 @@ export async function login(email, password){
   return await axios.post('/auth', {email,password})
 }
 
-export async function fetchPosts(){
-  return await axios.get('/posts')
+export async function getItems(){
+  return await axios.get('/items')
 }
