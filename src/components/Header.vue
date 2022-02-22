@@ -18,6 +18,8 @@
       <router-link to="/products">Products</router-link> |
       <router-link to="/singlep">About</router-link> |
       <router-link to="/contact">Contact</router-link>
+      
+     
     </section>
   </div>
 </template>

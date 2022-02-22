@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import Products from '../views/Products.vue'
 import Contact from '../views/Contact.vue'
 import Login from '../views/Login.vue'
+import UserProfile from '../views/UserProfile.vue'
+
 
 Vue.use(VueRouter)
 
@@ -33,14 +35,21 @@ const routes = [
   {
     path: '/singlep',
     name: 'SinglePage',
-    component: () => import ('../views/SingleProduct.vue')
+    component: () => import('../views/SingleProduct.vue')
   },
 
   {
     path: '/login',
     name: 'Login',
     component: Login
-  }
+  },
+  {
+    path: '/user',
+    name: 'UserProfile',
+    component: UserProfile
+  },
+
+  
 ]
 
 const router = new VueRouter({
