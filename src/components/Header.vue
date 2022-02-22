@@ -18,7 +18,7 @@
       <router-link to="/products">Products</router-link> |
       <router-link to="/singlep">About</router-link> |
       <router-link to="/contact">Contact</router-link> 
-      <router-link to="/login">Contact</router-link> 
+    
       
      
     </section>
@@ -77,10 +77,12 @@ export default {
         border: 1px solid;
         border-color: #222222;
         background-color: rgba(0, 0, 0, 0);
+        cursor: pointer;
+        transition: 0.5s;
       }
 
       button:hover {
-        background-color: #222222;
+        background-color: #45a049;
       }
     }
     &:last-of-type {
