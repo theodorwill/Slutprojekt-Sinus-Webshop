@@ -5,7 +5,7 @@
       <input type="text" />
       <button>User</button>
 
-      <router-link to="/login-page">
+      <router-link to="/login">
         <button>
           <div class="icon-account">
           </div>
@@ -18,6 +18,7 @@
       <router-link to="/products">Products</router-link> |
       <router-link to="/singlep">About</router-link> |
       <router-link to="/contact">Contact</router-link> 
+      <router-link to="/login">Contact</router-link> 
       
      
     </section>
