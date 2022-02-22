@@ -1,4 +1,4 @@
-<template>
+<template>  
   <div class="login-page" v-if="logen-page">
     <section class="top">
       <h1>Login</h1>
@@ -51,9 +51,7 @@
         </div>
     </section>
   </div>
-  <div class="register-page">
-      
-  </div>
+
 </template>
 
 <script>
