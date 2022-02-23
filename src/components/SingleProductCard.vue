@@ -2,20 +2,24 @@
   <div class="product-card">
     <section>
       <div class="product-image" />
+      <button></button>
     </section>
 
     <section>
-      <h3>Lorem ipsum dolor </h3>
-      <p>Lorem ipsum dolor </p>
-      <h4>Sek 999</h4>
+      <h3>{{products.title}} </h3>
+      <p>{{products.shortDesc}}</p>
+      <h4>Sek + {{products.price}}</h4>
     </section>
   </div>
 </template>
 
 <script>
 export default {
-
-  
+  computed: {
+    products() {
+      return this.$store.getters.getClickedItem(1)
+    },
+  },
 };
 </script>
 

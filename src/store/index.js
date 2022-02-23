@@ -8,12 +8,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    products:[]
+    products: []
   },
 
   // MUTATIONS..............
   mutations: {
-    saveItems(state, items){
+    saveItems(state, items) {
       state.products = items
     }
   },
@@ -25,11 +25,13 @@ export default new Vuex.Store({
       const response = await API.getItems()
       context.commit('saveItems', response.data)
     }
-  }
+  },
 
   // // GETTERS.................
-  // getters: {
+  getters: {
+    getClickedItem: (state) => (id) => {
+      return state.products.products[id];
 
-  // }
- 
+    }
+  }
 })
