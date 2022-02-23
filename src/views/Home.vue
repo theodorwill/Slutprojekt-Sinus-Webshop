@@ -2,7 +2,9 @@
   <div class="huvud-page-main">
       <div class="top-main">
             <h1>Välkommen till Sveriges största online Skateboards butik. Vi har allt du önska dig och lite till.</h1>
-            <button to="/products">KOLLA IN SHOPPEN</button>
+            <router-link to="/products">
+            <button >KOLLA IN SHOPPEN</button>
+            </router-link>
       </div>
       <h2>scroll down</h2>
       <img src="../assets/down.svg" alt="">
@@ -88,6 +90,10 @@ export default {
         color: white;
         font-family: --showcase-fontfamily;
     }
+        a{
+            text-decoration: none;
+            
+            }
     button{
         width: 300px;
         height: 80px;

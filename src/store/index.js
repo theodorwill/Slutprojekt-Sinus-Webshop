@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 
+
 import * as API from '../store/api'
 
 Vue.use(Vuex)
