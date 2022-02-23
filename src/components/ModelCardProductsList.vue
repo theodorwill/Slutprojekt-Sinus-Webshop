@@ -1,7 +1,7 @@
 <template>
-  <div class="model-card">
+  <article class="model-card">
     <div class="image-block">
-      <img class="cart-icon" src="@/assets/cart_white.svg" alt="Cart icon" />
+      <img class="cart-icon" src="@/assets/love_icon.svg" alt="Love icon" />
       <!-- Här kommer dynamiska bilder istället för hoodie_red -->
       <img
         class="product-image"
@@ -11,19 +11,28 @@
     </div>
     <div class="product-info">
       <!-- Alla plats med * ska vara {{dynamisk}} sen -->
-      <img src="@/assets/love_icon.svg" alt="icon" />
-      <h3 class="product-name">{{product.category}}</h3>
-      <p class="product-size">{{product.shortDesc}}</p>
-      <p class="product-price">{{product.price}}</p>
+      <p class="product-name">
+        Sinus <span>{{ product.category }}</span>
+      </p>
+      <div class="info-title-price-size">
+        <div class="info-title-size">
+          <p>{{ product.title }}</p>
+          <p>{{ product.shortDesc }}</p>
+        </div>
+
+        <p>
+          SEK <span>{{ product.price }}</span>
+        </p>
+      </div>
+      <p class="product-description">{{ product.longDesc }}</p>
       <button class="btn">VIEW DETAILS</button>
-      <h3 class="rating">*****</h3>
     </div>
-  </div>
+  </article>
 </template>
 
 <script>
 export default {
-  props:{product:Object}
+  props: { product: Object },
 };
 </script>
 
@@ -32,13 +41,15 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-align: start;
 }
 .model-card {
-  width: 199px;
-  height: 285px;
+  width: 208px;
+  height: 332px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background-color: #e0e0e0;
   font-size: 75%;
+
   .image-block {
     width: 100%;
     height: 190px;
@@ -48,7 +59,7 @@ export default {
     position: relative;
 
     .product-image {
-      width: 116px;
+     
       height: 151px;
     }
 
@@ -63,31 +74,41 @@ export default {
   }
 
   .product-info {
-    height: 100px;
+    height: 144px;
 
     background-color: #ffffff;
     padding: 8px;
     position: relative;
-
-    img {
-      width: fit-content;
-      width: 15px;
-      height: 12.75px;
-      position: absolute;
-      top: 12px;
-      right: 12px;
-    }
+    padding: auto;
 
     .product-name {
-      text-align: start;
-      margin-left: 8px;
-      font-family: Montserrat;
+      
+      font-family: "Oswald", sans-serif;
       font-style: normal;
       font-weight: 600;
       font-size: 16px;
       line-height: 26px;
 
       letter-spacing: -0.2px;
+
+      span {
+        margin-left: 8px;
+        text-transform: capitalize;
+      }
+    }
+
+    .info-title-price-size {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0px;
+
+      p {
+        font-weight: bold;
+        text-align: start;
+      }
+
+      .info-title-size {
+      }
     }
 
     .product-size {
@@ -120,23 +141,18 @@ export default {
       color: #1c1c1c;
     }
 
-    .rating {
-      text-align: end;
-      position: absolute;
-      bottom: 0px;
-      left: 16px;
-      color: #ffd000;
-      font-size: 1.2rem;
+    .product-description{
+      height:40px;
+      padding: 4px 0px;
     }
+    
     .btn {
       background-color: #1c1c1c;
-      position: absolute;
       padding: 2px 4px;
-      bottom: 8px;
-      right: 8px;
       color: #fff;
       cursor: pointer;
       font-size: 0.5rem;
+     margin:8px 0px 0px 65px;
     }
 
     .btn:hover {

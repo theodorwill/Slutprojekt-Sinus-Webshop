@@ -10,8 +10,8 @@
       </section>
   <div class="single-product-view">
     <section>
-      <SingleProductCard />
-      <SingleProductInfo />
+      <SingleProductCard :product="product"/>
+      <SingleProductInfo :product="product"/>
     </section>
       <SingleProductReview />
   </div>
@@ -22,8 +22,18 @@
 import SingleProductCard from "@/components/SingleProductCard.vue";
 import SingleProductInfo from "@/components/SingleProductInfo.vue";
 import SingleProductReview from "@/components/SingleProductReview.vue";
+
 export default {
   components: { SingleProductCard, SingleProductInfo, SingleProductReview },
+  computed:{
+    
+
+     product() {
+      return this.$store.state.products.products.find(
+        (product) => product.id == this.$route.params.id
+      );
+    },
+  }
 };
 </script>
 
@@ -44,11 +54,7 @@ export default {
   }
 }
 .single-product-view {
-  width: 80%;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
+  
 
   > section:nth-of-type(1) {
     display: flex;

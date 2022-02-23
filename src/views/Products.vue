@@ -11,12 +11,12 @@
     <div class="main-gallery">
       <div class="side-bar">
         <h3>Fixas efter grupp diskussion</h3>
-         <button @click="productsList">Get Products</button>
+        
       </div>
    
 
       <div class="product-list">
-        <router-link to='/about'
+        <router-link  :to="'/products/' + product.id"
          
           v-for="product in products"
           :key="product.id">
@@ -32,22 +32,21 @@
 
 <script>
 import ModelCardProductsList from '../components/ModelCardProductsList.vue'
+
 export default {
   components: { ModelCardProductsList },
 
   computed:{
+
     products(){
       return this.$store.state.products.products
-    },
-
+    }
     
   },
-
-  methods:{
-      productsList(){
-      this.$store.dispatch('fetchItems')
-    }
-    }
+  created(){
+    this.$store.dispatch('fetchItems')
+  }
+ 
 }
 </script>
 

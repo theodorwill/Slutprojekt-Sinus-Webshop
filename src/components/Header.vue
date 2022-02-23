@@ -3,7 +3,15 @@
     <section>
       <div class="logo" />
       <input type="text" />
-      <button >User</button>
+
+     <router-link to="/cart">
+        <button>
+          <div class="icon-account">
+          </div>
+        </button>
+      </router-link>
+
+
       <router-link to="/login">
         <button>
           <div class="icon-account">
