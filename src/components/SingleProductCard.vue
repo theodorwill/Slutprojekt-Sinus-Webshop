@@ -1,16 +1,6 @@
 <template>
   <div class="product-card">
     <section>
-<<<<<<< HEAD
-      <div class="product-image" />
-      <button></button>
-    </section>
-
-    <section>
-      <h3>{{products.title}} </h3>
-      <p>{{products.shortDesc}}</p>
-      <h4>Sek + {{products.price}}</h4>
-=======
       <img class="product-image"  :src="`http://localhost:5000/images/${product.imgFile}`"
         alt="Product's image"/>
     </section>
@@ -19,22 +9,14 @@
       <h3>{{ product.title }}</h3>
 
       
->>>>>>> aef07c78e966258e4d2784e6a77b6085dccf9151
     </section>
   </div>
 </template>
 
 <script>
 export default {
-<<<<<<< HEAD
-  computed: {
-    products() {
-      return this.$store.getters.getClickedItem(1)
-    },
-=======
   props: {
     product: Object,
->>>>>>> aef07c78e966258e4d2784e6a77b6085dccf9151
   },
 };
 </script>
