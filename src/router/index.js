@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Products from '../views/Products.vue'
 import Contact from '../views/Contact.vue'
-import Login from '../views/Login.vue'
+import LoginPage from '../views/LoginPage.vue'
 import UserProfile from '../views/UserProfile.vue'
 
 
@@ -37,11 +37,10 @@ const routes = [
     name: 'SinglePage',
     component: () => import('../views/SingleProduct.vue')
   },
-
   {
     path: '/login',
-    name: 'Login',
-    component: Login
+    name: 'LoginPage',
+    component: LoginPage
   },
   {
     path: '/user',

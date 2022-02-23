@@ -1,27 +1,36 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import * as API from '@/api/mock.js' 
-// import * as API from '@/api'
 
-// Data from mock.js uses for testing axios implementation only. After getting data from backend this file will be removed. 
+
+
+import * as API from '../store/api'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    products:[]
   },
 
   // MUTATIONS..............
   mutations: {
+    saveItems(state, items){
+      state.products = items
+    }
   },
 
   // ACTIONS.................
   actions: {
-  },
 
-  // GETTERS.................
-  getters: {
-
+    async fetchItems(context) {
+      const response = await API.getItems()
+      context.commit('saveItems', response.data)
+    }
   }
+
+  // // GETTERS.................
+  // getters: {
+
+  // }
  
 })
