@@ -9,14 +9,19 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    products:[]
+    products: [],
+    cart: [],
   },
 
   // MUTATIONS..............
   mutations: {
     saveItems(state, items){
       state.products = items
-    }
+    },
+
+    toCart(state, payload) {
+      state.cart.push(payload);
+    },
   },
 
   // ACTIONS.................
@@ -25,12 +30,23 @@ export default new Vuex.Store({
     async fetchItems(context) {
       const response = await API.getItems()
       context.commit('saveItems', response.data)
-    }
-  }
+    },
+
+    toCart(context, payload) {
+      if (!context.state.cart.includes(payload)) {
+        context.commit("toCart", payload)
+      } else { alert('This item already in the cart!') }
+
+    },
+  },
 
   // // GETTERS.................
-  // getters: {
+  getters: {
+   
+    cartsProduct: (state) => state.cart.map(id => state.products.products.find(product => product.id == id)),
+  },
 
-  // }
+  //Uses in checkout.vue for building dynamic cards.
+  
  
 })
