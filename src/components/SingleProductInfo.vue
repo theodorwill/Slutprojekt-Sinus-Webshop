@@ -49,9 +49,6 @@
 
 <script>
 export default {
-<<<<<<< HEAD
-  
-=======
  
 
   props:{product:Object},
@@ -67,7 +64,6 @@ export default {
       this.$store.dispatch("toCart", this.product.id);
     },
   },
->>>>>>> aef07c78e966258e4d2784e6a77b6085dccf9151
 };
 </script>
 
