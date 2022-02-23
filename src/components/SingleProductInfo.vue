@@ -22,6 +22,17 @@
         <p>Nordic Countries</p>
   
       </aside>
+      <label for="quantity">Qty</label>
+       <select  
+        class="quantity"
+        name="quantity"
+        v-model="customsChoice.quantity"
+        required >
+        <!-- v-for number in data-->
+         <option v-for="number in numbers" :key="number" :value="number">
+          {{ number }}
+        </option>
+      </select>
       <aside>
 
         <p>Size</p>
@@ -38,8 +49,14 @@
 
 <script>
 export default {
-  props:{
-    product:Object
+ 
+
+  props:{product:Object},
+  data(){
+    return{
+      numbers:10,
+       customsChoice: this.product,
+    }
   },
 
   methods: {
