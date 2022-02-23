@@ -1,6 +1,7 @@
 <template>
   <div class="product-card">
     <section>
+<<<<<<< HEAD
       <div class="product-image" />
       <button></button>
     </section>
@@ -9,16 +10,31 @@
       <h3>{{products.title}} </h3>
       <p>{{products.shortDesc}}</p>
       <h4>Sek + {{products.price}}</h4>
+=======
+      <img class="product-image"  :src="`http://localhost:5000/images/${product.imgFile}`"
+        alt="Product's image"/>
+    </section>
+
+    <section>
+      <h3>{{ product.title }}</h3>
+
+      
+>>>>>>> aef07c78e966258e4d2784e6a77b6085dccf9151
     </section>
   </div>
 </template>
 
 <script>
 export default {
+<<<<<<< HEAD
   computed: {
     products() {
       return this.$store.getters.getClickedItem(1)
     },
+=======
+  props: {
+    product: Object,
+>>>>>>> aef07c78e966258e4d2784e6a77b6085dccf9151
   },
 };
 </script>
@@ -38,9 +54,13 @@ export default {
 
   > section {
     &:nth-of-type(1) {
+      display: flex;
+      justify-content:center;
+      align-items: center;
       background-color: rgb(207, 207, 207);
       width: 100%;
       height: 65%;
+   
     }
 
     &:last-of-type {
@@ -74,13 +94,9 @@ export default {
 }
 
 .product-image {
-  width: 100%;
-  height: 100%;
+  // width: 216px;
+  height: 240px;
   border: none;
-  overflow: hidden;
-  background-repeat: no-repeat;
-  background-size: 45%;
-  background-position: bottom center;
-  background-image: url("~@/assets/hoodie_red.svg");
+ 
 }
 </style>

@@ -1,10 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Products from '../views/Products.vue'
-import Contact from '../views/Contact.vue'
-import LoginPage from '../views/LoginPage.vue'
-import UserProfile from '../views/UserProfile.vue'
+
+import Home from '@/views/Home.vue'
+import About from '@/views/About.vue'
+import Products from '@/views/Products.vue'
+import Cart from '@/views/Cart.vue'
+import Contact from '@/views/Contact.vue'
+import LoginPage from '@/views/LoginPage.vue'
+import UserProfile from '@/views/UserProfile.vue'
+import SingleProduct from '@/views/SingleProduct.vue'
+
 
 
 Vue.use(VueRouter)
@@ -16,6 +21,11 @@ const routes = [
     component: Home
   },
   {
+    path: '/about',
+    name: 'About',
+    component: About
+  },
+  {
     path: '/products',
     name: 'Products',
     component: Products
@@ -25,17 +35,14 @@ const routes = [
     name: 'contact',
     component: Contact
   },
-
   {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/cart',
+    name: 'Cart',
+    component: Cart
   },
-
   {
-    path: '/singlep',
-    name: 'SinglePage',
-    component: () => import('../views/SingleProduct.vue')
+    path: '/products/:id',
+    component: SingleProduct
   },
   {
     path: '/login',
@@ -47,8 +54,6 @@ const routes = [
     name: 'UserProfile',
     component: UserProfile
   },
-
-  
 ]
 
 const router = new VueRouter({

@@ -1,9 +1,9 @@
 <template>
   <div class="product-info">
     <section>
-      <h2>Some Product Name</h2>
+      <h2>Sinus <span>{{product.category}}</span></h2>
       <p>In Stock</p>
-      <h3>Sek 999</h3>
+      <h3>SEK {{product.price}}</h3>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
         Exercitationem suscipit eaque facere sapiente.
         Exercitationem suscipit eaque facere sapiente. </p>
@@ -12,35 +12,35 @@
     <section class="order-selection">
       <aside>
         <p>Type</p>
-        <p>Color</p>
+        
         <p>Delivery</p>
-        <p>Brand</p>
+        
       </aside>
       <aside>
         <p>Regular</p>
-        <p>Brown</p>
+    
         <p>Nordic Countries</p>
-        <p>Sinus</p>
+  
       </aside>
+      <label for="quantity">Qty</label>
+       <select  
+        class="quantity"
+        name="quantity"
+        v-model="customsChoice.quantity"
+        required >
+        <!-- v-for number in data-->
+         <option v-for="number in numbers" :key="number" :value="number">
+          {{ number }}
+        </option>
+      </select>
       <aside>
 
-        <label for="sizes">Size</label>
-        <select name="sizes">
-          <option value="s">S</option>
-          <option value="m">M</option>
-          <option value="l">L</option>
-          <option value="xl">XL</option>
-          <option value="xxl">XXL</option>
-        </select>
-        <button>Buy now</button>
+        <p>Size</p>
+        <p>{{product.shortDesc}}</p>
+        <button>Back to product</button>
       </aside>
       <aside>
-        <label for="quantity">Quantity</label>
-        <input
-          type="number"
-          name="quantity"
-        >
-        <button>Add to cart</button>
+        <button @click="addToCart">Add to cart</button>
       </aside>
     </section>
   </div>
@@ -49,7 +49,25 @@
 
 <script>
 export default {
+<<<<<<< HEAD
   
+=======
+ 
+
+  props:{product:Object},
+  data(){
+    return{
+      numbers:10,
+       customsChoice: this.product,
+    }
+  },
+
+  methods: {
+    addToCart() {
+      this.$store.dispatch("toCart", this.product.id);
+    },
+  },
+>>>>>>> aef07c78e966258e4d2784e6a77b6085dccf9151
 };
 </script>
 
@@ -62,6 +80,10 @@ export default {
   flex-flow: column;
   justify-content: space-around;
   text-align: left;
+
+  h2{
+    text-transform: capitalize;
+  }
 
   > section:nth-of-type(1) {
     width: 100%;

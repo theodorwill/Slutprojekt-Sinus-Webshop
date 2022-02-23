@@ -1,15 +1,22 @@
 <template>
   <div class="products">
-    <h2>Products</h2>
+        <section class="top">
+        <h1>PRODUCTS</h1>
+        <p>
+          <router-link to="/"><span>Home</span></router-link>
+          <img src="../assets/right.svg" alt="">
+        <span>Products</span>
+        </p>
+      </section>
     <div class="main-gallery">
       <div class="side-bar">
         <h3>Fixas efter grupp diskussion</h3>
-         <button @click="productsList">Get Products</button>
+        
       </div>
    
 
       <div class="product-list">
-        <router-link to='/about'
+        <router-link  :to="'/products/' + product.id"
          
           v-for="product in products"
           :key="product.id">
@@ -25,31 +32,46 @@
 
 <script>
 import ModelCardProductsList from '../components/ModelCardProductsList.vue'
+
 export default {
   components: { ModelCardProductsList },
 
   computed:{
+
     products(){
       return this.$store.state.products.products
-    },
-
+    }
     
   },
-
-  methods:{
-      productsList(){
-      this.$store.dispatch('fetchItems')
-    }
-    }
+  created(){
+    this.$store.dispatch('fetchItems')
+  }
+ 
 }
 </script>
 
 
 <style lang="scss" scoped>
 * {
-  margin: 0;
-  padding: 0px;
+  // margin: 0;
+  // padding: 0px;
   box-sizing: border-box;
+}
+.top {
+  width: 100%;
+  height: 80px;
+  background-color: #0076C4;
+  font-family: "Times New Roman", Times, serif;
+    padding-left: 2rem;
+  h1 ,p{
+    color: white;
+    display: flex;
+    margin: 0;
+    padding: 5px;
+  }
+  h1{
+    color: black;
+  }
 }
 .products {
   h2 {
