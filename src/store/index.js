@@ -12,6 +12,7 @@ export default new Vuex.Store({
     token: null,
     products: [],
     cart: [],
+    user: [],
   },
 
   // MUTATIONS..............
@@ -23,6 +24,11 @@ export default new Vuex.Store({
     saveAuthData(state, authData) {
       state.token = authData.token
       console.log(state.token)
+    },
+
+    saveUserData(state, userData) {
+      state.user.pop()
+      state.user.push(userData)
     },
 
     toCart(state, payload) {
@@ -49,6 +55,11 @@ export default new Vuex.Store({
       context.commit('saveAuthData', response.data)
     },
 
+    async getCurrentUser(context) {
+      const response = await API.getUser()
+      context.commit('saveUserData', response.data)
+    },
+
     toCart(context, payload) {
       if (!context.state.cart.includes(payload)) {
         context.commit("toCart", payload)
@@ -60,11 +71,7 @@ export default new Vuex.Store({
 
   // GETTERS.................
   getters: {
-    async getCurrentUser(context) {
-      const response = await API.getUser()
-      context.console.log(response.data)
 
-    },
 
     getClickedItem(state, id) {
       return state.products.products[id];

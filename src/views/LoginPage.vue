@@ -150,7 +150,8 @@ export default {
       }
     },
     click() {
-      console.log("hello");
+      this.$store.dispatch("getCurrentUser");
+      console.log(this.$store.state.user);
     },
   },
 };
