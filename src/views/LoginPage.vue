@@ -50,7 +50,7 @@
           <form @submit.prevent="registerAccount">
             <label for="email">Your Email:</label>
             <input
-              type="text"
+              type="email"
               name="email"
               placeholder="ex:example@mail.se"
               v-model="register.email"
@@ -67,7 +67,7 @@
               type="password"
               name="password"
               placeholder="Re-type your password"
-              v-model="register.validation.password"
+              v-model="validation.password"
             />
 
             <div class="check-box">
@@ -106,17 +106,26 @@ export default {
       register: {
         email: "",
         password: "",
-        validation: {
-          password: "",
-        },
+        role: "",
+        name: "",
+        city: "",
+        street: "",
+        zip: "",
+      },
+      validation: {
+        password: "",
       },
     };
   },
   methods: {
     logIn() {
       if (this.login.email !== "" && this.login.password !== "") {
-        //this.@store.dispatch
-        console.log(this.login);
+        //this.$store.dispatch
+
+        this.$store.dispatch("login", {
+          email: this.login.email,
+          password: this.login.password,
+        });
       } else {
         alert("Please input both email and password.");
       }
@@ -125,10 +134,13 @@ export default {
       if (
         this.register.email !== "" &&
         this.register.password !== "" &&
-        this.register.password === this.register.validation.password
+        this.register.password === this.validation.password
       ) {
-        //this.@store.dispatch
-        console.log(this.register.email, this.register.password);
+        //this.$store.dispatch
+
+        // console.log(this.register);
+
+        this.$store.dispatch("signup", { ...this.register });
       } else if (this.register.password !== this.register.validation.password) {
         alert("Password is not matching!");
       } else {
@@ -257,6 +269,7 @@ label {
   display: flex;
 }
 input[type="text"],
+input[type="email"],
 select {
   width: 100%;
   padding: 12px;

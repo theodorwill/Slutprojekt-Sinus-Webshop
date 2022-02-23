@@ -11,6 +11,14 @@ export async function login(email, password){
   return await axios.post('/auth', {email,password})
 }
 
+export async function registerAccount(payload){
+  axios.post('/register', {payload})
+}
+
+export async function getUser(){
+  return await axios.get('/me')
+}
+
 export async function getItems(){
   return await axios.get('/items')
 }
