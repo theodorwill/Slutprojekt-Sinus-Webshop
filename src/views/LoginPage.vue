@@ -120,8 +120,6 @@ export default {
   methods: {
     logIn() {
       if (this.login.email !== "" && this.login.password !== "") {
-        //this.$store.dispatch
-
         this.$store.dispatch("login", {
           email: this.login.email,
           password: this.login.password,
@@ -136,11 +134,7 @@ export default {
         this.register.password !== "" &&
         this.register.password === this.validation.password
       ) {
-        //this.$store.dispatch
-
-        // console.log(this.register);
-
-        this.$store.dispatch("signup", { ...this.register });
+        // this.$store.dispatch("signup", { ...this.register });
       } else if (this.register.password !== this.register.validation.password) {
         alert("Password is not matching!");
       } else {
