@@ -26,8 +26,6 @@ import SingleProductReview from "@/components/SingleProductReview.vue";
 export default {
   components: { SingleProductCard, SingleProductInfo, SingleProductReview },
   computed:{
-    
-
      product() {
       return this.$store.state.products.products.find(
         (product) => product.id == this.$route.params.id
