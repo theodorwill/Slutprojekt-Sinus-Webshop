@@ -3,8 +3,7 @@
     <section>
       <div class="logo" />
       <input type="text" />
-      <button>User</button>
-
+      <button >User</button>
       <router-link to="/login">
         <button>
           <div class="icon-account">

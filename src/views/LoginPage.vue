@@ -1,8 +1,13 @@
 <template>
   <div>
-        <div class="top">
-            <h1>LOGIN</h1>
-        </div>
+         <section class="top">
+        <h1>LOGIN</h1>
+        <p>
+          <router-link to="/"><span>Home</span></router-link>
+          <img src="../assets/right.svg" alt="">
+        <span>Login</span>
+        </p>
+      </section>
 
         <section class="middle-1">
              <h3>Login</h3>
@@ -79,9 +84,18 @@ export default {
   height: 80px;
   background-color: #aaa;
   font-family: "Times New Roman", Times, serif;
-  display: flex;
-  h1 {
-    margin-left: 2rem;
+    padding-left: 2rem;
+  h1 ,p{
+    display: flex;
+    margin: 0;
+    padding: 5px;
+    color: white;
+  }
+  h1{
+    color: black;
+  }
+  a {
+    text-decoration: none;
   }
 }
 .middle-1 {
