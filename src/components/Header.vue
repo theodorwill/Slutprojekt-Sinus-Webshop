@@ -3,12 +3,14 @@
     <section>
       <div class="logo" />
       <input type="text" />
+
      <router-link to="/cart">
         <button>
           <div class="icon-account">
           </div>
         </button>
       </router-link>
+
 
       <router-link to="/login">
         <button>

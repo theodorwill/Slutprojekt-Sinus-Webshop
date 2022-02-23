@@ -1,8 +1,13 @@
 <template>
   <div class="contact">
     <section class="top">
-      <h1>CONTACT</h1>
-    </section>
+        <h1>CONTACT</h1>
+        <p>
+          <router-link to="/"><span>Home</span></router-link>
+          <img src="../assets/right.svg" alt="">
+        <span>Contact</span>
+        </p>
+      </section>
     <section class="middle-1">
       <h3>Contact us</h3>
       <div class="container">
@@ -12,8 +17,7 @@
             type="text"
             id="fname"
             name="firstname"
-            placeholder="Type Your name Here..."
-          />
+            placeholder="Type Your name Here..."/>
 
           <label for="email">Your Email</label>
           <input
@@ -77,9 +81,18 @@ export default {
   height: 80px;
   background-color: #aaa;
   font-family: "Times New Roman", Times, serif;
-  display: flex;
-  h1 {
-    margin-left: 2rem;
+    padding-left: 2rem;
+  h1 ,p{
+    display: flex;
+    margin: 0;
+    padding: 5px;
+    color: white;
+  }
+  h1{
+    color: black;
+  }
+  a {
+    text-decoration: none;
   }
 }
 .middle-1{

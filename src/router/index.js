@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import Home from '../views/Home.vue'
 import Products from '../views/Products.vue'
 import Contact from '../views/Contact.vue'
@@ -9,6 +10,7 @@ import SingleProduct from '../views/SingleProduct.vue'
 import Cart from '../views/Cart.vue'
 
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -16,6 +18,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About
   },
   {
     path: '/products',
@@ -33,22 +40,21 @@ const routes = [
     component: Contact
   },
 
+
   {
     path: '/cart',
     name: 'Cart',
     component: Cart
   },
 
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-
+ 
+  
   {
     path: '/products/:id',
-    name: 'SinglePage',
+    
+
     component: SingleProduct
+
   },
   {
     path: '/login',
@@ -60,8 +66,6 @@ const routes = [
     name: 'UserProfile',
     component: UserProfile
   },
-
-  
 ]
 
 const router = new VueRouter({
