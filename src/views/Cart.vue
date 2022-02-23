@@ -61,19 +61,28 @@ export default {
 
 
 <style lang="scss" scoped>
-
+:root{
+  --showcase-fontfamily: 'Lora', serif;
+  --navbar-fontfamily: 'Oswald', sans-serif;
+  --allheadlines-fontfamily: 'Oswald', sans-serif;
+  --paragraph-fontfamily: 'Oswald', sans-serif;
+  --primery-color: #0076C4;
+  --secondary-color: #f69e03;
+  --color-Btn: #1c1c1c;
+  --pagebar-color:  #eb5509;
+}
 
 .cart-view{
   display: block;
 
-  .information {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  // .information {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
 
-    font-size: 1.2rem;
-    height: 300px;
-  }
+  //   font-size: 1.2rem;
+  //   height: 300px;
+  // }
 
   .checkout-container {
     display: flex;
@@ -104,7 +113,7 @@ export default {
         max-height: 50px;
 
         margin: 0px;
-        font-family: "Lato", sans-serif;
+        font-family: var(--paragraph-fontfamily);
 
         font-weight: 400;
         color: #545454;
@@ -115,6 +124,7 @@ export default {
           strong {
             text-align: start;
             font-size: 0.8rem;
+            font-family: var(--paragraph-fontfamily);
           }
         }
 
@@ -131,7 +141,7 @@ export default {
         height: 300px;
         margin: 50px auto 0px auto;
         border-top: solid 1px #545454;
-        font-family: "Lato", sans-serif;
+        font-family: var(--paragraph-fontfamily);
 
         h3 {
           display: flex;
@@ -139,13 +149,16 @@ export default {
           strong {
             text-align: start;
             font-size: 0.8rem;
+            font-family:var(--allheadlines-fontfamily);
           }
+          font-family: var(--paragraph-fontfamily);
           font-size: 0.8rem;
           font-weight: bold;
           color: #1b4b08;
         }
 
         span {
+          font-family: var(--paragraph-fontfamily);
           text-align: center;
           font-size: 0.7rem;
           color: #9da1a7;
@@ -160,6 +173,7 @@ export default {
             background-color: #1c1c1c;
             color: #fff;
             cursor: pointer;
+            font-family: var(--allheadlines-fontfamily);
           }
 
           .back {
@@ -168,6 +182,7 @@ export default {
             text-align: center;
             margin-top: 16px;
             border: solid 2px #1c1c1c;
+            font-family: var(--allheadlines-fontfamily);
           }
         }
       }
@@ -185,6 +200,7 @@ export default {
 
     h2 {
       margin-top: 64px;
+      font-family: var(--allheadlines-fontfamily);
     }
   }
 }

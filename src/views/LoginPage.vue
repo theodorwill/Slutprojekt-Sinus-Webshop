@@ -74,6 +74,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+:root{
+  --showcase-fontfamily: 'Lora', serif;
+  --navbar-fontfamily: 'Oswald', sans-serif;
+  --allheadlines-fontfamily: 'Oswald', sans-serif;
+  --paragraph-fontfamily: 'Oswald', sans-serif;
+  --primery-color: #0076C4;
+  --secondary-color: #f69e03;
+  --color-Btn: #1c1c1c;
+  --pagebar-color:  #eb5509;
+}
 .top {
   width: 100%;
   height: 80px;
@@ -82,11 +92,13 @@ export default {
   display: flex;
   h1 {
     margin-left: 2rem;
+    font-family: var(--showcase-fontfamily);
   }
 }
 .middle-1 {
   h3 {
     font-size: 2rem;
+    font-family: var(--allheadlines-fontfamily);
   }
 }
 .login-container {
@@ -97,6 +109,7 @@ export default {
 }
 label {
   display: flex;
+  font-family: var(--allheadlines-fontfamily);
 }
 input[type="text"],
 select {
@@ -109,6 +122,7 @@ select {
   margin-bottom: 16px;
   resize: vertical;
   background-color: #f5f5f5;
+  font-family: var(--paragraph-fontfamily);
 }
 input[type="password"],
 select {
@@ -121,10 +135,12 @@ select {
   // margin-bottom: 16px;
   resize: vertical;
   background-color: #f5f5f5;
+  font-family: var(--paragraph-fontfamily);
 }
 a {
   display: flex;
   justify-content: flex-end;
+  font-family: var(--paragraph-fontfamily);
 }
 button {
   width: 400px;
@@ -139,6 +155,7 @@ button {
   &:hover {
     background-color: #45a049;
     transition: 0.5s;
+    font-family: var(--allheadlines-fontfamily);
   }
 }
 hr.solid {
@@ -156,6 +173,7 @@ hr.solid {
   cursor: pointer;
   h4 {
     margin: 1rem;
+    font-family: var(--allheadlines-fontfamily)
   }
 }
 .sign {
@@ -164,18 +182,21 @@ hr.solid {
   align-items: center;
   width: 400px;
   margin: auto;
+  font-family: var(--paragraph-fontfamily);
   a {
     font-size: 1.2rem;
     margin: 1rem;
     text-decoration: none;
     font-weight: 900;
     color: #2091f9;
+    font-family: var(--allheadlines-fontfamily);
   }
 }
 
 .middle-2 {
   h3 {
     font-size: 2rem;
+    font-family: var(--allheadlines-fontfamily);
   }
 }
 .register-container {
@@ -186,6 +207,7 @@ hr.solid {
 }
 label {
   display: flex;
+  font-family: var(--allheadlines-fontfamily);
 }
 input[type="text"],
 select {
@@ -198,6 +220,7 @@ select {
   // margin-bottom: 16px;
   resize: vertical;
   background-color: #f5f5f5;
+  font-family: var(--paragraph-fontfamily);
 }
 input[type="password"],
 select {
@@ -210,10 +233,12 @@ select {
   margin-bottom: 16px;
   resize: vertical;
   background-color: #f5f5f5;
+  font-family: var(--paragraph-fontfamily);
 }
 a {
   display: flex;
   justify-content: flex-end;
+  font-family: var(--paragraph-fontfamily);
 }
 button {
   width: 400px;
@@ -228,6 +253,7 @@ button {
   &:hover {
     background-color: #45a049;
     transition: 0.5s;
+    font-family: var(--paragraph-fontfamily);
   }
 }
 .check-box {
@@ -240,6 +266,7 @@ button {
     // font-size: 1.2rem;
     font-weight: 900;
     margin-left: 10px;
+    font-family: var(--allheadlines-fontfamily);
   }
 }
 .middle-3{

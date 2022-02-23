@@ -46,6 +46,16 @@ export default {
 
 
 <style lang="scss" scoped>
+:root{
+  --showcase-fontfamily: 'Lora', serif;
+  --navbar-fontfamily: 'Oswald', sans-serif;
+  --allheadlines-fontfamily: 'Oswald', sans-serif;
+  --paragraph-fontfamily: 'Oswald', sans-serif;
+  --primery-color: #0076C4;
+  --secondary-color: #f69e03;
+  --color-Btn: #1c1c1c;
+  --pagebar-color:  #eb5509;
+}
 * {
   margin: 0;
   padding: 0px;
@@ -56,10 +66,12 @@ export default {
     text-align: start;
     margin: 24px 0px 0px 72px;
     font-size: 1.2rem;
+    font-family: var(--showcase-fontfamily);
   }
 
   a {
     text-decoration: none;
+    font-family: var(--paragraph-fontfamily);
   }
 
   .main-gallery {

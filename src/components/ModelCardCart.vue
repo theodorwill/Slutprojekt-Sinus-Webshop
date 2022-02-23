@@ -31,6 +31,16 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+:root{
+  --showcase-fontfamily: 'Lora', serif;
+  --navbar-fontfamily: 'Oswald', sans-serif;
+  --allheadlines-fontfamily: 'Oswald', sans-serif;
+  --paragraph-fontfamily: 'Oswald', sans-serif;
+  --primery-color: #0076C4;
+  --secondary-color: #f69e03;
+  --color-Btn: #1c1c1c;
+  --pagebar-color:  #eb5509;
+}
 .model-card-cart {
   width: 776px;
   height: 90px;
@@ -72,7 +82,7 @@ export default {};
       h3 {
         width: 138px;
         margin: 0px;
-        font-family: Montserrat;
+        font-family: var(--allheadlines-fontfamily);
         font-size: 1rem;
 
         font-weight: bold;
@@ -80,7 +90,7 @@ export default {};
         color: #545454;
       }
       p {
-        font-family: Montserrat;
+        font-family: var(--paragraph-fontfamily);
         font-style: normal;
         font-weight: normal;
         font-size: 12px;
@@ -137,6 +147,7 @@ export default {};
       color: #fff;
       margin-left: 18px;
       align-items: center;
+      font-family: var(--paragraph-fontfamily);
     }
   }
 }

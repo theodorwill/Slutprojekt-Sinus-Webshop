@@ -74,6 +74,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+:root{
+  --showcase-fontfamily: 'Lora', serif;
+  --navbar-fontfamily: 'Oswald', sans-serif;
+  --allheadlines-fontfamily: 'Oswald', sans-serif;
+  --paragraph-fontfamily: 'Oswald', sans-serif;
+  --primery-color: #0076C4;
+  --secondary-color: #f69e03;
+  --color-Btn: #1c1c1c;
+  --pagebar-color:  #eb5509;
+}
 .top-main{
     width: 1440px;
     height: 800px;
@@ -87,6 +97,7 @@ export default {
         text-align: center;
         font-size: 3rem;
         color: white;
+        font-family:var(--showcase-fontfamily)
     }
     button{
         width: 300px;
@@ -100,6 +111,7 @@ export default {
         border-radius: 50px;
         background: none;
         color: white;
+        font-family: var(--paragraph-fontfamily);
     }
 }
 h2{
@@ -108,6 +120,7 @@ h2{
     padding: 1rem;
     text-align: center;
     font-size: 2rem;
+    font-family:var(--allheadlines-fontfamily)
 }
 .middle-main{
 display: grid;
@@ -139,9 +152,11 @@ padding: 1rem 4rem;
         width: 300px;
         margin: auto;
         text-align: center;
+        font-family:var(--paragraph-fontfamily)
     }
     .bottom h1{
         width: 300px;
+        font-family: var(--allheadlines-fontfamily);
     }
 }
 h1{
@@ -149,6 +164,7 @@ h1{
     margin: auto;
     padding: 3rem;
     text-align: center;
+    font-family: var(--allheadlines-fontfamily);
 }
 hr.solid {
   border-top: 3px solid #bbb;
@@ -172,11 +188,12 @@ padding: 2rem 9rem;
     color: white;
 
     h3{
-        
+        font-family: var(--allheadlines-fontfamily);
     }
     p{
         width: 200px;
         text-align: center;
+        font-family: var(--paragraph-fontfamily);
         
     }
 

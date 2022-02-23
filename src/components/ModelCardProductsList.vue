@@ -28,6 +28,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+:root{
+  --showcase-fontfamily: 'Lora', serif;
+  --navbar-fontfamily: 'Oswald', sans-serif;
+  --allheadlines-fontfamily: 'Oswald', sans-serif;
+  --paragraph-fontfamily: 'Oswald', sans-serif;
+  --primery-color: #0076C4;
+  --secondary-color: #f69e03;
+  --color-Btn: #1c1c1c;
+  --pagebar-color:  #eb5509;
+}
 * {
   margin: 0;
   padding: 0;
@@ -81,12 +91,12 @@ export default {
     .product-name {
       text-align: start;
       margin-left: 8px;
-      font-family: Montserrat;
+    
       font-style: normal;
       font-weight: 600;
       font-size: 16px;
       line-height: 26px;
-
+     font-family: var(--allheadlines-fontfamily);
       letter-spacing: -0.2px;
     }
 
@@ -137,6 +147,7 @@ export default {
       color: #fff;
       cursor: pointer;
       font-size: 0.5rem;
+      font-family:var(--paragraph-fontfamily)
     }
 
     .btn:hover {

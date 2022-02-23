@@ -70,22 +70,35 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.contact {
+:root{
+  --showcase-fontfamily: 'Lora', serif;
+  --navbar-fontfamily: 'Oswald', sans-serif;
+  --allheadlines-fontfamily: 'Oswald', sans-serif;
+  --paragraph-fontfamily: 'Oswald', sans-serif;
+  --primery-color: #0076C4;
+  --secondary-color: #f69e03;
+  --color-Btn: #1c1c1c;
+  --pagebar-color:  #eb5509;
 }
+.contact {
+  font-family:var(--showcase-fontfamily);
+}
+
 .top {
   width: 100%;
   height: 80px;
   background-color: #aaa;
-  font-family: "Times New Roman", Times, serif;
   display: flex;
   h1 {
     margin-left: 2rem;
+    font-family: var(--allheadlines-fontfamily);
   }
 }
 .middle-1{
     h3{
         padding: 2rem;
         font-size: 1.5rem;
+        font-family: var(--allheadlines-fontfamily);
     }
     .container {
     width: 600px;
@@ -108,6 +121,7 @@ export default {
         margin-bottom: 16px;
         resize: vertical;
         background-color: #F5F5F5;
+        font-family: var(--paragraph-fontfamily);
     }
     input[type="submit"] {
     background-color: #2091F9;
@@ -116,9 +130,11 @@ export default {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+     font-family: var(--paragraph-fontfamily);
     }
     input[type="submit"]:hover {
     background-color: #45a049;
+    font-family: var(--paragraph-fontfamily);
     }
 }
 .middle-2{
@@ -126,6 +142,7 @@ export default {
         display: flex;
         margin-left: 4rem;
         padding: 2rem;
+        font-family: var(--allheadlines-fontfamily);
     }
     .product-list-container{
         display: grid;
@@ -141,6 +158,7 @@ export default {
     h1{
         font-size: 4rem;
         padding: 5rem 0;
+        font-family: var(--allheadlines-fontfamily);
     }
 }
 </style>
