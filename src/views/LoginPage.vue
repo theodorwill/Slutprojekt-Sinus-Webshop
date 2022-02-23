@@ -1,63 +1,94 @@
 <template>
   <div>
-        <div class="top">
-            <h1>LOGIN</h1>
+    <div class="top">
+      <h1>LOGIN</h1>
+    </div>
+
+    <section class="middle-1">
+      <h3>Login</h3>
+      <div class="login-container">
+        <form @submit.prevent="logIn">
+          <label for="email">Your Email:</label>
+          <input
+            type="text"
+            name="email"
+            placeholder="Type Your Email Here..."
+            v-model="login.email"
+          />
+          <label for="email">Your Password:</label>
+          <input
+            type="password"
+            name="email"
+            placeholder="Type Your Password Here..."
+            v-model="login.password"
+          />
+          <a href="#">Forget your password ?</a>
+          <button>Login</button>
+        </form>
+      </div>
+      <hr class="solid" />
+      <div
+        @click="click"
+        class="face-book"
+      >
+        <img
+          src="../assets/facebook.svg"
+          alt=""
+        />
+        <h4>Login with Facebook</h4>
+      </div>
+      <div class="sign">
+        <p>Don’t have an account?</p>
+        <a href="#">Sign up here</a>
+      </div>
+    </section>
+
+    <section class="middle-2">
+      <div class="register-page">
+        <h3>Register</h3>
+        <div class="register-container">
+          <form @submit.prevent="registerAccount">
+            <label for="email">Your Email:</label>
+            <input
+              type="text"
+              name="email"
+              placeholder="ex:example@mail.se"
+              v-model="register.email"
+            />
+            <label for="email">Your Password:</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Type your password "
+              v-model="register.password"
+            />
+            <label for="email">Please Confirm Your Password:</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Re-type your password"
+              v-model="register.validation.password"
+            />
+
+            <div class="check-box">
+              <label><input type="checkbox" />By creating an account you agree to our</label>
+              <a href="#"> conditions</a>
+            </div>
+            <button>Register</button>
+          </form>
+          <div class="sign">
+            <p>Already have an account?</p>
+            <a href="#">Login here</a>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <section class="middle-1">
-             <h3>Login</h3>
-            <div class="login-container">
-                <form action="">
-                <label for="email">Your Email:</label>
-                <input type="text" name="email" placeholder="Type Your Email Here..."/>
-                <label for="email">Your Password:</label>
-                <input type="password" name="email" placeholder="Type Your Password Here..."
-                />
-                <a href="#">Forget your password ?</a>
-                </form>
-                <button>Login</button>
-            </div>
-            <hr class="solid" />
-            <div @click="click" class="face-book">
-                <img src="../assets/facebook.svg" alt="" />
-                <h4>Login with Facebook</h4>
-            </div>
-            <div class="sign">
-                <p>Don’t have an account?</p>
-                <a href="#">Sign up here</a>
-            </div>
-        </section>
-
-        <section class="middle-2">
-            <div class="register-page">
-                <h3>Register</h3>
-                <div class="register-container">
-                <form action="">
-                    <label for="email">Your Email:</label>
-                    <input type="text" name="email" placeholder="ex:example@mail.se" />
-                    <label for="email">Your Password:</label>
-                    <input type="password" name="password" placeholder="Type your password "/>
-                    <label for="email">Please Confirm Your Password:</label>
-                    <input type="password" name="password" placeholder="Re-type your password "/>
-                </form>
-                <div class="check-box">
-                    <label><input type="checkbox" />By creating an account you agree to our</label>
-                    <a href="#"> conditions</a>
-                </div>
-                <button>Register</button>
-                <div class="sign">
-                    <p>Already have an account?</p>
-                    <a href="#">Login here</a>
-                </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="middle-3">
-            <div class="product-list-container">
-                <h1>Up comming products</h1>
-            </div>
-        </section>
+    <section class="middle-3">
+      <div class="product-list-container">
+        <h1>Upcoming products</h1>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -65,11 +96,49 @@
 // import ModelCardProductsList from "../components/ModelCardProductsList.vue";
 export default {
   components: {},
-  methods:{
-      click(){
-          console.log('hello')
+
+  data() {
+    return {
+      login: {
+        email: "",
+        password: "",
+      },
+      register: {
+        email: "",
+        password: "",
+        validation: {
+          password: "",
+        },
+      },
+    };
+  },
+  methods: {
+    logIn() {
+      if (this.login.email !== "" && this.login.password !== "") {
+        //this.@store.dispatch
+        console.log(this.login);
+      } else {
+        alert("Please input both email and password.");
       }
-  }
+    },
+    registerAccount() {
+      if (
+        this.register.email !== "" &&
+        this.register.password !== "" &&
+        this.register.password === this.register.validation.password
+      ) {
+        //this.@store.dispatch
+        console.log(this.register.email, this.register.password);
+      } else if (this.register.password !== this.register.validation.password) {
+        alert("Password is not matching!");
+      } else {
+        alert("Insufficient information given!");
+      }
+    },
+    click() {
+      console.log("hello");
+    },
+  },
 };
 </script>
 
@@ -242,20 +311,19 @@ button {
     margin-left: 10px;
   }
 }
-.middle-3{
-
-    .product-list-container{
-        width: 1000px;
-        height: 400px;
-        margin:  10rem auto;
-        background-color: #2091F9;
-        h1{
-            font-size: 4rem;
-            padding: 5rem 0;
-            width: 600px;
-            margin: auto;
-            color: white;
-        }
+.middle-3 {
+  .product-list-container {
+    width: 1000px;
+    height: 400px;
+    margin: 10rem auto;
+    background-color: #2091f9;
+    h1 {
+      font-size: 4rem;
+      padding: 5rem 0;
+      width: 600px;
+      margin: auto;
+      color: white;
     }
+  }
 }
 </style>
