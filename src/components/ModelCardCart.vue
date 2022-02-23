@@ -2,20 +2,27 @@
   <article class="model-card-cart">
     <div class="product-info">
       <div class="card-image">
-        <img src="@/assets/hoodie_red.svg" alt="product image" />
+        <img :src="`http://localhost:5000/images/${product.imgFile}`"
+        alt="Product's image" />
       </div>
       <div class="text-info">
-        <h3>Sinus Hoodie</h3>
-        <p>s, m, x ,xl</p>
+        <h3>Sinus {{product.category}}</h3>
+        <p>{{product.shortDesc}}</p>
       </div>
     </div>
     <div class="quantities">
       <!-- v-model number in data-->
-      <select class="quantity" name="quantity">
+      <select  @change="addQtty"
+        class="quantity"
+        name="quantity"
+        v-model="customsChoice.quantity"
+        required >
         <!-- v-for number in data-->
-        <option>4</option>
+         <option v-for="number in numbers" :key="number" :value="number">
+          {{ number }}
+        </option>
       </select>
-      <span class="price-info">599/item</span>
+      <span class="price-info">{{product.price}}/item</span>
     </div>
 
     <p class="price">SEK 2396</p>
@@ -27,7 +34,22 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props:{product:Object},
+  data(){
+    return{
+      numbers:10,
+       customsChoice: this.product,
+    }
+  },
+
+  
+  methods: {
+    addToCart() {
+      this.$store.dispatch("toCart", this.product.quantity);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
