@@ -100,10 +100,10 @@ export default {
     .product-list {
       display: grid;
 
-      grid-template-columns: repeat(3, 1fr);
-      grid-column-gap: 124px;
+      grid-template-columns: repeat(4, 1fr);
+      grid-column-gap: 2px;
       grid-row-gap: 60px;
-      margin: 32px auto;
+      margin: 32px 0px 32px 56px;
     }
 
     .footer {
