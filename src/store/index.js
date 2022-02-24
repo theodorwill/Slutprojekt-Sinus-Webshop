@@ -7,10 +7,13 @@ import * as API from '../store/api'
 
 Vue.use(Vuex)
 
+
+
 export default new Vuex.Store({
   state: {
     products: [],
     cart: [],
+    currentPage:3
   },
 
   // MUTATIONS..............
@@ -30,6 +33,7 @@ export default new Vuex.Store({
     async fetchItems(context) {
       const response = await API.getItems()
       context.commit('saveItems', response.data)
+      // console.log(context)
     },
 
     toCart(context, payload) {

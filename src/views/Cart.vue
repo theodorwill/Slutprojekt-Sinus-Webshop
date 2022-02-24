@@ -1,22 +1,17 @@
 <template>
   <div class="cart-view">
-      <!-- v-if no product on cart !!!!!!!!-->
-    <!-- <div class="information">
-      <span>Your shopping cart is empty.</span>
-    </div> -->
+    
+    <div class="information" v-if="!cartsProduct.length"> 
+      <span>Your shopping cart is empty.</span> 
+    </div>
 
-    <div class="checkout-container">
+    <div class="checkout-container" v-else>
       <article class="cart-items">
-          <!-- v-for products in cart -->
-        <div >
-          <ModelCardCart/>
-          <ModelCardCart/>
-          <ModelCardCart/>
-          <ModelCardCart/>
-         
+        <div v-for="(item, idx) in cartsProduct" :key="item.id" :idx="idx">
+          <ModelCardCart :product="item" :idx="idx" />
         </div>
       </article>
-      <!-- vi if product in cart -->
+      
       <article class="payment">
         <div class="our-social-careness">
           <img src="@/assets/sustainability.svg" alt="sust-img" />
@@ -53,8 +48,12 @@
 
 <script>
 import ModelCardCart from '../components/ModelCardCart.vue'
+import { mapGetters } from "vuex";
 export default {
-    components:{ModelCardCart}
+    components:{ModelCardCart},
+    computed:{
+      ...mapGetters([ 'cartsProduct'])
+    }
 }
 </script>
 
