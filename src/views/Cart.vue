@@ -19,18 +19,18 @@
         <div class="payment-details">
           <p>
             <strong>PRICE:</strong>
-            <strong>grandTotal</strong>
+            <strong>{{grandTotal}}</strong>
           </p>
           <p>
-            <strong>DISCOUNTS:</strong> <strong>-Discount</strong>
+            <strong>DISCOUNTS:</strong> <strong>-{{discount}}</strong>
           </p>
         </div>
         <div class="payment-action">
           <h3>
-            <strong>AMOUNT TO PAY:</strong> <strong>netTotal</strong>
+            <strong>AMOUNT TO PAY:</strong> <strong>{{netTotal}}</strong>
           </h3>
           <span class="vat-info"
-            >VAT
+            >moms {{moms}}
           </span>
           <div class="action-sub">
             <button class="pay-now">Checkout</button>
@@ -52,7 +52,26 @@ import { mapGetters } from "vuex";
 export default {
     components:{ModelCardCart},
     computed:{
-      ...mapGetters([ 'cartsProduct'])
+      ...mapGetters([ 'cartsProduct']),
+      grandTotal(){
+        let total = 0
+        this.cartsProduct.forEach(product => {
+        total += product.price * product.quantity
+      })
+      return total
+      },
+
+      discount(){
+         return Math.round(this.grandTotal * 0.1)
+      },
+
+      netTotal(){
+        return this.grandTotal - this.discount
+      },
+
+      moms(){
+        return this.grandTotal * .15
+      }
     }
 }
 </script>

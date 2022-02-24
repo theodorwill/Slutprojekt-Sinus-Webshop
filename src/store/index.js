@@ -12,15 +12,22 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     token: null,
-    products: [],
+    productList: [],
+    products:{},
     cart: [],
     user: [],
   },
 
   // MUTATIONS..............
   mutations: {
-    saveItems(state, items) {
-      state.products = items
+    saveItems(state, products) {
+      
+        for(let product of products){
+          state.productList.push(product)
+          Vue.set(state.products, product.id, product)
+        }
+      
+     
     },
 
     saveAuthData(state, authData) {
@@ -36,15 +43,26 @@ export default new Vuex.Store({
     toCart(state, payload) {
       state.cart.push(payload);
     },
+
+    removeProduct(state, payload){
+      state.cart.splice(payload, 1)
+    }
   },
 
   // ACTIONS.................
   actions: {
 
     async fetchItems(context) {
-      const response = await API.getItems()
-      context.commit('saveItems', response.data)
-      // console.log(context)
+      
+      if(context.state.productList == 0){
+        const response = await API.getItems()
+        context.commit('saveItems', response.data)
+        
+      }
+     
+    
+     
+      
     },
 
     async login(context, {
@@ -69,13 +87,19 @@ export default new Vuex.Store({
       } else {
         alert('This item already in the cart!')
       }
+    },
+
+    removeProduct(context, payload){
+      context.commit('removeProduct', payload)
     }
   },
 
   // GETTERS.................
   getters: {
 
-    cartsProduct: (state) => state.cart.map(id => state.products.find(product => product.id == id)),
+    cartsProduct: (state) => state.cart.map(id => state.productList.find(product => product.id == id)),
 
   }
+
+  
 })

@@ -28,14 +28,14 @@
     <p class="price">SEK {{total}}</p>
 
     <div class="remove-item">
-      <button>Remove</button>
+      <button @click="removeItem">Remove</button>
     </div>
   </article>
 </template>
 
 <script>
 export default {
-  props:{product:Object},
+  props:{product:Object, idx:Number},
   data(){
     return{
       numbers:10,
@@ -47,6 +47,12 @@ export default {
     total() {
       return this.item.price * this.item.quantity;
     },
+   },
+
+   methods:{
+     removeItem(){
+       this.$store.dispatch('removeProduct', this.idx)
+     }
    }
   
   
