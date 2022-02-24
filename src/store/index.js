@@ -72,12 +72,12 @@ export default new Vuex.Store({
   // GETTERS.................
   getters: {
 
+    cartsProduct: (state) => state.cart.map(id => state.products.products.find(product => product.id == id)),
 
     getClickedItem(state, id) {
       return state.products.products[id];
 
     },
 
-    cartsProduct: (state) => state.cart.map(id => state.products.products.find(product => product.id == id)),
   }
 })

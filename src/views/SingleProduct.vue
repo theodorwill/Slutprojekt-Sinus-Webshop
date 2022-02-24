@@ -27,7 +27,7 @@ export default {
   components: { SingleProductCard, SingleProductInfo, SingleProductReview },
   computed:{
      product() {
-      return this.$store.state.products.products.find(
+      return this.$store.state.products.find(
         (product) => product.id == this.$route.params.id
       );
     },
