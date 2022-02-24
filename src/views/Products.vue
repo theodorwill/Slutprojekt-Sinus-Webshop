@@ -40,7 +40,7 @@ export default {
   computed:{
 
     products(){
-      return this.$store.state.products
+      return this.$store.state.products.products
     }
     
   },
@@ -100,10 +100,10 @@ export default {
     .product-list {
       display: grid;
 
-      grid-template-columns: repeat(4, 1fr);
-      grid-column-gap: 2px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 124px;
       grid-row-gap: 60px;
-      margin: 32px 0px 32px 56px;
+      margin: 32px auto;
     }
 
     .footer {
