@@ -1,12 +1,12 @@
 <template>
   <div id="nav">
-    <section>
+    <section class="top">
       <div class="logo" />
-      <input type="text" />
+      <input type="text"  class="search"/>
 
      <router-link to="/cart">
         <button>
-          <div class="icon-account">
+          <div class="card">
           </div>
         </button>
       </router-link>
@@ -14,7 +14,7 @@
 
       <router-link to="/login">
         <button>
-          <div class="icon-account">
+          <div class="login">
           </div>
         </button>
       </router-link>
@@ -23,7 +23,7 @@
     <section>
       <router-link to="/">Home</router-link> |
       <router-link to="/products">Products</router-link> |
-      <router-link to="/singlep">About</router-link> |
+      <router-link to="/about">About</router-link> |
       <router-link to="/contact">Contact</router-link> 
     
       
@@ -39,6 +39,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.top{
+  margin: 10px;
+}
 .logo {
   width: 200px;
   height: 50px;
@@ -47,7 +50,18 @@ export default {
   background-position: center;
   background-size: 100%;
 }
-.icon-account {
+.search { 
+  background-image: url("~@/assets/search.svg");
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  font-size: 1.5rem;
+  cursor: pointer;
+  
+  
+  
+}
+.login {
   padding: 0;
   width: 100%;
   height: 100%;
@@ -55,6 +69,15 @@ export default {
   background-size: 70%;
   background-position: center center;
   background-image: url("~@/assets/icon_account.svg");
+}
+.card {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: center center;
+  background-image: url("~@/assets/shopping-cart.svg");
 }
 
 #nav {
