@@ -11,15 +11,26 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    token: null,
     products: [],
     cart: [],
-    currentPage:3
+    user: [],
   },
 
   // MUTATIONS..............
   mutations: {
-    saveItems(state, items){
+    saveItems(state, items) {
       state.products = items
+    },
+
+    saveAuthData(state, authData) {
+      state.token = authData.token
+      console.log(state.token)
+    },
+
+    saveUserData(state, userData) {
+      state.user.pop()
+      state.user.push(userData)
     },
 
     toCart(state, payload) {
@@ -36,21 +47,40 @@ export default new Vuex.Store({
       // console.log(context)
     },
 
+    async login(context, {
+      email,
+      password
+    }) {
+      const response = await API.login(email, password)
+      console.log(response)
+      API.saveToken(response.data.token)
+
+      context.commit('saveAuthData', response.data)
+    },
+
+    async getCurrentUser(context) {
+      const response = await API.getUser()
+      context.commit('saveUserData', response.data)
+    },
+
     toCart(context, payload) {
       if (!context.state.cart.includes(payload)) {
         context.commit("toCart", payload)
-      } else { alert('This item already in the cart!') }
+      } else {
+        alert('This item already in the cart!')
+      }
+    }
+  },
+
+  // GETTERS.................
+  getters: {
+
+    cartsProduct: (state) => state.cart.map(id => state.products.products.find(product => product.id == id)),
+
+    getClickedItem(state, id) {
+      return state.products.products[id];
 
     },
-  },
 
-  // // GETTERS.................
-  getters: {
-   
-    cartsProduct: (state) => state.cart.map(id => state.products.products.find(product => product.id == id)),
-  },
-
-  //Uses in checkout.vue for building dynamic cards.
-  
- 
+  }
 })

@@ -25,6 +25,7 @@ export default {
   computed: {
     product() {
       return this.$store.state.products.products.find(
+
         (product) => product.id == this.$route.params.id
       );
     },
