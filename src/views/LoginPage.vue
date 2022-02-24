@@ -163,12 +163,11 @@ export default {
   height: 80px;
   background-color: #aaa;
   font-family: "Times New Roman", Times, serif;
-  padding-left: 2rem;
   h1,
   p {
     display: flex;
     margin: 0;
-    padding: 5px;
+    padding: 5px 2rem;
     color: white;
   }
   h1 {
