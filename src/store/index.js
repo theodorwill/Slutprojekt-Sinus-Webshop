@@ -7,6 +7,8 @@ import * as API from '../store/api'
 
 Vue.use(Vuex)
 
+
+
 export default new Vuex.Store({
   state: {
     token: null,
@@ -42,6 +44,7 @@ export default new Vuex.Store({
     async fetchItems(context) {
       const response = await API.getItems()
       context.commit('saveItems', response.data)
+      // console.log(context)
     },
 
     async login(context, {

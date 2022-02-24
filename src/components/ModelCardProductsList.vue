@@ -11,9 +11,7 @@
     </div>
     <div class="product-info">
       <!-- Alla plats med * ska vara {{dynamisk}} sen -->
-      <p class="product-name">
-        Sinus <span>{{ product.category }}</span>
-      </p>
+      <p class="product-name">Sinus {{ product.category }}</p>
       <div class="info-title-price-size">
         <div class="info-title-size">
           <p>{{ product.title }}</p>
@@ -44,11 +42,12 @@ export default {
   text-align: start;
 }
 .model-card {
-  width: 208px;
-  height: 332px;
+  width: 224px;
+  height: 340px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background-color: #e0e0e0;
   font-size: 75%;
+ 
 
   .image-block {
     width: 100%;
@@ -59,7 +58,6 @@ export default {
     position: relative;
 
     .product-image {
-     
       height: 151px;
     }
 
@@ -74,7 +72,7 @@ export default {
   }
 
   .product-info {
-    height: 144px;
+    height: 149px;
 
     background-color: #ffffff;
     padding: 8px;
@@ -82,7 +80,6 @@ export default {
     padding: auto;
 
     .product-name {
-      
       font-family: "Oswald", sans-serif;
       font-style: normal;
       font-weight: 600;
@@ -91,10 +88,7 @@ export default {
 
       letter-spacing: -0.2px;
 
-      span {
-        margin-left: 8px;
-        text-transform: capitalize;
-      }
+      text-transform: capitalize;
     }
 
     .info-title-price-size {
@@ -107,8 +101,8 @@ export default {
         text-align: start;
       }
 
-      .info-title-size {
-      }
+      // .info-title-size {
+      // }
     }
 
     .product-size {
@@ -141,18 +135,18 @@ export default {
       color: #1c1c1c;
     }
 
-    .product-description{
-      height:40px;
+    .product-description {
+      height: 40px;
       padding: 4px 0px;
     }
-    
+
     .btn {
       background-color: #1c1c1c;
-      padding: 2px 4px;
+      padding: 4px 8px;
       color: #fff;
       cursor: pointer;
-      font-size: 0.5rem;
-     margin:8px 0px 0px 65px;
+      font-size: 0.55rem;
+      margin: 8px 0px 0px 65px;
     }
 
     .btn:hover {

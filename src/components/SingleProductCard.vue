@@ -1,84 +1,183 @@
 <template>
-  <div class="product-card">
-    <section>
-      <img class="product-image"  :src="`http://localhost:5000/images/${product.imgFile}`"
-        alt="Product's image"/>
-    </section>
+  <div class="single-product-details">
+      <article class="image-details">
+        <div class="single-image">
+          <img
+            :src="`http://localhost:5000/images/${product.imgFile}`"
+            alt="Product's image"
+          />
+        </div>
+        <section class="image-others-info">
+          <h3>{{ product.title }}</h3>
+          <p>{{ product.createdAt }}</p>
+          <p>{{ product.updatedAt }}</p>
+        </section>
+      </article>
+      <section class="single-product-details-info">
+        <h1>Product's Information</h1>
+        <h2>Sinus {{ product.category }}</h2>
+        <p class="stock-status">In Stock</p>
+        <p>{{ product.shortDesc }}</p>
+        <p>SEK {{ product.price }}/item</p>
 
-    <section>
-      <h3>{{ product.title }}</h3>
+        <div class="suplimentary-block">
+          <section class="delivery-info-title">
+            <p>Type:</p>
+            <p>Color:</p>
+            <p>DeliverY:</p>
+            <p>Brand:</p>
+          </section>
+          <section class="delivery-info-">
+            <p>Regular</p>
+            <p>Blue</p>
+            <p>Nordics Country</p>
+            <p>Sinus</p>
+          </section>
 
-      
-    </section>
-  </div>
+          <div class="select-qty">
+            <label for="quantity">QTY</label>
+            <select name="quantity" v-model="item.quantity" required>
+              <option v-for="number in numbers" :key="number" :value="number">
+                {{ number }}
+              </option>
+            </select>
+           
+          </div>
+        </div>
+        <div class="btn">
+           <p v-if="eventDisable">*Minimum 1 quantity required!</p>
+          <button class="btn-add" :disabled="eventDisable" @click="addToCart">ADD TO CART</button>
+          <button class="btn-back">BACK TO SHOP</button>
+        </div>
+      </section>
+    </div>
+
+  
 </template>
 
 <script>
+
+
 export default {
-  props: {
-    product: Object,
+ props:{product:Object},
+  data() {
+    return {
+      numbers: 10,
+      item: this.product,
+    };
   },
+
+  computed:{
+    eventDisable() {
+      return this.item.quantity == undefined ? true : false;
+    },
+  },
+
+  methods:{
+     addToCart() {
+      this.$store.dispatch("toCart", this.item.id);
+    },
+
+
+  }
+ 
 };
 </script>
 
 <style lang="scss" scoped>
-.product-card {
-  margin: 0 3.5rem;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
-  width: 500px;
-  height: 400px;
-  min-width: 500px;
-  min-height: 400px;
-  box-shadow: 0 4px 15px rgba(119, 119, 119, 0.151);
-  text-align: left;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  > section {
-    &:nth-of-type(1) {
-      display: flex;
-      justify-content:center;
-      align-items: center;
-      background-color: rgb(207, 207, 207);
-      width: 100%;
-      height: 65%;
-   
+.single-product {
+  
+
+  .single-product-details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+
+    .image-details {
+      width: 526px;
+      height: 380px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+      .single-image {
+        width: 100%;
+        height: 256px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #e0e0e0;
+
+        img {
+          height: 232px;
+        }
+      }
     }
-
-    &:last-of-type {
-      width: 100%;
-      margin: 1.8rem 0;
-      display: grid;
-      grid-row-gap: 0.6rem;
-      grid-template-columns: 25% 25% 25% 25%;
-      grid-template-areas: "header header header heart " "size size size size" "price price price stars";
-      background-color: white;
-
-      * {
-        margin: 0 1.5rem;
+    .image-others-info {
+      text-align: start;
+      margin: 24px;
+      h3 {
+        font-weight: 600;
+        font-size: 20px;
+        margin: 16px 0px;
       }
 
-      > {
-        h3 {
-          grid-area: header;
-        }
-
-        p {
-          grid-area: size;
-        }
-
-        h4 {
-          grid-area: price;
-        }
+      p {
+        font-size: 14px;
+        margin: 4px 0px;
       }
     }
   }
-}
 
-.product-image {
-  // width: 216px;
-  height: 240px;
-  border: none;
- 
+  .single-product-details-info {
+    width: 526px;
+    height: 380px;
+    text-align: start;
+    h2 {
+      font-size: 1.2rem;
+    }
+
+    .stock-status {
+      color: green;
+    }
+
+    > * {
+      margin: 6px 0px;
+    }
+    .suplimentary-block {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 24px;
+      .select-qty {
+        margin-right: 24px;
+      }
+    }
+    .btn {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      button {
+        padding: 8px 50px;
+        margin: 8px 0px;
+
+      }
+      .btn-add {
+        color: #fff;
+        background-color: #000;
+      }
+
+      p{
+        color: red;
+        text-align:end;
+        font-size: .8rem;
+      }
+    }
+  }
 }
 </style>

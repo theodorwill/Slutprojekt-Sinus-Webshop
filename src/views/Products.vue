@@ -26,7 +26,8 @@
       </div>
        
     </div>
-     
+     <button>Prev</button>
+     <button>Next</button>
   </div>
 </template>
 
@@ -99,10 +100,10 @@ export default {
     .product-list {
       display: grid;
 
-      grid-template-columns: repeat(4, 1fr);
-      grid-column-gap: 2px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 124px;
       grid-row-gap: 60px;
-      margin: 32px 0px 32px 56px;
+      margin: 32px auto;
     }
 
     .footer {

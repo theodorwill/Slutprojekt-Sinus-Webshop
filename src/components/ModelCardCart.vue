@@ -2,30 +2,30 @@
   <article class="model-card-cart">
     <div class="product-info">
       <div class="card-image">
-        <img :src="`http://localhost:5000/images/${product.imgFile}`"
+        <img :src="`http://localhost:5000/images/${item.imgFile}`"
         alt="Product's image" />
       </div>
       <div class="text-info">
-        <h3>Sinus {{product.category}}</h3>
-        <p>{{product.shortDesc}}</p>
+        <h3>Sinus {{item.category}}</h3>
+        <p>{{item.shortDesc}}</p>
       </div>
     </div>
     <div class="quantities">
       <!-- v-model number in data-->
-      <select  @change="addQtty"
+      <select  
         class="quantity"
         name="quantity"
-        v-model="customsChoice.quantity"
+        v-model="item.quantity"
         required >
         <!-- v-for number in data-->
          <option v-for="number in numbers" :key="number" :value="number">
           {{ number }}
         </option>
       </select>
-      <span class="price-info">{{product.price}}/item</span>
+      <span class="price-info">{{item.price}}/item</span>
     </div>
 
-    <p class="price">SEK 2396</p>
+    <p class="price">SEK {{total}}</p>
 
     <div class="remove-item">
       <button>Remove</button>
@@ -39,16 +39,17 @@ export default {
   data(){
     return{
       numbers:10,
-       customsChoice: this.product,
+    item: this.product,
     }
   },
 
-  
-  methods: {
-    addToCart() {
-      this.$store.dispatch("toCart", this.product.quantity);
+   computed: {
+    total() {
+      return this.item.price * this.item.quantity;
     },
-  },
+   }
+  
+  
 };
 </script>
 
