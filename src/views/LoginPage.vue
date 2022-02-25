@@ -35,6 +35,8 @@
         </form>
       </div>
       <hr class="solid" />
+
+      <router-link to="/user">
       <div
         @click="click"
         class="face-book"
@@ -49,6 +51,7 @@
         <p>Don’t have an account?</p>
         <a href="#">Sign up here</a>
       </div>
+      </router-link>
     </section>
 
     <section class="middle-2">
@@ -112,13 +115,15 @@ export default {
         password: "",
       },
       register: {
-        email: "",
+        email: '',
         password: "",
         role: "",
-        name: "",
-        city: "",
-        street: "",
-        zip: "",
+        name: "random name",
+        address: {
+          city: '',
+          street: '',
+          zip: '',
+        }
       },
       validation: {
         password: "",
@@ -142,7 +147,8 @@ export default {
         this.register.password !== "" &&
         this.register.password === this.validation.password
       ) {
-        // this.$store.dispatch("signup", { ...this.register });
+        console.log("Initiate", this.register)
+        this.$store.dispatch("signup", this.register);
       } else if (this.register.password !== this.register.validation.password) {
         alert("Password is not matching!");
       } else {
@@ -151,7 +157,7 @@ export default {
     },
     click() {
       this.$store.dispatch("getCurrentUser");
-      console.log(this.$store.state.user);
+      /* console.log(this.$store.state.user); */
     },
   },
 };
