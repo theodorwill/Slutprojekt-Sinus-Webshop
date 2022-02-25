@@ -33,7 +33,9 @@
             >moms {{moms}}
           </span>
           <div class="action-sub">
+            <router-link to="/checkout">
             <button class="pay-now">Checkout</button>
+            </router-link>
             <!-- <router-link to="/products">Back to shop</router-link> -->
             <button class="back">Back to shop</button>
           </div>
