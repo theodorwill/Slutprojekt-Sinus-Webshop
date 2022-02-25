@@ -15,7 +15,7 @@ export default new Vuex.Store({
     productList: [],
     products:{},
     cart: [],
-    user: [],
+    user: {},
   },
 
   // MUTATIONS..............
@@ -36,8 +36,8 @@ export default new Vuex.Store({
     },
 
     saveUserData(state, userData) {
-      state.user.pop()
-      state.user.push(userData)
+     state.user = userData
+     console.log(state.user)
     },
 
     toCart(state, payload) {
@@ -59,16 +59,9 @@ export default new Vuex.Store({
         context.commit('saveItems', response.data)
         
       }
-     
-    
-     
-      
     },
 
-    async login(context, {
-      email,
-      password
-    }) {
+    async login(context, {email, password}) {
       const response = await API.login(email, password)
       console.log(response)
       API.saveToken(response.data.token)
@@ -81,6 +74,16 @@ export default new Vuex.Store({
       context.commit('saveUserData', response.data)
     },
 
+    async signup(context, payload) {
+      console.log("Store", payload)
+      const response = await API.registerAccount(payload)
+      if(response) {
+        context.commit('setUser', response.user)
+      } else {
+        throw new Error('could not complete signup')
+      }
+    },
+ 
     toCart(context, payload) {
       if (!context.state.cart.includes(payload)) {
         context.commit("toCart", payload)
