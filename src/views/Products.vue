@@ -10,8 +10,11 @@
       </section>
     <div class="main-gallery">
       <div class="side-bar">
-        <h3>Fixas efter grupp diskussion</h3>
-        
+        Här fixar vi kanske sök knappar som passar kundens önskan.
+
+        <h3>Top on sale</h3>
+        Commented out due to BUG
+          <!-- <ModelCardProductsList  :product="favouriteProd"/> -->
       </div>
    
 
@@ -26,8 +29,8 @@
       </div>
        
     </div>
-     <button>Prev</button>
-     <button>Next</button>
+     
+     <button :disabled='nextBtnDisabled' @click='getNextPage'>See More</button>
   </div>
 </template>
 
@@ -41,12 +44,32 @@ export default {
 
     products(){
       return this.$store.state.productList
+    },
+
+    favouriteProd(){
+      return this.$store.state.favProduct
+    },
+
+    nextBtnDisabled(){
+      return this.$store.state.currentPage == 4 ? true : false
     }
     
   },
-  created(){
-    this.$store.dispatch('fetchItems')
-  }
+
+  methods:{
+    getNextPage(){
+       this.$store.dispatch('fetchPage')
+    }
+  },
+ 
+
+
+   created(){
+      this.$store.dispatch('fetchItems')
+
+    }
+    
+  
  
 }
 </script>
@@ -91,6 +114,9 @@ export default {
     grid-template-areas: "side-bar" "product-list" "product-list" "product-list" "product-list";
 
     .side-bar {
+      display: flex;
+      flex-direction: column;
+    align-items: center;
       margin: 32px 0px 0px 24px;
       width: 300px;
       height: 800px;

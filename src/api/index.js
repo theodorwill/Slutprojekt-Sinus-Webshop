@@ -22,4 +22,22 @@ export async function getUser(){
 
 export async function getItems(){
   return await axios.get('/items')
+
 }
+
+
+
+export async function getPage(page){
+  return await axios.get('/items?page='+ page)
+
+}
+
+
+
+export async function getFavItem(){
+  return await axios.get('/items/10')
+
+}
+
+
+
