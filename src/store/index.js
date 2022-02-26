@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 
 
-import * as API from '../store/api'
+import * as API from '@/api'
 
 Vue.use(Vuex)
 
@@ -13,21 +13,50 @@ export default new Vuex.Store({
   state: {
     token: null,
     productList: [],
-    products:{},
+    productCatalogs: [],
+    currentPage: 1,
+    products: {},
     cart: [],
     user: [],
+    favProduct: null
   },
 
   // MUTATIONS..............
   mutations: {
     saveItems(state, products) {
-      
-        for(let product of products){
-          state.productList.push(product)
-          Vue.set(state.products, product.id, product)
+
+      for (let product of products) {
+        if (!state.productList.find((item) => item.id === product.id)) {
+          state.productList.push({ ...product })
         }
-      
-     
+        Vue.set(state.products, product.id, product)
+      }
+    },
+
+
+
+    // TESTING PAGINATION
+
+    savePage(state, products) {
+
+      for (let product of products) {
+        if (!state.productList.find((item) => item.id === product.id)) {
+          state.productList.push({ ...product })
+        }
+        Vue.set(state.products, product.id, product)
+      }
+    },
+
+
+    getFavProd(state, payload) {
+      state.favProduct = payload
+    },
+
+    nextPage(state) {
+      if (state.currentPage < 4) {
+        state.currentPage++
+      }
+
     },
 
     saveAuthData(state, authData) {
@@ -44,7 +73,7 @@ export default new Vuex.Store({
       state.cart.push(payload);
     },
 
-    removeProduct(state, payload){
+    removeProduct(state, payload) {
       state.cart.splice(payload, 1)
     }
   },
@@ -53,17 +82,61 @@ export default new Vuex.Store({
   actions: {
 
     async fetchItems(context) {
-      
-      if(context.state.productList == 0){
+
+      if (context.state.productList.length == 0) {
         const response = await API.getItems()
         context.commit('saveItems', response.data)
-        
+        console.log('x' + response)
+
       }
-     
-    
-     
-      
+
+
     },
+
+
+    // TESTING PAGINATION
+    async fetchPage(context) {
+
+      context.commit('nextPage')
+
+      const response = await API.getPage(context.state.currentPage)
+      context.commit('savePage', response.data)
+      console.log(response)
+
+    },
+
+    // async fetchThirdPage(context,page) {
+    //   page = 3
+    //   if (context.state.productList.length < 21 ) {
+    //     const response = await API.getPage(page)
+    //     context.commit('savePage', response.data)
+    //     console.log(response)
+    //   }
+
+    // },
+
+    // async fetchFourthPage(context,page) {
+    //   page = 4
+    //   if (context.state.productList.length < 31 ) {
+    //     const response = await API.getPage(page)
+    //     context.commit('savePage', response.data)
+    //     console.log(response)
+    //   }
+
+    // },
+
+
+    async getFavProd(context) {
+
+      if (context.state.favProduct == null) {
+        const res = await API.getFavItem()
+        context.commit('getFavProd', res.data.post)
+      }
+
+
+
+    },
+
 
     async login(context, {
       email,
@@ -89,7 +162,7 @@ export default new Vuex.Store({
       }
     },
 
-    removeProduct(context, payload){
+    removeProduct(context, payload) {
       context.commit('removeProduct', payload)
     }
   },
@@ -101,5 +174,5 @@ export default new Vuex.Store({
 
   }
 
-  
+
 })

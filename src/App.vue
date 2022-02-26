@@ -15,6 +15,12 @@ export default {
     Header,
     HuvudPageFooter,
   },
+
+  created(){
+    this.$store.dispatch('getFavProd')
+  },
+
+  
 };
 </script>
 
