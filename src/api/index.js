@@ -12,7 +12,8 @@ export async function login(email, password){
 }
 
 export async function registerAccount(payload){
-  axios.post('/register', {payload})
+  console.log("end", payload)
+  axios.post('/register', payload)
 }
 
 export async function getUser(){
