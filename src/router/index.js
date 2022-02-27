@@ -10,6 +10,7 @@ import Contact from '@/views/Contact.vue'
 import LoginPage from '@/views/LoginPage.vue'
 import UserProfile from '@/views/UserProfile.vue'
 import SingleProduct from '@/views/SingleProduct.vue'
+import Category from '@/views/Category.vue'
 
 
 
@@ -32,6 +33,16 @@ const routes = [
     component: Products
   },
   {
+    path: '/products/:id',
+    component: SingleProduct
+  },
+
+  {
+    path: '/category',
+    name: Category,
+    component: Category
+  },
+  {
     path: '/contact',
     name: 'contact',
     component: Contact
@@ -46,10 +57,7 @@ const routes = [
     name: 'Checkout',
     component: Checkout
   },
-  {
-    path: '/products/:id',
-    component: SingleProduct
-  },
+  
   {
     path: '/login',
     name: 'LoginPage',
