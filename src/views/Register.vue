@@ -1,81 +1,101 @@
 <template>
   <div>
-    <section class="top">
-      <h1>LOGIN</h1>
-      <p>
-        <router-link to="/"><span>Home</span></router-link>
-        <img
-          src="../assets/right.svg"
-          alt=""
-        >
-        <span>Login</span>
-      </p>
-    </section>
+    <section class="register-form">
+      <div class="register-page">
+        <h3>Register</h3>
+        <div class="register-container">
+          <form @submit.prevent="registerAccount">
+            <label for="email">Your Email:</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="ex:example@mail.se"
+              v-model="register.email"
+            />
+            <label for="name">Your name:</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Type your name "
+              v-model="register.name"
+            />
+            <label for="password">Your Password:</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Type your password "
+              v-model="register.password"
+            />
+            <label for="email">Please Confirm Your Password:</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Re-type your password"
+              v-model="validation.password"
+            />
 
-    <section class="login-form">
-      <h3>Login</h3>
-      <div class="login-container">
-        <form @submit.prevent="logIn">
-          <label for="email">Your Email:</label>
-          <input
-            type="text"
-            name="email"
-            placeholder="Type Your Email Here..."
-            v-model="login.email"
-          />
-          <label for="email">Your Password:</label>
-          <input
-            type="password"
-            name="email"
-            placeholder="Type Your Password Here..."
-            v-model="login.password"
-          />
-          <a href="#">Forget your password ?</a>
-          <button>Login</button>
-        </form>
-      </div>
-      <hr class="solid" />
-      <div class="sign">
-        <p>Don’t have an account?</p>
-        <a href="#" @click="click">Sign up here</a>
+            <div class="check-box">
+              <label><input type="checkbox" />By creating an account you agree to our</label>
+              <a href="#"> conditions</a>
+            </div>
+            <button>Register</button>
+          </form>
+          <hr class="solid" />
+          <div class="sign">
+            <p>Already have an account?</p>
+            <a href="#" @click="click">Login here</a>
+          </div>
+        </div>
       </div>
     </section>
   </div>
 </template>
 
 <script>
-// import ModelCardProductsList from "../components/ModelCardProductsList.vue";
 export default {
-  components: {},
-
   data() {
     return {
-      login: {
+      register: {
         email: "",
         password: "",
-      },    
+        role: "",
+        name: "",
+        address: {
+          city: "",
+          street: "",
+          zip: "",
+        },
+      },
+      validation: {
+        password: "",
+      },
     };
   },
+
   methods: {
-    logIn() {
-      if (this.login.email !== "" && this.login.password !== "") {
-        this.$store.dispatch("login", {
-          email: this.login.email,
-          password: this.login.password,
-        }).then(() => {
-          return this.$store.dispatch("getCurrentUser")
-        }).then(() => {
-          this.$router.push('/user')
+      registerAccount() {
+      if (
+        this.register.email !== "" &&
+        this.register.name !== "" &&
+        this.register.password !== "" &&
+        this.register.password === this.validation.password
+      ) {
+        console.log("Initiate", this.register)
+        this.$store.dispatch("signup", this.register).then(() => {
+            alert("Success!")
+            this.$router.push('/login')
         });
+      } else if (this.register.password !== this.register.validation.password) {
+        alert("Password is not matching!");
       } else {
-        alert("Please input both email and password.");
+        alert("Insufficient information given!");
       }
     },
-    
+
     click() {
-      this.$router.push('/register')
+      this.$router.push('/login')
     },
-  },
+  }
 };
 </script>
 
