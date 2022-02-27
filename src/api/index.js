@@ -32,6 +32,14 @@ export async function getPage(page){
 
 }
 
+export async function getCategory(category){
+  return await axios.get('/items?category=' + category)
+
+}
+
+
+
+
 
 
 export async function getFavItem(){

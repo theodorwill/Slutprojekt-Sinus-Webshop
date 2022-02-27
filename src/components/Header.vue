@@ -2,7 +2,10 @@
   <div id="nav">
     <section class="top">
       <div class="logo" />
-      <input type="text"  class="search"/>
+      <router-link to='/category' >
+      <input type="text"  class="search" v-model="category" @change="fetchCategory(category)" placeholder="Serch by category"/>
+      </router-link>
+      
 
      <router-link to="/cart">
         <button>
@@ -32,8 +35,18 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
-  name: "contact",
+ 
+  data(){
+    return{
+      category:null
+    }
+  },
+
+  methods:{
+    ...mapActions(["fetchCategory"])
+  }
 };
 </script>
 

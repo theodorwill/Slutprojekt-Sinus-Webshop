@@ -16,8 +16,9 @@ export default {
     HuvudPageFooter,
   },
 
-  created(){
-    this.$store.dispatch('getFavProd')
+ 
+  created() {
+    this.$store.dispatch("fetchItems");
   },
 
   
