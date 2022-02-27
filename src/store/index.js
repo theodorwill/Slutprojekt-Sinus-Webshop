@@ -1,13 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
-
-
 import * as API from '@/api'
 
 Vue.use(Vuex)
-
-
 
 export default new Vuex.Store({
   state: {
@@ -16,16 +11,13 @@ export default new Vuex.Store({
     products: {},
     cart: [],
     categoryName: null,
-    catgStorage: [],
-    
+    catgStorage: [],    
     catgObjects: {},
-   
     currentPage: 1,
     maxPage: 4,
     start: 0,
     end: 10,
-    user: [],
-
+    user: {},
   },
 
   // MUTATIONS..............
@@ -40,8 +32,6 @@ export default new Vuex.Store({
       }
     },
 
-
-
     // TESTING PAGINATION
 
     savePage(state, products) {
@@ -51,9 +41,7 @@ export default new Vuex.Store({
           state.productList.push({ ...product })
         }
         Vue.set(state.products, product.id, product)
-
       }
-
       state.start += 10
       state.end += 10
     },
@@ -64,15 +52,12 @@ export default new Vuex.Store({
     },
 
     saveCategory(state, categoryList) {
-      
-      
       for (let product of categoryList) {
         if (!state.catgStorage.find((item) => item.id === product.id)) {
           state.catgStorage.push({ ...product })
         }
         Vue.set(state.catgObjects, product.id, product)
       }
-      
     },
 
 
@@ -110,25 +95,17 @@ export default new Vuex.Store({
 
   // ACTIONS.................
   actions: {
-
     async fetchItems(context) {
-
       if (context.state.productList.length == 0) {
         const response = await API.getItems()
         context.commit('saveItems', response.data)
         console.log('x' + response)
-
       }
-
-
     },
-
 
     // TESTING PAGINATION
     async fetchPage(context) {
-
       context.commit('nextPage')
-
       const response = await API.getPage(context.state.currentPage)
       context.commit('savePage', response.data)
       console.log(response)
@@ -141,13 +118,7 @@ export default new Vuex.Store({
      const response = await API.getCategory(context.state.categoryName)
      context.commit('saveCategory', response.data)
      console.log(response.data)
-     
-    
-    
    },
-
-
-
 
     // async getFavProd(context) {
 
@@ -157,18 +128,20 @@ export default new Vuex.Store({
     //   }
     // },
 
-
-
     async login(context, { email, password }) {
       const response = await API.login(email, password)
       console.log(response)
       API.saveToken(response.data.token)
-
       context.commit('saveAuthData', response.data)
     },
 
     async getCurrentUser(context) {
       const response = await API.getUser()
+      context.commit('saveUserData', response.data)
+    },
+
+    async updateCurrentUser(context, payload){
+      const response = await API.updateAccount(payload)
       context.commit('saveUserData', response.data)
     },
 
@@ -181,7 +154,6 @@ export default new Vuex.Store({
         throw new Error('could not complete signup')
       }
     },
-
 
     getPrevPage(context) {
       context.commit('previousPage')
@@ -206,6 +178,8 @@ export default new Vuex.Store({
     catalogues: (state) => state.productList.slice(state.start, state.end),
 
     cartsProduct: (state) => state.cart.map(id => state.productList.find(product => product.id == id)),
+
+    userProfileData: (state) => state.user,
 
     // singleCategory: (state) => state.catgStorage.filter(product => product.category == state.categoryName),
 
