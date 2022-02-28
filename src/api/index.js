@@ -47,7 +47,7 @@ export async function getPageThree(page=3){
 
 export async function getPageFour(page=4){
 
-export async function getPage(page){
+// export async function getPage(page){
 
   return await axios.get('/items?page='+ page)
 
