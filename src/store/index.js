@@ -1,13 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
-
-
 import * as API from '@/api'
 
 Vue.use(Vuex)
-
-
 
 export default new Vuex.Store({
   state: {
@@ -16,16 +11,18 @@ export default new Vuex.Store({
     products: {},
     cart: [],
     categoryName: null,
+
     catgStorage: [],
     catgObjects: {},
     orderList: [],
-
     currentPage: 1,
     maxPage: 4,
     start: 0,
     end: 10,
+
     user: [],
 
+    user: {},
 
   },
 
@@ -43,6 +40,7 @@ export default new Vuex.Store({
       }
     },
 
+
     savePageTwo(state, products) {
 
       for (let product of products) {
@@ -54,6 +52,8 @@ export default new Vuex.Store({
       }
     },
 
+    // TESTING PAGINATION
+
     savePageThree(state, products) {
 
       for (let product of products) {
@@ -61,8 +61,8 @@ export default new Vuex.Store({
           state.productList.push({ ...product })
         }
         Vue.set(state.products, product.id, product)
-
       }
+
 
 
     },
@@ -76,7 +76,6 @@ export default new Vuex.Store({
         Vue.set(state.products, product.id, product)
 
       }
-
 
     },
 
@@ -92,6 +91,7 @@ export default new Vuex.Store({
         Vue.set(state.catgObjects, product.id, product)
       }
 
+
     },
 
 
@@ -104,6 +104,7 @@ export default new Vuex.Store({
     },
 removeAllProduct(state) {
       state.cart = []
+
     },
 
 
@@ -148,8 +149,8 @@ removeAllProduct(state) {
 
   // ACTIONS.................
   actions: {
-
     async fetchItems(context) {
+
       try {
         if (context.state.productList.length < 1) {
           const response = await API.getItems()
@@ -183,10 +184,26 @@ removeAllProduct(state) {
         }
 
 
+      if (context.state.productList.length == 0) {
+        const response = await API.getItems()
+        context.commit('saveItems', response.data)
+        console.log('x' + response)
+      }
+    },
+
+    // TESTING PAGINATION
+    async fetchPage(context) {
+      context.commit('nextPage')
+      const response = await API.getPage(context.state.currentPage)
+      context.commit('savePage', response.data)
+      console.log(response)
+
+
       } catch (error) {
         console.log(error)
       }
     },
+
 
 
     async fetchOrders(context) {
@@ -200,7 +217,13 @@ removeAllProduct(state) {
      
   },
 
-
+   async fetchCategory(context, payload){
+     context.commit('searchCategory', payload)
+     context.state.catgStorage = []
+     const response = await API.getCategory(context.state.categoryName)
+     context.commit('saveCategory', response.data)
+     console.log(response.data)
+   },
 
 
     // async getFavProd(context) {
@@ -211,9 +234,8 @@ removeAllProduct(state) {
     //   }
     // },
 
-
-
     async login(context, { email, password }) {
+
 
       try {
         const response = await API.login(email, password)
@@ -224,6 +246,12 @@ removeAllProduct(state) {
       } catch (error) {
         console.log(error)
       }
+
+
+      const response = await API.login(email, password)
+      console.log(response)
+      API.saveToken(response.data.token)
+      context.commit('saveAuthData', response.data)
 
     },
 
@@ -238,6 +266,11 @@ removeAllProduct(state) {
 
     },
 
+    async updateCurrentUser(context, payload){
+      const response = await API.updateAccount(payload)
+      context.commit('saveUserData', response.data)
+    },
+
     async signup(context, payload) {
 
       const response = await API.registerAccount(payload)
@@ -249,7 +282,6 @@ removeAllProduct(state) {
 
 
     },
-
 
     getPrevPage(context) {
       context.commit('previousPage')
@@ -282,6 +314,8 @@ removeAllProduct(state) {
     catalogues: (state) => state.productList.slice(state.start, state.end),
 
     cartsProduct: (state) => state.cart.map(id => state.productList.find(product => product.id == id)),
+
+    userProfileData: (state) => state.user,
 
     // singleCategory: (state) => state.catgStorage.filter(product => product.category == state.categoryName),
 

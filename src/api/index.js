@@ -18,6 +18,10 @@ export async function registerAccount(payload){
   axios.post('/register', payload)
 }
 
+export async function updateAccount(payload){
+  axios.patch('/me', payload)
+}
+
 export async function getUser(){
   return await axios.get('/me')
 }
@@ -30,6 +34,7 @@ export async function getItems(){
 
 }
 
+
 export async function getPageTwo(page=2){
   return await axios.get('/items?page='+ page)
 
@@ -41,6 +46,9 @@ export async function getPageThree(page=3){
 }
 
 export async function getPageFour(page=4){
+
+export async function getPage(page){
+
   return await axios.get('/items?page='+ page)
 
 }
@@ -52,6 +60,7 @@ export async function getCategory(category){
 
 export async function getFavItem(){
   return await axios.get('/items/10')
+
 
 }
 
@@ -65,7 +74,6 @@ export async function getOrder() {
 export async function postOrder() {
   return await axios.post("/orders");
 }
-
 
 
 
