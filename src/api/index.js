@@ -35,23 +35,12 @@ export async function getItems(){
 }
 
 
-export async function getPageTwo(page=2){
+export async function getPage(page){
   return await axios.get('/items?page='+ page)
 
 }
 
-export async function getPageThree(page=3){
-  return await axios.get('/items?page='+ page)
 
-}
-
-export async function getPageFour(page=4){
-
-// export async function getPage(page){
-
-  return await axios.get('/items?page='+ page)
-
-}
 
 export async function getCategory(category){
   return await axios.get('/items?category=' + category)
@@ -91,6 +80,7 @@ export async function patchProduct(id){
 export async function deleteProduct(id){
   return await axios.delete('/items/'+ id)
 }
+
 
 // export async function deleteProduct(id){
 //   return await axios.delete('/items/'+ id)

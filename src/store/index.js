@@ -1,5 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+
+
+
+
 import * as API from '@/api'
 
 
@@ -23,12 +27,13 @@ export default new Vuex.Store({
     user: [],
   },
 
+
   // MUTATIONS..........................................
 
   mutations: {
 
     // Products
-    saveInitDisplay(state, products) {
+    saveItems(state, products) {
 
       for (let product of products) {
         if (!state.productList.find((item) => item.id === product.id)) {
@@ -40,41 +45,8 @@ export default new Vuex.Store({
       }
     },
 
-    savePageTwo(state, products) {
 
-      for (let product of products) {
-        if (!state.productList.find((item) => item.id === product.id)) {
-          state.productList.push({
-            ...product
-          })
-        }
-        Vue.set(state.products, product.id, product)
-      }
-    },
-
-    savePageThree(state, products) {
-
-      for (let product of products) {
-        if (!state.productList.find((item) => item.id === product.id)) {
-          state.productList.push({
-            ...product
-          })
-        }
-        Vue.set(state.products, product.id, product)
-      }
-    },
-
-    savePageFour(state, products) {
-
-      for (let product of products) {
-        if (!state.productList.find((item) => item.id === product.id)) {
-          state.productList.push({
-            ...product
-          })
-        }
-        Vue.set(state.products, product.id, product)
-      }
-    },
+  
 
     searchCategory(state, payload) {
       state.categoryName = payload
@@ -151,13 +123,13 @@ export default new Vuex.Store({
       try {
         if (context.state.productList.length < 1) {
           const response = await API.getItems()
-          context.commit('saveInitDisplay', response.data)
-          const responseTwo = await API.getPageTwo()
-          context.commit('savePageTwo', responseTwo.data)
-          const responseThree = await API.getPageThree()
-          context.commit('savePageThree', responseThree.data)
-          const responseFour = await API.getPageFour()
-          context.commit('savePageFour', responseFour.data)
+          context.commit('saveItems', response.data)
+          const responseTwo = await API.getPage(2)
+          context.commit('saveItems', responseTwo.data)
+          const responseThree = await API.getPage(3)
+          context.commit('saveItems', responseThree.data)
+          const responseFour = await API.getPage(4)
+          context.commit('saveItems', responseFour.data)
 
           context.commit('setMaxPage')
 
