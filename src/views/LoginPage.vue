@@ -63,7 +63,7 @@ export default {
           email: this.login.email,
           password: this.login.password,
         }).then(() => {
-          return this.$store.dispatch("getCurrentUser")
+        this.$store.dispatch("getCurrentUser")
         }).then(() => {
           this.$router.push('/user')
         });
