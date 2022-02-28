@@ -19,14 +19,11 @@ export default new Vuex.Store({
     catgStorage: [],
     catgObjects: {},
     orderList: [],
-
     currentPage: 1,
     maxPage:null,
     start: 0,
     end: 10,
     user: [],
-
-
   },
 
   // TESTING CHANGES
@@ -39,7 +36,9 @@ export default new Vuex.Store({
 
       for (let product of products) {
         if (!state.productList.find((item) => item.id === product.id)) {
-          state.productList.push({ ...product })
+          state.productList.push({
+            ...product
+          })
         }
         Vue.set(state.products, product.id, product)
       }
@@ -49,10 +48,11 @@ export default new Vuex.Store({
 
       for (let product of products) {
         if (!state.productList.find((item) => item.id === product.id)) {
-          state.productList.push({ ...product })
+          state.productList.push({
+            ...product
+          })
         }
         Vue.set(state.products, product.id, product)
-
       }
     },
 
@@ -60,26 +60,24 @@ export default new Vuex.Store({
 
       for (let product of products) {
         if (!state.productList.find((item) => item.id === product.id)) {
-          state.productList.push({ ...product })
+          state.productList.push({
+            ...product
+          })
         }
         Vue.set(state.products, product.id, product)
-
       }
-
-
     },
 
     savePageFour(state, products) {
 
       for (let product of products) {
         if (!state.productList.find((item) => item.id === product.id)) {
-          state.productList.push({ ...product })
+          state.productList.push({
+            ...product
+          })
         }
         Vue.set(state.products, product.id, product)
-
       }
-
-
     },
 
     searchCategory(state, payload) {
@@ -89,13 +87,14 @@ export default new Vuex.Store({
     saveCategory(state, categoryList) {
       for (let product of categoryList) {
         if (!state.catgStorage.find((item) => item.id === product.id)) {
-          state.catgStorage.push({ ...product })
+          state.catgStorage.push({
+            ...product
+          })
         }
         Vue.set(state.catgObjects, product.id, product)
       }
 
     },
-
 
     toCart(state, payload) {
       state.cart.push(payload);
@@ -113,6 +112,7 @@ export default new Vuex.Store({
     //   state.favProduct = payload
     // },
 
+
     setMaxPage(state){
       state.maxPage =  Math.ceil(state.productList.length / 10)
     },
@@ -124,9 +124,7 @@ export default new Vuex.Store({
 
     previousPage(state) {
       state.currentPage > 1 ? (state.currentPage -= 1, state.start -= 10, state.end -= 10) : ''
-
     },
-
 
 
     // Orders
@@ -148,7 +146,6 @@ export default new Vuex.Store({
       console.log(state.user)
     },
 
-
   },
 
   // ACTIONS.................
@@ -165,6 +162,7 @@ export default new Vuex.Store({
           context.commit('savePageThree', responseThree.data)
           const responseFour = await API.getPageFour()
           context.commit('savePageFour', responseFour.data)
+
           context.commit('setMaxPage')
 
 
@@ -187,8 +185,6 @@ export default new Vuex.Store({
           context.commit('saveCategory', response.data)
           console.log('Categoy- ' + response.data)
         }
-
-
       } catch (error) {
         console.log(error)
       }
@@ -219,8 +215,10 @@ export default new Vuex.Store({
 
 
 
-    async login(context, { email, password }) {
-
+    async login(context, {
+      email,
+      password
+    }) {
       try {
         const response = await API.login(email, password)
         console.log(response)
@@ -228,31 +226,32 @@ export default new Vuex.Store({
 
         context.commit('saveAuthData', response.data)
       } catch (error) {
-        console.log(error)
+        console.log("mitt error",error)
+        return;
       }
 
     },
 
     async getCurrentUser(context) {
-
       try {
         const response = await API.getUser()
         context.commit('saveUserData', response.data)
       } catch (error) {
         console.log(error)
       }
-
     },
 
     async signup(context, payload) {
-
       const response = await API.registerAccount(payload)
       if (response) {
         context.commit('setUser', response.user)
       } else {
         throw new Error('could not complete signup')
       }
+    },
 
+    async patchUserInfo(context, payload) {
+      await API.updateAccount(payload)
 
     },
 
