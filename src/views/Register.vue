@@ -5,28 +5,28 @@
         <h3>Register</h3>
         <div class="register-container">
           <form @submit.prevent="registerAccount">
-            <label for="email">Your Email:</label>
+            <label for="email">Email</label>
             <input
               type="email"
               name="email"
               placeholder="ex:example@mail.se"
               v-model="register.email"
             />
-            <label for="name">Your name:</label>
+            <label for="name">Name</label>
             <input
               type="text"
               name="name"
               placeholder="Type your name "
               v-model="register.name"
             />
-            <label for="password">Your Password:</label>
+            <label for="password">Password</label>
             <input
               type="password"
               name="password"
               placeholder="Type your password "
               v-model="register.password"
             />
-            <label for="email">Please Confirm Your Password:</label>
+            <label for="email">Confirm password</label>
             <input
               type="password"
               name="password"
