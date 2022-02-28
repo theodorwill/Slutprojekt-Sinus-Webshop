@@ -16,14 +16,14 @@
       <h3>Login</h3>
       <div class="login-container">
         <form @submit.prevent="logIn">
-          <label for="email">Your Email:</label>
+          <label for="email">Email</label>
           <input
             type="text"
             name="email"
             placeholder="Type Your Email Here..."
             v-model="login.email"
           />
-          <label for="email">Your Password:</label>
+          <label for="email">Password</label>
           <input
             type="password"
             name="email"
