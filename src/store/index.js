@@ -1,9 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
-
-
-
 import * as API from '@/api'
 
 
@@ -26,7 +22,6 @@ export default new Vuex.Store({
     end: 10,
     user: [],
   },
-
 
   // MUTATIONS..........................................
 
