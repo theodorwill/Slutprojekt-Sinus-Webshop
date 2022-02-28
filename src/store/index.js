@@ -21,7 +21,7 @@ export default new Vuex.Store({
     orderList: [],
 
     currentPage: 1,
-    maxPage: 4,
+    maxPage:null,
     start: 0,
     end: 10,
     user: [],
@@ -104,7 +104,7 @@ export default new Vuex.Store({
     removeProduct(state, payload) {
       state.cart.splice(payload, 1)
     },
-removeAllProduct(state) {
+    removeAllProduct(state) {
       state.cart = []
     },
 
@@ -113,10 +113,13 @@ removeAllProduct(state) {
     //   state.favProduct = payload
     // },
 
+    setMaxPage(state){
+      state.maxPage =  Math.ceil(state.productList.length / 10)
+    },
 
     nextPage(state) {
       state.currentPage < state.maxPage ? (state.currentPage += 1, state.start += 10, state.end += 10) : ''
-      
+
     },
 
     previousPage(state) {
@@ -145,7 +148,7 @@ removeAllProduct(state) {
       console.log(state.user)
     },
 
-   
+
   },
 
   // ACTIONS.................
@@ -162,6 +165,7 @@ removeAllProduct(state) {
           context.commit('savePageThree', responseThree.data)
           const responseFour = await API.getPageFour()
           context.commit('savePageFour', responseFour.data)
+          context.commit('setMaxPage')
 
 
         }
@@ -192,15 +196,15 @@ removeAllProduct(state) {
 
 
     async fetchOrders(context) {
-      try { 
+      try {
         const response = await API.getOrder();
         context.commit("saveOrder", response.data);
         console.log(response)
       } catch (error) {
         console.log(error)
       }
-     
-  },
+
+    },
 
 
 
