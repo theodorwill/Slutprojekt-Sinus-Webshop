@@ -8,6 +8,7 @@ import Checkout from '@/views/Checkout.vue'
 import Contact from '@/views/Contact.vue'
 import LoginPage from '@/views/LoginPage.vue'
 import UserProfile from '@/views/UserProfile.vue'
+import Admin from '@/views/Admin.vue'
 import SingleProduct from '@/views/SingleProduct.vue'
 import Category from '@/views/Category.vue'
 import Register from '@/views/Register.vue'
@@ -70,6 +71,12 @@ const routes = [
     path: '/user',
     name: 'UserProfile',
     component: UserProfile
+  },
+
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin
   },
 ]
 

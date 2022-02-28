@@ -36,7 +36,7 @@
 
           <div class="select-qty">
             <label for="quantity">Quantity:</label>
-            <select name="quantity" v-model="item.quantity" required>
+            <select name="quantity" v-model="item.amount" required>
               <option v-for="number in numbers" :key="number" :value="number">
                 {{ number }}
               </option>
@@ -69,7 +69,7 @@ export default {
 
   computed:{
     eventDisable() {
-      return this.item.quantity == undefined ? true : false;
+      return this.item.amount == undefined ? true : false;
     },
   },
 

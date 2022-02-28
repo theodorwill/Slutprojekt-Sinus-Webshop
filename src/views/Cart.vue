@@ -10,7 +10,7 @@
           <ModelCardCart :product="item" :idx="idx" />
         </div>
       </article>
-
+      <button class="btn" @click="removeAllProduct">Remove All</button>
       <article class="payment">
         <div class="our-social-careness">
           <img src="@/assets/sustainability.svg" alt="sust-img" />
@@ -43,6 +43,7 @@
 <script>
 import ModelCardCart from "../components/ModelCardCart.vue";
 import { mapGetters } from "vuex";
+import { mapActions } from "vuex";
 export default {
   components: { ModelCardCart },
   computed: {
@@ -50,7 +51,7 @@ export default {
     grandTotal() {
       let total = 0;
       this.cartsProduct.forEach((product) => {
-        total += product.price * product.quantity;
+        total += product.price * product.amount;
       });
       return total;
     },
@@ -67,6 +68,10 @@ export default {
       return this.grandTotal * 0.15;
     },
   },
+
+  methods:{
+    ...mapActions(['removeAllProduct'])
+  }
 };
 </script>
 
@@ -92,6 +97,13 @@ export default {
     .cart-items {
       display: block;
       margin-left: 24px;
+    }
+
+    .btn{
+      height: 24px;
+      margin-top:40px;
+      background-color: #1c1c1c;
+      color:#fff;
     }
 
     .payment {

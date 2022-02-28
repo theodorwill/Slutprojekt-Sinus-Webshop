@@ -14,7 +14,7 @@
     </div>
     <div class="quantities">
       <!-- v-model number in data-->
-      <select class="quantity" name="quantity" v-model="item.quantity" required>
+      <select class="quantity" name="quantity" v-model="item.amount" required>
         <!-- v-for number in data-->
         <option v-for="number in numbers" :key="number" :value="number">
           {{ number }}
@@ -43,7 +43,7 @@ export default {
 
   computed: {
     total() {
-      return this.item.price * this.item.quantity;
+      return this.item.price * this.item.amount;
     },
   },
 
