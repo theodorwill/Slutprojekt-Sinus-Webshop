@@ -3,10 +3,11 @@ import Vuex from 'vuex'
 
 
 
+
 import * as API from '@/api'
 
-Vue.use(Vuex)
 
+Vue.use(Vuex)
 
 
 export default new Vuex.Store({
@@ -26,9 +27,9 @@ export default new Vuex.Store({
     user: [],
   },
 
-  // TESTING CHANGES
 
   // MUTATIONS..........................................
+
   mutations: {
 
     // Products
