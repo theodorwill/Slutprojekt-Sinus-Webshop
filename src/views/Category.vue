@@ -17,8 +17,7 @@
         <!-- <ModelCardProductsList  :product="favouriteProd"/> -->
       </div>
 
-      <div class="product-list" >
-
+      <div class="product-list">
         <router-link
           :to="'/products/' + product.id"
           v-for="product in singleCategory"
@@ -27,32 +26,21 @@
           <ModelCardProductsList :product="product" />
         </router-link>
       </div>
-
-      
     </div>
-
   </div>
 </template>
 
 <script>
 import ModelCardProductsList from "../components/ModelCardProductsList.vue";
 
-
 export default {
   components: { ModelCardProductsList },
 
-
   computed: {
-   
-
-    singleCategory(){
-      return this.$store.state.catgStorage
+    singleCategory() {
+      return this.$store.state.catgStorage;
     },
-
-    
   },
-
-
 };
 </script>
 
@@ -119,6 +107,5 @@ export default {
       margin-top: 196px;
     }
   }
-
 }
 </style>

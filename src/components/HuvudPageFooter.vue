@@ -18,6 +18,7 @@
           <router-link to="/login">Login</router-link>
           <router-link to="/login">Resgister</router-link>
           <router-link to="/about">My orders</router-link>
+          <router-link to="/admin">Admin</router-link>
         </section>
         <section>
           <h3>Others</h3>

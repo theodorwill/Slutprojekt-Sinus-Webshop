@@ -30,7 +30,7 @@
     </div>
 
     <button :disabled="prevBtnDisabled" @click="getPrevPage">PREVIOUS PAGE</button>
-    <button  :disabled="nextBtnDisabled" @click="fetchPage">NEXT PAGE</button>
+    <button  :disabled="nextBtnDisabled" @click="getNextPage">NEXT PAGE</button>
   </div>
 </template>
 
@@ -46,14 +46,10 @@ export default {
   computed: {
     ...mapGetters(["catalogues", "nextBtnDisabled", "prevBtnDisabled"]),
 
-    singleCategory(){
-      return this.$store.state.catgStorage
-    },
-
   },
 
   methods: {
-    ...mapActions(['fetchPage','getPrevPage'])
+    ...mapActions(['getNextPage','getPrevPage'])
   },
 
 };
