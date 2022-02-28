@@ -20,7 +20,7 @@ export default new Vuex.Store({
     catgObjects: {},
     orderList: [],
     currentPage: 1,
-    maxPage: 4,
+    maxPage:null,
     start: 0,
     end: 10,
     user: [],
@@ -112,8 +112,14 @@ export default new Vuex.Store({
     //   state.favProduct = payload
     // },
 
+
+    setMaxPage(state){
+      state.maxPage =  Math.ceil(state.productList.length / 10)
+    },
+
     nextPage(state) {
       state.currentPage < state.maxPage ? (state.currentPage += 1, state.start += 10, state.end += 10) : ''
+
     },
 
     previousPage(state) {
@@ -139,6 +145,7 @@ export default new Vuex.Store({
       state.user = userData
       console.log(state.user)
     },
+
   },
 
   // ACTIONS.................
@@ -155,6 +162,10 @@ export default new Vuex.Store({
           context.commit('savePageThree', responseThree.data)
           const responseFour = await API.getPageFour()
           context.commit('savePageFour', responseFour.data)
+
+          context.commit('setMaxPage')
+
+
         }
       } catch (error) {
         console.log(error)
@@ -188,6 +199,7 @@ export default new Vuex.Store({
       } catch (error) {
         console.log(error)
       }
+
     },
 
 
