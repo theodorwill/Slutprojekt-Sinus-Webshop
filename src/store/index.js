@@ -2,11 +2,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 
-
 import * as API from '../store/api'
 
 Vue.use(Vuex)
-
 
 
 export default new Vuex.Store({
@@ -17,7 +15,7 @@ export default new Vuex.Store({
     user: [],
   },
 
-  // MUTATIONS..............
+  // MUTATIONS......
   mutations: {
     saveItems(state, items) {
       state.products = items
