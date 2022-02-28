@@ -9,63 +9,77 @@
     >
       <v-tab title="Profile">
         <div>
-          <h1>Profile</h1>
+          <aside>
+            <h2>Profile</h2>
+            <button>Sign out</button>
+          </aside>
           <hr>
-          <p>Email: {{this.$store.state.user.email}}</p>
-          <p>Name: {{this.$store.state.user.name}}</p>
-          <p>City: {{this.$store.state.user.address.city}}</p>
-          <p>Street: {{this.$store.state.user.address.street}}</p>
-          <p>Zip: {{this.$store.state.user.address.zip}}</p>
-          <form class="user-edit">
+          <form
+            @submit.prevent="updateUserInfo"
+            class="user-edit"
+          >
             <label for="email">Email</label>
             <input
               type="email"
               name="email"
               placeholder="email"
+              v-model="register.email"
+              disabled
             />
             <label for="name">Name</label>
             <input
               type="text"
               name="name"
               placeholder="First, Last"
+              v-model="register.name"
             />
+            <hr>
             <label for="city">City</label>
             <input
               type="text"
               name="city"
               placeholder="City"
+              v-model="register.address.city"
             />
             <label for="street">Street</label>
             <input
               type="text"
               name="street"
               placeholder="Street, nr"
+              v-model="register.address.street"
             />
             <label for="zip">Zip</label>
             <input
               type="text"
               name="zip"
               placeholder="Zip, 5 digits"
+              v-model="register.address.zip"
             />
+            <hr>
             <label for="password">Password</label>
             <input
-              type="text"
+              type="password"
               name="password"
               placeholder="Change Password"
+              v-model="register.password"
             />
             <label for="validation">Confirm password</label>
             <input
-              type="text"
+              type="password"
               name="validation"
               placeholder="Change Password"
+              v-model="validation.password"
             />
+            <hr>
             <button>Update profile</button>
           </form>
         </div>
       </v-tab>
 
       <v-tab title="Order history">
-        <div>        
+        <div class="order-history">
+          <h1>Order history</h1>
+          <hr>
         </div>
       </v-tab>
     </vue-tabs>
@@ -86,20 +100,80 @@ export default {
     return {
       register: {
         email: "",
-        password: "",
         name: "",
+        password: "",
         address: {
           city: "",
           street: "",
           zip: "",
         },
       },
+      validation: {
+        password: "",
+      },
     };
+  },
+
+  created() {
+    this.addUserData();
+  },
+
+  methods: {
+    addUserData() {
+      if (this.$store.state.user.length !== 0) {
+        this.register.email = this.$store.state.user.email;
+        this.register.name = this.$store.state.user.name;
+        this.register.address.city = this.$store.state.user.address.city;
+        this.register.address.street = this.$store.state.user.address.street;
+        this.register.address.zip = this.$store.state.user.address.zip;
+      }
+    },
+
+    
+    updateUserInfo() {
+      if (
+        this.register.email !== "" &&
+        this.register.name !== "" &&
+        this.register.password !== "" &&
+        this.register.password === this.validation.password
+      )
+        this.$store
+          .dispatch("login", {
+            email: this.register.email,
+            password: this.register.password,
+          })
+          .then(() => { 
+            this.$store.dispatch("patchUserInfo", this.register);
+          }).then(() => {
+            alert("Profile updated!");
+          });
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+button {
+  height: 50px;
+  padding: 0 1rem;
+  margin: 1rem 0;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  background-color: #db7070;
+  transition: ease-in-out 0.17s;
+  &:hover {
+    background-color: #f14242;
+  }
+}
+
+hr.solid {
+  border-top: 1px solid #bbb;
+  width: 400px;
+}
+
 .container {
   padding: 2rem 0;
   display: flex;
@@ -107,7 +181,6 @@ export default {
   align-items: center;
   text-align: left;
   width: 100%;
-  
 }
 
 .tab-view {
@@ -118,6 +191,15 @@ export default {
   div {
     width: 600px;
     padding: 0 1.5rem 0 2rem;
+    > aside {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      align-items: center;
+      * {
+        margin: 0.5rem 0;
+      }
+    }
   }
 }
 
@@ -126,7 +208,14 @@ export default {
   width: 100%;
   display: flex;
   flex-flow: column;
-   input {
+
+  label {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  input {
+    font-size: 1rem;
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -136,22 +225,24 @@ export default {
     margin-bottom: 16px;
     resize: vertical;
     background-color: #f5f5f5;
+    &:disabled {
+      background: white;
+      border-color: white;
+    }
   }
 
-   button {
-  width: 200px;
-  height: 40px;
-  margin: 1rem 0;
-  background-color: #2091f9;
-  border-radius: 5px;
-  border: none;
-  font-size: 1.2rem;
-  color: white;
-  cursor: pointer;
-  &:hover {
-    background-color: #45a049;
-    transition: 0.5s;
+  hr {
+    margin: 2rem 0;
+    width: 100%;
   }
-}
+
+  button {
+    width: 160px;
+    background-color: #66a86a;
+    transition: ease-in-out 0.17s;
+    &:hover {
+      background-color: #4fc555;
+    }
+  }
 }
 </style>

@@ -19,14 +19,11 @@ export default new Vuex.Store({
     catgStorage: [],
     catgObjects: {},
     orderList: [],
-
     currentPage: 1,
     maxPage: 4,
     start: 0,
     end: 10,
     user: [],
-
-
   },
 
   // TESTING CHANGES
@@ -39,7 +36,9 @@ export default new Vuex.Store({
 
       for (let product of products) {
         if (!state.productList.find((item) => item.id === product.id)) {
-          state.productList.push({ ...product })
+          state.productList.push({
+            ...product
+          })
         }
         Vue.set(state.products, product.id, product)
       }
@@ -49,10 +48,11 @@ export default new Vuex.Store({
 
       for (let product of products) {
         if (!state.productList.find((item) => item.id === product.id)) {
-          state.productList.push({ ...product })
+          state.productList.push({
+            ...product
+          })
         }
         Vue.set(state.products, product.id, product)
-
       }
     },
 
@@ -60,26 +60,24 @@ export default new Vuex.Store({
 
       for (let product of products) {
         if (!state.productList.find((item) => item.id === product.id)) {
-          state.productList.push({ ...product })
+          state.productList.push({
+            ...product
+          })
         }
         Vue.set(state.products, product.id, product)
-
       }
-
-
     },
 
     savePageFour(state, products) {
 
       for (let product of products) {
         if (!state.productList.find((item) => item.id === product.id)) {
-          state.productList.push({ ...product })
+          state.productList.push({
+            ...product
+          })
         }
         Vue.set(state.products, product.id, product)
-
       }
-
-
     },
 
     searchCategory(state, payload) {
@@ -89,13 +87,14 @@ export default new Vuex.Store({
     saveCategory(state, categoryList) {
       for (let product of categoryList) {
         if (!state.catgStorage.find((item) => item.id === product.id)) {
-          state.catgStorage.push({ ...product })
+          state.catgStorage.push({
+            ...product
+          })
         }
         Vue.set(state.catgObjects, product.id, product)
       }
 
     },
-
 
     toCart(state, payload) {
       state.cart.push(payload);
@@ -104,7 +103,7 @@ export default new Vuex.Store({
     removeProduct(state, payload) {
       state.cart.splice(payload, 1)
     },
-removeAllProduct(state) {
+    removeAllProduct(state) {
       state.cart = []
     },
 
@@ -113,17 +112,13 @@ removeAllProduct(state) {
     //   state.favProduct = payload
     // },
 
-
     nextPage(state) {
       state.currentPage < state.maxPage ? (state.currentPage += 1, state.start += 10, state.end += 10) : ''
-      
     },
 
     previousPage(state) {
       state.currentPage > 1 ? (state.currentPage -= 1, state.start -= 10, state.end -= 10) : ''
-
     },
-
 
 
     // Orders
@@ -144,8 +139,6 @@ removeAllProduct(state) {
       state.user = userData
       console.log(state.user)
     },
-
-   
   },
 
   // ACTIONS.................
@@ -162,8 +155,6 @@ removeAllProduct(state) {
           context.commit('savePageThree', responseThree.data)
           const responseFour = await API.getPageFour()
           context.commit('savePageFour', responseFour.data)
-
-
         }
       } catch (error) {
         console.log(error)
@@ -183,8 +174,6 @@ removeAllProduct(state) {
           context.commit('saveCategory', response.data)
           console.log('Categoy- ' + response.data)
         }
-
-
       } catch (error) {
         console.log(error)
       }
@@ -192,15 +181,14 @@ removeAllProduct(state) {
 
 
     async fetchOrders(context) {
-      try { 
+      try {
         const response = await API.getOrder();
         context.commit("saveOrder", response.data);
         console.log(response)
       } catch (error) {
         console.log(error)
       }
-     
-  },
+    },
 
 
 
@@ -215,8 +203,10 @@ removeAllProduct(state) {
 
 
 
-    async login(context, { email, password }) {
-
+    async login(context, {
+      email,
+      password
+    }) {
       try {
         const response = await API.login(email, password)
         console.log(response)
@@ -224,31 +214,32 @@ removeAllProduct(state) {
 
         context.commit('saveAuthData', response.data)
       } catch (error) {
-        console.log(error)
+        console.log("mitt error",error)
+        return;
       }
 
     },
 
     async getCurrentUser(context) {
-
       try {
         const response = await API.getUser()
         context.commit('saveUserData', response.data)
       } catch (error) {
         console.log(error)
       }
-
     },
 
     async signup(context, payload) {
-
       const response = await API.registerAccount(payload)
       if (response) {
         context.commit('setUser', response.user)
       } else {
         throw new Error('could not complete signup')
       }
+    },
 
+    async patchUserInfo(context, payload) {
+      await API.updateAccount(payload)
 
     },
 
