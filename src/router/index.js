@@ -1,14 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
 import Products from '@/views/Products.vue'
 import Cart from '@/views/Cart.vue'
+import Checkout from '@/views/Checkout.vue'
 import Contact from '@/views/Contact.vue'
 import LoginPage from '@/views/LoginPage.vue'
 import UserProfile from '@/views/UserProfile.vue'
+import Admin from '@/views/Admin.vue'
 import SingleProduct from '@/views/SingleProduct.vue'
+import Category from '@/views/Category.vue'
+import Register from '@/views/Register.vue'
 
 
 
@@ -31,6 +34,15 @@ const routes = [
     component: Products
   },
   {
+    path: '/products/:id',
+    component: SingleProduct
+  },
+  {
+    path: '/category',
+    name: Category,
+    component: Category
+  },
+  {
     path: '/contact',
     name: 'contact',
     component: Contact
@@ -41,18 +53,30 @@ const routes = [
     component: Cart
   },
   {
-    path: '/products/:id',
-    component: SingleProduct
-  },
+    path: '/checkout',
+    name: 'Checkout',
+    component: Checkout
+  }, 
   {
     path: '/login',
     name: 'LoginPage',
     component: LoginPage
   },
   {
+    path: '/register',
+    name: 'RegisterPage',
+    component: Register
+  },
+  {
     path: '/user',
     name: 'UserProfile',
     component: UserProfile
+  },
+
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin
   },
 ]
 

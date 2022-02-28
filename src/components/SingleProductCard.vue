@@ -35,8 +35,8 @@
           </section>
 
           <div class="select-qty">
-            <label for="quantity">QTY</label>
-            <select name="quantity" v-model="item.quantity" required>
+            <label for="quantity">Quantity:</label>
+            <select name="quantity" v-model="item.amount" required>
               <option v-for="number in numbers" :key="number" :value="number">
                 {{ number }}
               </option>
@@ -69,7 +69,7 @@ export default {
 
   computed:{
     eventDisable() {
-      return this.item.quantity == undefined ? true : false;
+      return this.item.amount == undefined ? true : false;
     },
   },
 
@@ -112,7 +112,6 @@ export default {
         justify-content: center;
         align-items: center;
         background-color: #e0e0e0;
-
         img {
           height: 232px;
         }
@@ -128,7 +127,7 @@ export default {
       }
 
       p {
-        font-size: 14px;
+        font-size: 1rem;
         margin: 4px 0px;
       }
     }
@@ -138,12 +137,14 @@ export default {
     width: 526px;
     height: 380px;
     text-align: start;
-    h2 {
-      font-size: 1.2rem;
+    h1,h2 {
+      font-size: 1.6rem;
     }
 
     .stock-status {
       color: green;
+      font-size: 1.4rem;
+      font-weight: bold;
     }
 
     > * {
@@ -155,6 +156,11 @@ export default {
       margin-top: 24px;
       .select-qty {
         margin-right: 24px;
+        font-size: 1.2rem;
+        select{
+          width: 40px;
+          height: 25px;
+        }
       }
     }
     .btn {
@@ -163,8 +169,15 @@ export default {
       flex-direction: column;
       justify-content: space-between;
       button {
-        padding: 8px 50px;
+        padding: 10px 50px;
         margin: 8px 0px;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 10px;
+        &:hover{
+          background-color: #0076C4;
+          transition: 0.3s;
+        }
 
       }
       .btn-add {
@@ -175,7 +188,7 @@ export default {
       p{
         color: red;
         text-align:end;
-        font-size: .8rem;
+        font-size: 1.3rem;
       }
     }
   }

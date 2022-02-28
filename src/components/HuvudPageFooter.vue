@@ -11,13 +11,14 @@
 
           <h3>Help</h3>
           <router-link to="/about">About us</router-link>
-          <router-link to="/about">Contact us</router-link>
+          <router-link to="/contact">Contact us</router-link>
         </section>
         <section>
           <h3>Users action</h3>
-          <router-link to="/about">Login</router-link>
-          <router-link to="/about">Resgister</router-link>
+          <router-link to="/login">Login</router-link>
+          <router-link to="/login">Resgister</router-link>
           <router-link to="/about">My orders</router-link>
+          <router-link to="/admin">Admin</router-link>
         </section>
         <section>
           <h3>Others</h3>

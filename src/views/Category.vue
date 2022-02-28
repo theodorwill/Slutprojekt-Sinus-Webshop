@@ -3,9 +3,9 @@
     <section class="top">
       <h1>PRODUCTS</h1>
       <p>
-        <router-link to="/"><span>Home</span></router-link>
+        <router-link to="/products"><span>Products</span></router-link>
         <img src="../assets/right.svg" alt="" />
-        <span>Products</span>
+        <span>Category</span>
       </p>
     </section>
     <div class="main-gallery">
@@ -17,41 +17,30 @@
         <!-- <ModelCardProductsList  :product="favouriteProd"/> -->
       </div>
 
-      <div class="product-list" >
-
+      <div class="product-list">
         <router-link
           :to="'/products/' + product.id"
-          v-for="product in catalogues"
+          v-for="product in singleCategory"
           :key="product.id"
         >
           <ModelCardProductsList :product="product" />
         </router-link>
       </div>
     </div>
-
-    <button :disabled="prevBtnDisabled" @click="getPrevPage">PREVIOUS PAGE</button>
-    <button  :disabled="nextBtnDisabled" @click="getNextPage">NEXT PAGE</button>
   </div>
 </template>
 
 <script>
 import ModelCardProductsList from "../components/ModelCardProductsList.vue";
-import { mapGetters } from "vuex";
-import {mapActions} from "vuex";
 
 export default {
   components: { ModelCardProductsList },
 
-
   computed: {
-    ...mapGetters(["catalogues", "nextBtnDisabled", "prevBtnDisabled"]),
-
+    singleCategory() {
+      return this.$store.state.catgStorage;
+    },
   },
-
-  methods: {
-    ...mapActions(['getNextPage','getPrevPage'])
-  },
-
 };
 </script>
 
@@ -117,11 +106,6 @@ export default {
     .footer {
       margin-top: 196px;
     }
-  }
-
-  button{
-    margin:48px 16px;
-  
   }
 }
 </style>

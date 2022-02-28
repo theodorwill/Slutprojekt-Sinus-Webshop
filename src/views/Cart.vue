@@ -1,8 +1,7 @@
 <template>
   <div class="cart-view">
-    
-    <div class="information" v-if="!cartsProduct.length"> 
-      <span>Your shopping cart is empty.</span> 
+    <div class="information" v-if="!cartsProduct.length">
+      <span>Your shopping cart is empty.</span>
     </div>
 
     <div class="checkout-container" v-else>
@@ -11,7 +10,7 @@
           <ModelCardCart :product="item" :idx="idx" />
         </div>
       </article>
-      
+      <button class="btn" @click="removeAllProduct">Remove All</button>
       <article class="payment">
         <div class="our-social-careness">
           <img src="@/assets/sustainability.svg" alt="sust-img" />
@@ -19,50 +18,67 @@
         <div class="payment-details">
           <p>
             <strong>PRICE:</strong>
-            <strong>grandTotal</strong>
+            <strong>{{ grandTotal }}</strong>
           </p>
           <p>
-            <strong>DISCOUNTS:</strong> <strong>-Discount</strong>
+            <strong>DISCOUNTS:</strong> <strong>-{{ discount }}</strong>
           </p>
         </div>
         <div class="payment-action">
           <h3>
-            <strong>AMOUNT TO PAY:</strong> <strong>netTotal</strong>
+            <strong>AMOUNT TO PAY:</strong> <strong>{{ netTotal }}</strong>
           </h3>
-          <span class="vat-info"
-            >VAT
-          </span>
+          <span class="vat-info">moms {{ moms }} </span>
           <div class="action-sub">
-            <button class="pay-now">Checkout</button>
-            <!-- <router-link to="/products">Back to shop</router-link> -->
-            <button class="back">Back to shop</button>
+            <router-link class="pay-now" to="/checkout"> Checkout </router-link>
+            <router-link class="back" to="/products">Back to shop</router-link>
           </div>
         </div>
       </article>
     </div>
-    <div class="misc-block">
-      MISC BLOCK FIXAS EFTER DISKUSSION.
-    </div>
+    <div class="misc-block">MISC BLOCK FIXAS EFTER DISKUSSION.</div>
   </div>
 </template>
 
 <script>
-import ModelCardCart from '../components/ModelCardCart.vue'
+import ModelCardCart from "../components/ModelCardCart.vue";
 import { mapGetters } from "vuex";
+import { mapActions } from "vuex";
 export default {
-    components:{ModelCardCart},
-    computed:{
-      ...mapGetters([ 'cartsProduct'])
-    }
-}
+  components: { ModelCardCart },
+  computed: {
+    ...mapGetters(["cartsProduct"]),
+    grandTotal() {
+      let total = 0;
+      this.cartsProduct.forEach((product) => {
+        total += product.price * product.amount;
+      });
+      return total;
+    },
+
+    discount() {
+      return Math.round(this.grandTotal * 0.1);
+    },
+
+    netTotal() {
+      return this.grandTotal - this.discount;
+    },
+
+    moms() {
+      return this.grandTotal * 0.15;
+    },
+  },
+
+  methods:{
+    ...mapActions(['removeAllProduct'])
+  }
+};
 </script>
 
 
 
 <style lang="scss" scoped>
-
-
-.cart-view{
+.cart-view {
   display: block;
 
   .information {
@@ -81,6 +97,13 @@ export default {
     .cart-items {
       display: block;
       margin-left: 24px;
+    }
+
+    .btn{
+      height: 24px;
+      margin-top:40px;
+      background-color: #1c1c1c;
+      color:#fff;
     }
 
     .payment {
@@ -117,11 +140,10 @@ export default {
           }
         }
 
-        p:nth-of-type(2){
-          strong{
+        p:nth-of-type(2) {
+          strong {
             color: red;
           }
-
         }
       }
 
@@ -159,6 +181,7 @@ export default {
             background-color: #1c1c1c;
             color: #fff;
             cursor: pointer;
+            text-decoration: none;
           }
 
           .back {

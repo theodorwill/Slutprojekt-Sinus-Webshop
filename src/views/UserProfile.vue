@@ -1,195 +1,248 @@
 <template>
-  <div class="user-profile">
-    <div class="user-profile-left-right">
-  <section class="user-profile-left">
-  <div class="user-profile-image">
-  <!-- <img class="human" src="../assets/img_human.png" alt="hman-img"> -->
-  </div>
-  
-  <form class="form">
-  <h1>NAME</h1>
-          <input
-            type="text"
-            id="fname"
-            name=""
-            placeholder="Overview"
-          />
-          
-          <input
-            type="text"
-            id="password"
-            name="password"
-            placeholder="Change Password"
-          />
-           <input
-            type="text"
-            id="order"
-            name="order"
-            placeholder="Order History"
-          />
-          <h1>JUST TEST !!!</h1>
-  </form>
-  </section>
+  <div class="container">
+    <vue-tabs
+      class="tab-view"
+      active-text-color="white"
+      type="pills"
+      :start-index="1"
+      direction="vertical"
+    >
+      <v-tab title="Profile">
+        <div>
+          <aside>
+            <h2>Profile</h2>
+            <button>Sign out</button>
+          </aside>
+          <hr>
+          <form
+            @submit.prevent="updateUserInfo"
+            class="user-edit"
+          >
+            <label for="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="email"
+              v-model="register.email"
+              disabled
+            />
+            <label for="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="First, Last"
+              v-model="register.name"
+            />
+            <hr>
+            <label for="city">City</label>
+            <input
+              type="text"
+              name="city"
+              placeholder="City"
+              v-model="register.address.city"
+            />
+            <label for="street">Street</label>
+            <input
+              type="text"
+              name="street"
+              placeholder="Street, nr"
+              v-model="register.address.street"
+            />
+            <label for="zip">Zip</label>
+            <input
+              type="text"
+              name="zip"
+              placeholder="Zip, 5 digits"
+              v-model="register.address.zip"
+            />
+            <hr>
+            <label for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Change Password"
+              v-model="register.password"
+            />
+            <label for="validation">Confirm password</label>
+            <input
+              type="password"
+              name="validation"
+              placeholder="Change Password"
+              v-model="validation.password"
+            />
+            <hr>
+            <button>Update profile</button>
+          </form>
+        </div>
+      </v-tab>
 
-
-  <section class="user-profile-right">
-    <div class="user-information">
-      <p>User name: abcdef@yahoo.com</p>
-      <address class="user-address">
-        Contact information: <br>
-        Stockholm 123 <br>
-        12341, Stockholm <br>
-        Sweden <br>
-        Mobile:075 XXXX XXX <br>
-        Email:abcdef@yahoo.com
-      </address>
-    </div>
-  </section>
-  </div>
-
-  <section class="change-password">
-    <form class="form-change-password">
-       <input
-            type="text"
-            id="fname"
-            name=""
-            placeholder="Current Password"
-          />
-          
-          <input
-            type="text"
-            id="password"
-            name="password"
-            placeholder="New Password"
-          />
-           <input
-            type="text"
-            id="order"
-            name="order"
-            placeholder="Confirm Password"
-          />
-          <button class="btn">Submit</button>
-    </form>
-  </section>
-
+      <v-tab title="Order history">
+        <div class="order-history">
+          <h1>Order history</h1>
+          <hr>
+        </div>
+      </v-tab>
+    </vue-tabs>
   </div>
 </template>
 
 <script>
-  export default {
+import { VueTabs, VTab } from "vue-nav-tabs";
+//you can also import this in your style tag
+import "vue-nav-tabs/themes/vue-tabs.css";
+export default {
+  components: {
+    VueTabs,
+    VTab,
+  },
+
+  data() {
+    return {
+      register: {
+        email: "",
+        name: "",
+        password: "",
+        address: {
+          city: "",
+          street: "",
+          zip: "",
+        },
+      },
+      validation: {
+        password: "",
+      },
+    };
+  },
+
+  created() {
+    this.addUserData();
+  },
+
+  methods: {
+    addUserData() {
+      if (this.$store.state.user.length !== 0) {
+        this.register.email = this.$store.state.user.email;
+        this.register.name = this.$store.state.user.name;
+        this.register.address.city = this.$store.state.user.address.city;
+        this.register.address.street = this.$store.state.user.address.street;
+        this.register.address.zip = this.$store.state.user.address.zip;
+      }
+    },
+
     
-  }
+    updateUserInfo() {
+      if (
+        this.register.email !== "" &&
+        this.register.name !== "" &&
+        this.register.password !== "" &&
+        this.register.password === this.validation.password
+      )
+        this.$store
+          .dispatch("login", {
+            email: this.register.email,
+            password: this.register.password,
+          })
+          .then(() => { 
+            this.$store.dispatch("patchUserInfo", this.register);
+          }).then(() => {
+            alert("Profile updated!");
+          });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-.user-profile{
-margin: 100px 10px 50px 0px;
-
-.user-profile-left-right{
-  display: flex;
-  flex-direction:row;
-  align-items: center;
-  justify-content: center;
-  margin-left:-50px; 
-  padding-left:-0px;
-
-.user-profile-left{
-
-text-align: start;
-padding-left:5px;
-.user-profile-image{
-  width: 400px;
-  height: 300px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-  background-color: white;
-  border-radius: 10px;
-
-  .human{
-  width: 150px;
-  background-color: #FFD9D9;
-  border-radius: 50%;
-  position: relative;
- transform: translate(+80%, +50%);
-    
+button {
+  height: 50px;
+  padding: 0 1rem;
+  margin: 1rem 0;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  background-color: #db7070;
+  transition: ease-in-out 0.17s;
+  &:hover {
+    background-color: #f14242;
   }
 }
 
-.form{
-  display: flex;
-  flex-direction: column;
-  column-gap: 30px;
-  row-gap: 10px;
-  color: black;
+hr.solid {
+  border-top: 1px solid #bbb;
+  width: 400px;
+}
 
-  h1{
-    font-size: 20px;
+.container {
+  padding: 2rem 0;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+}
+
+.tab-view {
+  padding: 0.5rem 0.5rem;
+  border-radius: 0.3rem;
+  width: auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  div {
+    width: 600px;
+    padding: 0 1.5rem 0 2rem;
+    > aside {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      align-items: center;
+      * {
+        margin: 0.5rem 0;
+      }
+    }
   }
 }
-}
 
-.user-profile-right{
+.user-edit {
+  padding-top: 2rem;
+  width: 100%;
   display: flex;
- border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-  background-color: white;
-  transform: translate(+30%, -15%);
-  width: 400px;
-  height: 400px;
-  font-size: 30px;
-  font-family: sans-serif;
-  align-content: center;
-  text-align: center;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  border-radius: 10px;  
-}
-}
-//******* */
+  flex-flow: column;
 
-.change-password{
-  display:none;
-  margin: 100px;
-  font-family: sans-serif;
-  font-size:20px;
-  font-weight: 400px;
+  label {
+    font-size: 1rem;
+    font-weight: bold;
+  }
 
-.form-change-password{
-  display: flex;
-  flex-direction:column;
-  row-gap: 20px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-  background-color: white;
-  font-size: 30px;
-  font-family: sans-serif;
-  align-content: center;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  border-radius: 10px;  
-  height:500px;
-  width: 400px;
-  transform: translate(110%, 5%);
- input{
-   width: 300px;
-   height: 60px;
-   font-family: sans-serif;
-   font-size:20px;
-   font-weight: 600px;
- }
- .btn{
-   width:100px;
-   height: 50px;
-   font-size: 20px;
-   font-weight: 700;
-   color:black;
-   border-radius: 5px;
- }
-}
-}
+  input {
+    font-size: 1rem;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    background-color: #f5f5f5;
+    &:disabled {
+      background: white;
+      border-color: white;
+    }
+  }
 
+  hr {
+    margin: 2rem 0;
+    width: 100%;
+  }
+
+  button {
+    width: 160px;
+    background-color: #66a86a;
+    transition: ease-in-out 0.17s;
+    &:hover {
+      background-color: #4fc555;
+    }
+  }
 }
 </style>

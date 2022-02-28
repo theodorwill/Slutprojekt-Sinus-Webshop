@@ -2,54 +2,56 @@
   <article class="model-card-cart">
     <div class="product-info">
       <div class="card-image">
-        <img :src="`http://localhost:5000/images/${item.imgFile}`"
-        alt="Product's image" />
+        <img
+          :src="`http://localhost:5000/images/${item.imgFile}`"
+          alt="Product's image"
+        />
       </div>
       <div class="text-info">
-        <h3>Sinus {{item.category}}</h3>
-        <p>{{item.shortDesc}}</p>
+        <h3>Sinus {{ item.category }}</h3>
+        <p>{{ item.shortDesc }}</p>
       </div>
     </div>
     <div class="quantities">
       <!-- v-model number in data-->
-      <select  
-        class="quantity"
-        name="quantity"
-        v-model="item.quantity"
-        required >
+      <select class="quantity" name="quantity" v-model="item.amount" required>
         <!-- v-for number in data-->
-         <option v-for="number in numbers" :key="number" :value="number">
+        <option v-for="number in numbers" :key="number" :value="number">
           {{ number }}
         </option>
       </select>
-      <span class="price-info">{{item.price}}/item</span>
+      <span class="price-info">{{ item.price }}/item</span>
     </div>
 
-    <p class="price">SEK {{total}}</p>
+    <p class="price">SEK {{ total }}</p>
 
     <div class="remove-item">
-      <button>Remove</button>
+      <button @click="removeItem">Remove</button>
     </div>
   </article>
 </template>
 
 <script>
 export default {
-  props:{product:Object},
-  data(){
-    return{
-      numbers:10,
-    item: this.product,
-    }
+  props: { product: Object, idx: Number },
+  data() {
+    return {
+      numbers: 10,
+      item: this.product,
+    };
   },
 
-   computed: {
+  computed: {
     total() {
-      return this.item.price * this.item.quantity;
+      return this.item.price * this.item.amount;
     },
-   }
-  
-  
+  },
+
+  methods: {
+    removeItem() {
+      this.$store.dispatch("removeProduct", this.idx);
+    },
+  },
 };
 </script>
 
@@ -80,8 +82,7 @@ export default {
       align-items: center;
       border-bottom: 4px solid #fff;
       img {
-        width: 99px;
-        height: 90px;
+        height: 80px;
         cursor: pointer;
       }
 

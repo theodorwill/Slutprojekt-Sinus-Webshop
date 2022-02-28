@@ -7,14 +7,22 @@
 </template>
 <script>
 import Header from "@/components/Header.vue";
-
 import HuvudPageFooter from "@/components/HuvudPageFooter.vue";
+// import LoginModal from "@/components/LoginModal.vue";
 
 export default {
   components: {
     Header,
     HuvudPageFooter,
+    // LoginModal
   },
+
+ 
+  created() {
+    this.$store.dispatch("fetchItems");
+  },
+
+  
 };
 </script>
 
