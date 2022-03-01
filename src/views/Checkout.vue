@@ -143,7 +143,7 @@
             <input
               type="text"
               name="security"
-              placeholder="xxx"
+              placeholder="XXX"
               maxlength="3"
             />
           </div>
@@ -372,17 +372,20 @@ hr.solid {
 }
 
 .btn {
-  background-color: #04aa6d;
-  color: white;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  width: 200px;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 17px;
-  &:hover {
-    background-color: #45a049;
+
+  button{
+    background-color: #04aa6d;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid black;
+    width: 200px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    &:hover {
+      background-color: #45a049;
+    }
   }
 }
 </style>

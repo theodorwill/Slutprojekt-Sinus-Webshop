@@ -13,7 +13,7 @@
       <div class="middle-main">
           <article class="personas-1">
               <div class="top">
-                  <img src="../assets/daniel.jpeg" alt="">
+                  <img src="../assets/daniel-1.png" alt="">
                   <h2>Daniel</h2>
                   <p>7 år från Karlskrona</p>
               </div>
@@ -24,7 +24,7 @@
           </article>
           <article class="personas-2">
               <div class="top">
-                  <img src="../assets/alex.jpeg" alt="">
+                  <img src="../assets/alex-1.png" alt="">
                   <h2>Alex</h2>
                   <p>9 år från Stockholm</p>
               </div>
@@ -35,7 +35,7 @@
           </article>
           <article class="personas-3">
               <div class="top">
-                  <img src="../assets/johanna.jpeg" alt="">
+                  <img src="../assets/johanna-1.png" alt="">
                   <h2>Johanna</h2>
                   <p>8 år from Göteborg</p>
               </div>
