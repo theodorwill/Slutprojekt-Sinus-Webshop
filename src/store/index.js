@@ -270,7 +270,7 @@ export default new Vuex.Store({
     nextBtnDisabled: (state) => state.currentPage == state.maxPage ? true : false,
     prevBtnDisabled: (state) => state.start == 0 ? true : false,
 
-    // cardItems :(state) => state.products 
+    
 
   }
 

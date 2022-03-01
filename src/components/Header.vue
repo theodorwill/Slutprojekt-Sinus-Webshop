@@ -1,9 +1,11 @@
 <template>
   <div id="nav">
     <div class="header">
+      <router-link to="/">
       <section class="top">
         <div class="logo"></div>
       </section>
+      </router-link>
 
       <section class="middle">
         <router-link to="/category">
@@ -20,6 +22,7 @@
       <section class="bottom">
           <router-link to="/cart">
         <div class="card">
+          <p>{{cart.length}}</p>
           <!-- <span>{{inCard.length}}</span> -->
         </div>
           </router-link>
@@ -28,6 +31,7 @@
         </div>
           </router-link>
       </section>
+     
     </div>
 
     <section class="navbar">
@@ -40,7 +44,7 @@
 </template>
 
 <script>
-import { mapActions,  } from "vuex";
+import { mapActions, mapState} from "vuex";
 export default {
   data() {
     return {
@@ -48,7 +52,7 @@ export default {
     };
   },
   computed:{
-    // ...mapGetters({inCart: "cartItems"})
+    ...mapState(["cart"])
   },
   methods: {
     ...mapActions(["fetchCategory"]),
@@ -114,6 +118,7 @@ export default {
         }
     }
     .card {
+      position: relative;
       width: 50px;
       height: 50px;
       border-radius: 0.4rem;
@@ -129,6 +134,21 @@ export default {
       &:hover {
           background-color: #45a049;
         }
+      p{
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        width: 1.2rem;
+        height: 1.2rem;
+        border-radius: 100%;
+        background-color: #0076C4;
+        color: #fff;
+        text-align: center;
+        font-style: 1.3rem;
+        font-weight: bold;
+      }
+      
     }
       
   .navbar{
