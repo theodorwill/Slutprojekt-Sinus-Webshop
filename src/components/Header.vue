@@ -2,9 +2,9 @@
   <div id="nav">
     <div class="header">
       <router-link to="/">
-      <section class="top">
-        <div class="logo"></div>
-      </section>
+        <section class="top">
+          <div class="logo"></div>
+        </section>
       </router-link>
 
       <section class="middle">
@@ -20,18 +20,19 @@
       </section>
 
       <section class="bottom">
-          <router-link to="/cart">
-        <div class="card">
-          <p>{{cart.length}}</p>
-          <!-- <span>{{inCard.length}}</span> -->
+        <router-link to="/cart">
+          <div class="card">
+            <p>{{cart.length}}</p>
+            <!-- <span>{{inCard.length}}</span> -->
+          </div>
+        </router-link>
+        <div
+          class="login"
+          @click="signedInCheck"
+        >
         </div>
-          </router-link>
-          <router-link to="/login">
-        <div class="login">
-        </div>
-          </router-link>
       </section>
-     
+
     </div>
 
     <section class="navbar">
@@ -44,29 +45,39 @@
 </template>
 
 <script>
-import { mapActions, mapState} from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
   data() {
     return {
       category: null,
     };
   },
-  computed:{
-    ...mapState(["cart"])
+  computed: {
+    ...mapState(["cart"]),
   },
   methods: {
     ...mapActions(["fetchCategory"]),
+
+    signedInCheck() {
+      if (this.$store.state.token === null) {
+        if (this.$route.path !== "/login") {
+          this.$router.push("/login");
+        }
+      } else if (this.$route.path !== "/user") {
+        this.$router.push("/user");
+      }
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 #nav {
-  .header{
+  .header {
     display: flex;
     justify-content: space-around;
     padding: 1rem;
-    }
+  }
   .top {
     width: 200px;
     height: 50px;
@@ -74,10 +85,8 @@ export default {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
- 
   }
   .middle {
-   
     input {
       margin: 0;
       padding-left: 1rem;
@@ -95,64 +104,63 @@ export default {
       text-transform: capitalize;
     }
   }
-  .bottom{
+  .bottom {
     display: flex;
     justify-content: space-evenly;
     width: 200px;
+  }
+  .login {
+    width: 50px;
+    height: 50px;
+    border-radius: 0.4rem;
+    border: 1px solid;
+    border-color: #222222;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    transition: 0.5s;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: center;
+    background-image: url("~@/assets/icon_account.svg");
+    &:hover {
+      background-color: #45a049;
     }
-    .login {
-      width: 50px;
-      height: 50px;
-      border-radius: 0.4rem;
-      border: 1px solid;
-      border-color: #222222;
-      background-color: rgba(0, 0, 0, 0);
-      cursor: pointer;
-      transition: 0.5s;
-      background-repeat: no-repeat;
-      background-size: 70%;
-      background-position: center;
-      background-image: url("~@/assets/icon_account.svg");
-      &:hover {
-        background-color: #45a049;
-        }
+  }
+  .card {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 0.4rem;
+    border: 1px solid;
+    border-color: #222222;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    transition: 0.5s;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: center;
+    background-image: url("~@/assets/shopping-cart.svg");
+    &:hover {
+      background-color: #45a049;
     }
-    .card {
-      position: relative;
-      width: 50px;
-      height: 50px;
-      border-radius: 0.4rem;
-      border: 1px solid;
-      border-color: #222222;
-      background-color: rgba(0, 0, 0, 0);
-      cursor: pointer;
-      transition: 0.5s;
-      background-repeat: no-repeat;
-      background-size: 70%;
-      background-position: center;
-      background-image: url("~@/assets/shopping-cart.svg");
-      &:hover {
-          background-color: #45a049;
-        }
-      p{
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 0;
-        width: 1.2rem;
-        height: 1.2rem;
-        border-radius: 100%;
-        background-color: #0076C4;
-        color: #fff;
-        text-align: center;
-        font-style: 1.3rem;
-        font-weight: bold;
-      }
-      
+    p {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0;
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 100%;
+      background-color: #0076c4;
+      color: #fff;
+      text-align: center;
+      font-style: 1.3rem;
+      font-weight: bold;
     }
-      
-  .navbar{
-     color: #ff6e40;
+  }
+
+  .navbar {
+    color: #ff6e40;
     display: flex;
     flex-flow: row;
     justify-content: space-evenly;
@@ -175,9 +183,5 @@ export default {
       color: #ff6e40;
     }
   }
-
 }
-
-
-
 </style>
