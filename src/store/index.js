@@ -32,7 +32,7 @@ export default new Vuex.Store({
 
   mutations: {
 
-    // Products
+    // Products Catalogues
     saveItems(state, products) {
 
       for (let product of products) {
@@ -46,7 +46,7 @@ export default new Vuex.Store({
     },
 
 
-  
+    //Products categories
 
     searchCategory(state, payload) {
       state.categoryName = payload
@@ -63,6 +63,9 @@ export default new Vuex.Store({
       }
 
     },
+
+
+    // Customers Actions
 
     toCart(state, payload) {
       state.cart.push(payload);
@@ -81,6 +84,8 @@ export default new Vuex.Store({
     // },
 
 
+
+    // Pagination
     setMaxPage(state){
       state.maxPage =  Math.ceil(state.productList.length / 10)
     },
@@ -102,7 +107,7 @@ export default new Vuex.Store({
     },
 
 
-    // Users
+    // Users Authentications
 
     saveAuthData(state, authData) {
       state.token = authData.token
@@ -116,13 +121,16 @@ export default new Vuex.Store({
 
   },
 
+
+
+
   // ACTIONS.................
   actions: {
 
     async fetchItems(context) {
       try {
         if (context.state.productList.length < 1) {
-          const response = await API.getItems()
+          const response = await API.getPage(1)
           context.commit('saveItems', response.data)
           const responseTwo = await API.getPage(2)
           context.commit('saveItems', responseTwo.data)
@@ -132,16 +140,13 @@ export default new Vuex.Store({
           context.commit('saveItems', responseFour.data)
 
           context.commit('setMaxPage')
-
-
         }
       } catch (error) {
         console.log(error)
       }
+     },
 
-
-
-    },
+    
 
     async fetchCategory(context, payload) {
 
@@ -167,7 +172,6 @@ export default new Vuex.Store({
       } catch (error) {
         console.log(error)
       }
-
     },
 
 
@@ -197,7 +201,6 @@ export default new Vuex.Store({
         console.log("mitt error",error)
         return;
       }
-
     },
 
     async getCurrentUser(context) {

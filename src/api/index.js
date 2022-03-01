@@ -29,12 +29,6 @@ export async function getUser(){
 
 // PRODUCTS.................................................
 
-export async function getItems(){
-  return await axios.get('/items')
-
-}
-
-
 export async function getPage(page){
   return await axios.get('/items?page='+ page)
 
