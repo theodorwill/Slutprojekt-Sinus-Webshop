@@ -18,15 +18,13 @@
       </section>
 
       <section class="bottom">
-          <router-link to="/cart">
-        <div class="card">
-          <!-- <span>{{inCard.length}}</span> -->
-        </div>
-          </router-link>
-          <router-link to="/login">
-        <div class="login">
-        </div>
-          </router-link>
+        <router-link to="/cart">
+          <div class="card">
+            <!-- <span>{{inCard.length}}</span> -->
+          </div>
+        </router-link>
+          <div class="login" @click="signedInCheck">
+          </div>
       </section>
     </div>
 
@@ -40,29 +38,37 @@
 </template>
 
 <script>
-import { mapActions,  } from "vuex";
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
       category: null,
     };
   },
-  computed:{
+  computed: {
     // ...mapGetters({inCart: "cartItems"})
   },
   methods: {
     ...mapActions(["fetchCategory"]),
+
+    signedInCheck() {
+      if (this.$store.state.token === null) {
+        this.$router.push("/login");
+      } else {
+        this.$router.push("/user");
+      }
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 #nav {
-  .header{
+  .header {
     display: flex;
     justify-content: space-around;
     padding: 1rem;
-    }
+  }
   .top {
     width: 200px;
     height: 50px;
@@ -70,10 +76,8 @@ export default {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
- 
   }
   .middle {
-   
     input {
       margin: 0;
       padding-left: 1rem;
@@ -91,48 +95,48 @@ export default {
       text-transform: capitalize;
     }
   }
-  .bottom{
+  .bottom {
     display: flex;
     justify-content: space-evenly;
     width: 200px;
+  }
+  .login {
+    width: 50px;
+    height: 50px;
+    border-radius: 0.4rem;
+    border: 1px solid;
+    border-color: #222222;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    transition: 0.5s;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: center;
+    background-image: url("~@/assets/icon_account.svg");
+    &:hover {
+      background-color: #45a049;
     }
-    .login {
-      width: 50px;
-      height: 50px;
-      border-radius: 0.4rem;
-      border: 1px solid;
-      border-color: #222222;
-      background-color: rgba(0, 0, 0, 0);
-      cursor: pointer;
-      transition: 0.5s;
-      background-repeat: no-repeat;
-      background-size: 70%;
-      background-position: center;
-      background-image: url("~@/assets/icon_account.svg");
-      &:hover {
-        background-color: #45a049;
-        }
+  }
+  .card {
+    width: 50px;
+    height: 50px;
+    border-radius: 0.4rem;
+    border: 1px solid;
+    border-color: #222222;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    transition: 0.5s;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: center;
+    background-image: url("~@/assets/shopping-cart.svg");
+    &:hover {
+      background-color: #45a049;
     }
-    .card {
-      width: 50px;
-      height: 50px;
-      border-radius: 0.4rem;
-      border: 1px solid;
-      border-color: #222222;
-      background-color: rgba(0, 0, 0, 0);
-      cursor: pointer;
-      transition: 0.5s;
-      background-repeat: no-repeat;
-      background-size: 70%;
-      background-position: center;
-      background-image: url("~@/assets/shopping-cart.svg");
-      &:hover {
-          background-color: #45a049;
-        }
-    }
-      
-  .navbar{
-     color: #ff6e40;
+  }
+
+  .navbar {
+    color: #ff6e40;
     display: flex;
     flex-flow: row;
     justify-content: space-evenly;
@@ -155,9 +159,5 @@ export default {
       color: #ff6e40;
     }
   }
-
 }
-
-
-
 </style>

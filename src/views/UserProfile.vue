@@ -11,7 +11,7 @@
         <div>
           <aside>
             <h2>Profile</h2>
-            <button>Sign out</button>
+            <button @click="signOutController">Sign out</button>
           </aside>
           <hr>
           <form
@@ -151,7 +151,12 @@ export default {
             alert("Profile updated!");
           });
     },
+  signOutController(){
+    this.$store.dispatch("loggingOut")
+    this.$router.push("/login")
+  }
   },
+
 };
 </script>
 
