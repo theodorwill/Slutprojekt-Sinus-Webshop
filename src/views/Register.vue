@@ -82,7 +82,6 @@ export default {
       ) {
         console.log("Initiate", this.register)
         this.$store.dispatch("signup", this.register).then(() => {
-            alert("Success!")
             this.$router.push('/login')
         });
       } else if (this.register.password !== this.register.validation.password) {
