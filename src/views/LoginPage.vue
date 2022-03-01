@@ -37,7 +37,10 @@
       <hr class="solid" />
       <div class="sign">
         <p>Don’t have an account?</p>
-        <a href="#" @click="click">Sign up here</a>
+        <a
+          href="#"
+          @click="click"
+        >Sign up here</a>
       </div>
     </section>
   </div>
@@ -53,27 +56,26 @@ export default {
       login: {
         email: "",
         password: "",
-      },    
+      },
     };
   },
+
   methods: {
-    logIn() {
+    async logIn() {
       if (this.login.email !== "" && this.login.password !== "") {
-        this.$store.dispatch("login", {
+        await this.$store.dispatch("login", {
           email: this.login.email,
           password: this.login.password,
-        }).then(() => {
-        this.$store.dispatch("getCurrentUser")
-        }).then(() => {
-          this.$router.push('/user')
         });
+        await this.$store.dispatch("getCurrentUser");
+        this.$router.push("/user");
       } else {
         alert("Please input both email and password.");
       }
     },
-    
+
     click() {
-      this.$router.push('/register')
+      this.$router.push("/register");
     },
   },
 };
