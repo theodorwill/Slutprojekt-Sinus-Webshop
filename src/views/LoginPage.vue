@@ -66,7 +66,10 @@ export default {
         await this.$store.dispatch("login", {
           email: this.login.email,
           password: this.login.password,
-        });
+        }).catch(error => {
+          alert("Invalid Email/password or timed out.", error)
+          throw error
+        })
         await this.$store.dispatch("getCurrentUser");
         this.$router.push("/user");
       } else {

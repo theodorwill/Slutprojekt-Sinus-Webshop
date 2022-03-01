@@ -132,29 +132,39 @@ export default {
       }
     },
 
-    updateUserInfo() {
+    async updateUserInfo() {
       if (
         this.register.email !== "" &&
         this.register.name !== "" &&
         this.register.password !== "" &&
+        this.register.validation !== "" &&
         this.register.password === this.validation.password
-      )
-        this.$store
+      ) {
+        await this.$store
           .dispatch("login", {
             email: this.register.email,
             password: this.register.password,
           })
-          .then(() => {
-            this.$store.dispatch("updateUserInfo", this.register);
-          })
-          .then(() => {
-            alert("Profile updated!");
+          .catch((error) => {
+            alert("Invalid Email/password or timed out.", error);
+            throw error;
           });
+        await this.$store.dispatch("updateUserInfo", this.register);
+        alert("Profile updated!");
+      } else if (this.register.name === "") {
+        alert("Please input name");
+      } else if (this.register.password === "") {
+        alert("Please input password");
+      } else if (this.register.validation === "") {
+        alert("Please confirm your password");
+      } else if (this.register.password !== this.validation.password) {
+        alert("Password and confirm does not match!");
+      }
     },
-    signOutController(){
-    this.$store.dispatch("loggingOut")
-    this.$router.push("/login")
-  }
+    signOutController() {
+      this.$store.dispatch("loggingOut");
+      this.$router.push("/login");
+    },
   },
 };
 </script>
