@@ -79,27 +79,3 @@ export async function deleteProduct(id){
   return await axios.delete('/items/'+ id)
 }
 
-
-
-//ADMIN............................................................
-
-export async function addProduct(){
-  return await axios.post('/items')
-}
-
-
-export async function patchProduct(id){
-  return await axios.patch('/items/'+ id)
-}
-
-export async function deleteProduct(id){
-  return await axios.delete('/items/'+ id)
-}
-
-
-// export async function deleteProduct(id){
-//   return await axios.delete('/items/'+ id)
-// }
-// export async function deleteProduct(id){
-//   return await axios.delete('/items/'+ id)
-// }
