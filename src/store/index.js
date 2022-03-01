@@ -1,5 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+
+
+
+
 import * as API from '@/api'
 
 
@@ -26,6 +30,7 @@ export default new Vuex.Store({
 
   },
 
+
   // MUTATIONS..........................................
 
   mutations: {
@@ -41,8 +46,9 @@ export default new Vuex.Store({
       }
     },
 
-    
-     
+
+    //Products categories
+
 
     searchCategory(state, payload) {
       state.categoryName = payload
@@ -59,6 +65,9 @@ export default new Vuex.Store({
     },
 
 
+
+    // Customers Actions
+
     toCart(state, payload) {
       state.cart.push(payload);
     },
@@ -74,6 +83,10 @@ export default new Vuex.Store({
     // saveFavProd(state, payload) {
     //   state.favProduct = payload
     // },
+
+
+
+    // Pagination
 
     setMaxPage(state){
       state.maxPage =  Math.ceil(state.productList.length / 10)
@@ -122,14 +135,17 @@ export default new Vuex.Store({
     async fetchItems(context) {
       try {
         if (context.state.productList.length < 1) {
-          const response = await API.getItems()
-          context.commit('saveInitDisplay', response.data)
-          const responseTwo = await API.getPageTwo()
-          context.commit('savePageTwo', responseTwo.data)
-          const responseThree = await API.getPageThree()
-          context.commit('savePageThree', responseThree.data)
-          const responseFour = await API.getPageFour()
-          context.commit('savePageFour', responseFour.data)
+
+
+          const response = await API.getPage(1)
+          context.commit('saveItems', response.data)
+          const responseTwo = await API.getPage(2)
+          context.commit('saveItems', responseTwo.data)
+          const responseThree = await API.getPage(3)
+          context.commit('saveItems', responseThree.data)
+          const responseFour = await API.getPage(4)
+          context.commit('saveItems', responseFour.data)
+
           context.commit('setMaxPage')
         }
       } catch (error) {

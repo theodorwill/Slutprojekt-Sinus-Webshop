@@ -26,35 +26,14 @@ export async function getUser(){
   return await axios.get('/me')
 }
 
-<<<<<<< Updated upstream
 
-// PRODUCTS.................................................
-
-export async function getItems(){
-  return await axios.get('/items')
-=======
->>>>>>> Stashed changes
-
-// PRODUCTS.................................................
-
-
-export async function getPageTwo(page=2){
-  return await axios.get('/items?page='+ page)
-
-}
-
-export async function getPageThree(page=3){
-  return await axios.get('/items?page='+ page)
-
-}
-
-export async function getPageFour(page=4){
-
-// export async function getPage(page){
+export async function getPage(page){
 
   return await axios.get('/items?page='+ page)
 
 }
+
+
 
 
 
@@ -67,7 +46,7 @@ export async function getFavItem(){
   return await axios.get('/items/10')
 
 
-<<<<<<< Updated upstream
+
 }
 
 
@@ -79,19 +58,25 @@ export async function getOrder() {
 
 export async function postOrder() {
   return await axios.post("/orders");
-=======
->>>>>>> Stashed changes
+
 }
 
 
-// ORDER.......................................................
 
-export async function getOrder() {
-  return await axios.get("/orders");
+
+//ADMIN............................................................
+
+export async function addProduct(){
+  return await axios.post('/items')
 }
 
-export async function postOrder() {
-  return await axios.post("/orders");
+
+export async function patchProduct(id){
+  return await axios.patch('/items/'+ id)
+}
+
+export async function deleteProduct(id){
+  return await axios.delete('/items/'+ id)
 }
 
 
@@ -112,24 +97,6 @@ export async function deleteProduct(id){
 }
 
 
-<<<<<<< Updated upstream
-//ADMIN............................................................
-
-export async function addProduct(){
-  return await axios.post('/items')
-}
-
-
-export async function patchProduct(id){
-  return await axios.patch('/items/'+ id)
-}
-
-export async function deleteProduct(id){
-  return await axios.delete('/items/'+ id)
-}
-
-=======
->>>>>>> Stashed changes
 // export async function deleteProduct(id){
 //   return await axios.delete('/items/'+ id)
 // }
