@@ -187,6 +187,16 @@ export default new Vuex.Store({
       }
     },
 
+    
+    async postOrders(_,items) {
+
+      const response = await API.postOrder(items)
+      console.log('My post order' + response)
+      
+    },
+
+
+
 
     // async getFavProd(context) {
 
@@ -276,6 +286,8 @@ export default new Vuex.Store({
 
   // GETTERS.................
   getters: {
+
+    ids: (state)=> state.cart.map(id => id),
 
     catalogues: (state) => state.productList.slice(state.start, state.end),
 

@@ -30,7 +30,7 @@
           </h3>
           <span class="vat-info">moms {{ moms }} </span>
           <div class="action-sub">
-            <router-link class="pay-now" to="/checkout"> Checkout </router-link>
+            <router-link class="pay-now" to="/checkout" @click.native="setOrder"> Checkout </router-link>
             <router-link class="back" to="/products">Back To Shop</router-link>
           </div>
         </div>
@@ -47,7 +47,7 @@ import { mapActions } from "vuex";
 export default {
   components: { ModelCardCart },
   computed: {
-    ...mapGetters(["cartsProduct"]),
+    ...mapGetters(["cartsProduct","ids"]),
     grandTotal() {
       let total = 0;
       this.cartsProduct.forEach((product) => {
@@ -68,9 +68,13 @@ export default {
       return this.grandTotal * 0.15;
     },
   },
-
+  
   methods:{
-    ...mapActions(['removeAllProduct'])
+    ...mapActions(['removeAllProduct']),
+    setOrder(){
+       this.$store.dispatch('postOrders', this.ids);
+       this.$store.state.cart = []
+    }
   }
 };
 </script>
