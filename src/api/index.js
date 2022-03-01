@@ -51,9 +51,11 @@ export async function getOrder() {
   return await axios.get("/orders");
 }
 
-export async function postOrder() {
-  return await axios.post("/orders");
-
+export async function postOrder(items) {
+  return await axios.post("/orders", {
+    items
+  });
+ 
 }
 
 
