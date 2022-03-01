@@ -44,16 +44,16 @@
         <form action="">
           <div class="name">
             <div>
-              <label for="f-name">First Name:</label>
+              <label for="f-name">Full Name:</label>
               <input
                 type="text"
                 name="f-name"
-                placeholder="First Name"
+                placeholder="Full Name"
                 v-model="userInfo.firstName"
                 required
               />
             </div>
-            <div>
+            <!-- <div>
               <label for="l-name">Last Name:</label>
               <input
                 type="text"
@@ -62,7 +62,7 @@
                 v-model="userInfo.lastName"
                 required
               />
-            </div>
+            </div> -->
           </div>
           <div class="street">
             <label for="name">Street</label>
@@ -129,9 +129,9 @@
 
         <div class="cc-num">
           <label for="card-num">Credit Card Name.</label>
-          <input type="text" name="card-num" />
+          <input type="text" name="card-num" placeholder="Your Name "/>
           <label for="card-num">Credit Card No.</label>
-          <input type="number" name="card-num" />
+          <input type="number" name="card-num" placeholder="Your Card Number"/>
         </div>
         <div class="cc-info">
           <div>
@@ -143,7 +143,7 @@
             <input
               type="text"
               name="security"
-              placeholder="3 digits"
+              placeholder="xxx"
               maxlength="3"
             />
           </div>
@@ -238,27 +238,24 @@ hr.solid {
   }
 }
 .name {
-  justify-content: space-between;
-  display: flex;
+
   width: 50%;
   margin: 2rem auto;
-  div {
-    width: 45%;
-  }
+  
   input {
     width: 100%;
     min-height: 25px;
     border: 1px blue solid;
     font-size: 1rem;
     letter-spacing: 0.15rem;
-    font-family: "Arimo";
+    // font-family: "Arimo";
     margin-top: 5px;
     border-radius: 4px;
   }
   label {
     display: flex;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 1rem;
     letter-spacing: 2px;
   }
 }
@@ -271,14 +268,14 @@ hr.solid {
     border: 1px blue solid;
     font-size: 1rem;
     letter-spacing: 0.15rem;
-    font-family: "Arimo";
+    // font-family: "Arimo";
     margin-top: 5px;
     border-radius: 4px;
   }
   label {
     display: flex;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 1rem;
     letter-spacing: 2px;
   }
 }
@@ -293,7 +290,7 @@ hr.solid {
     border: 1px blue solid;
     font-size: 1rem;
     letter-spacing: 0.15rem;
-    font-family: "Arimo";
+    // font-family: "Arimo";
     margin-top: 5px;
     border-radius: 4px;
   }
@@ -306,14 +303,14 @@ hr.solid {
     border: 1px blue solid;
     font-size: 1rem;
     letter-spacing: 0.15rem;
-    font-family: "Arimo";
+    // font-family: "Arimo";
     margin-top: 5px;
     border-radius: 4px;
   }
   label {
     display: flex;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 1rem;
     letter-spacing: 2px;
   }
 }
@@ -327,7 +324,7 @@ hr.solid {
     border: 1px blue solid;
     font-size: 1rem;
     letter-spacing: 0.15rem;
-    font-family: "Arimo";
+    // font-family: "Arimo";
     margin-top: 5px;
     margin-bottom: 1rem;
     border-radius: 4px;
@@ -335,7 +332,7 @@ hr.solid {
   label {
     display: flex;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 1rem;
     letter-spacing: 2px;
   }
 }
@@ -356,14 +353,14 @@ hr.solid {
     border: 1px blue solid;
     font-size: 1rem;
     letter-spacing: 0.15rem;
-    font-family: "Arimo";
+    // font-family: "Arimo";
     margin-top: 5px;
     border-radius: 4px;
   }
   label {
     display: flex;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 1rem;
     letter-spacing: 2px;
   }
 }

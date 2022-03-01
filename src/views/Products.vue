@@ -10,11 +10,17 @@
     </section>
     <div class="main-gallery">
       <div class="side-bar">
-        Här fixar vi kanske sök knappar som passar kundens önskan.
-
-        <h3>Top on sale</h3>
-        Commented out due to BUG
+        <h1>CATEGORY</h1>
+          <li>skateboard</li>
+          <li>Cap</li>
+          <li>Hoodie</li>
+          <li>Tokebag</li>
+          <li>Wheel</li>
+        <h2>New Products</h2>
         <!-- <ModelCardProductsList  :product="favouriteProd"/> -->
+        <!-- <img src="../assets/skateboard-1.png" alt=""> -->
+        <img src="../assets/new-skateboard-3.png" alt="">
+        <img src="../assets/new-skateboard-3.png" alt="">
       </div>
 
       <div class="product-list" >
@@ -82,8 +88,8 @@ export default {
 .products {
   h2 {
     text-align: start;
-    margin: 24px 0px 0px 72px;
-    font-size: 1.2rem;
+    // margin: 24px 0px 0px 72px;
+    font-size: 2rem;
   }
 
   a {
@@ -101,8 +107,20 @@ export default {
       align-items: center;
       margin: 32px 0px 0px 24px;
       width: 300px;
-      height: 800px;
+      height: 1000px;
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+     li{
+        font-size: 1.3rem;
+        padding: 0.4rem; 
+        list-style: none;
+      }
+      h1{
+        margin-bottom: 0;
+      }
+      img{
+        width: 200px;
+        height: 250px;
+      }
     }
 
     .product-list {
@@ -120,8 +138,18 @@ export default {
   }
 
   button{
-    margin:48px 16px;
-  
+    width: 180px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid;
+    margin:60px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover{
+      background-color: #45a049;
+      transition: 0.5s;
+    }
   }
 }
 </style>

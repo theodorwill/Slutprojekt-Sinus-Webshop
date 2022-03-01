@@ -1,9 +1,11 @@
 <template>
   <div id="nav">
     <div class="header">
+      <router-link to="/">
       <section class="top">
         <div class="logo"></div>
       </section>
+      </router-link>
 
       <section class="middle">
         <router-link to="/category">
@@ -18,14 +20,18 @@
       </section>
 
       <section class="bottom">
-        <router-link to="/cart">
-          <div class="card">
-            <!-- <span>{{inCard.length}}</span> -->
-          </div>
-        </router-link>
-          <div class="login" @click="signedInCheck">
-          </div>
+          <router-link to="/cart">
+        <div class="card">
+          <p>{{cart.length}}</p>
+          <!-- <span>{{inCard.length}}</span> -->
+        </div>
+          </router-link>
+          <router-link to="/login">
+        <div class="login">
+        </div>
+          </router-link>
       </section>
+     
     </div>
 
     <section class="navbar">
@@ -38,15 +44,15 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState} from "vuex";
 export default {
   data() {
     return {
       category: null,
     };
   },
-  computed: {
-    // ...mapGetters({inCart: "cartItems"})
+  computed:{
+    ...mapState(["cart"])
   },
   methods: {
     ...mapActions(["fetchCategory"]),
@@ -116,22 +122,55 @@ export default {
     &:hover {
       background-color: #45a049;
     }
-  }
-  .card {
-    width: 50px;
-    height: 50px;
-    border-radius: 0.4rem;
-    border: 1px solid;
-    border-color: #222222;
-    background-color: rgba(0, 0, 0, 0);
-    cursor: pointer;
-    transition: 0.5s;
-    background-repeat: no-repeat;
-    background-size: 70%;
-    background-position: center;
-    background-image: url("~@/assets/shopping-cart.svg");
-    &:hover {
-      background-color: #45a049;
+    .login {
+      width: 50px;
+      height: 50px;
+      border-radius: 0.4rem;
+      border: 1px solid;
+      border-color: #222222;
+      background-color: rgba(0, 0, 0, 0);
+      cursor: pointer;
+      transition: 0.5s;
+      background-repeat: no-repeat;
+      background-size: 70%;
+      background-position: center;
+      background-image: url("~@/assets/icon_account.svg");
+      &:hover {
+        background-color: #45a049;
+        }
+    }
+    .card {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      border-radius: 0.4rem;
+      border: 1px solid;
+      border-color: #222222;
+      background-color: rgba(0, 0, 0, 0);
+      cursor: pointer;
+      transition: 0.5s;
+      background-repeat: no-repeat;
+      background-size: 70%;
+      background-position: center;
+      background-image: url("~@/assets/shopping-cart.svg");
+      &:hover {
+          background-color: #45a049;
+        }
+      p{
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        width: 1.2rem;
+        height: 1.2rem;
+        border-radius: 100%;
+        background-color: #0076C4;
+        color: #fff;
+        text-align: center;
+        font-style: 1.3rem;
+        font-weight: bold;
+      }
+      
     }
   }
 

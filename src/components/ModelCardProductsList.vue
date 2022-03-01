@@ -43,7 +43,7 @@ export default {
 }
 .model-card {
   width: 224px;
-  height: 340px;
+  height: 360px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background-color: #e0e0e0;
   font-size: 75%;
@@ -58,7 +58,7 @@ export default {
     position: relative;
 
     .product-image {
-      height: 151px;
+      height: 170px;
     }
 
     .cart-icon {
@@ -72,7 +72,7 @@ export default {
   }
 
   .product-info {
-    height: 149px;
+    height: 170px;
 
     background-color: #ffffff;
     padding: 8px;
@@ -146,7 +146,7 @@ export default {
       color: #fff;
       cursor: pointer;
       font-size: 0.55rem;
-      margin: 8px 0px 0px 65px;
+      margin: 25px 0px 0px 65px;
     }
 
     .btn:hover {

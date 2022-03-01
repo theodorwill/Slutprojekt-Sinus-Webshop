@@ -7,7 +7,9 @@
             </router-link>
       </div>
       <h2>scroll down</h2>
-      <img src="../assets/down.svg" alt="">
+      <a href="#scroll-down">
+      <img src="../assets/down.svg" alt="" >
+      </a>
       <div class="middle-main">
           <article class="personas-1">
               <div class="top">
@@ -45,7 +47,7 @@
       </div>
       <h1>Our Mission</h1>
       <hr class="solid">
-      <div class="bottom-main">
+      <div class="bottom-main" id="scroll-down">
           <article class="mission-1">
               <img src="../assets/visibility.svg" alt="">
               <h3>Vision</h3>
@@ -74,6 +76,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+html {
+  scroll-behavior: smooth;
+}
 .top-main{
     // width: 1440px;
     width: 100%;
