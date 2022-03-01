@@ -101,7 +101,7 @@ export default {
       register: {
         email: "",
         name: "",
-        password: "",
+        password: "password",
         address: {
           city: "",
           street: "",
@@ -109,7 +109,7 @@ export default {
         },
       },
       validation: {
-        password: "",
+        password: "password",
       },
     };
   },
@@ -120,16 +120,18 @@ export default {
 
   methods: {
     addUserData() {
-      if (this.$store.state.user.length !== 0) {
-        this.register.email = this.$store.state.user.email;
-        this.register.name = this.$store.state.user.name;
+      console.log("UserProfile, addUserData() log", this.$store.state.user);
+
+      this.register.email = this.$store.state.user.email;
+      this.register.name = this.$store.state.user.name;
+
+      if (this.$store.state.user.address) {
         this.register.address.city = this.$store.state.user.address.city;
         this.register.address.street = this.$store.state.user.address.street;
         this.register.address.zip = this.$store.state.user.address.zip;
       }
     },
 
-    
     updateUserInfo() {
       if (
         this.register.email !== "" &&
@@ -142,9 +144,10 @@ export default {
             email: this.register.email,
             password: this.register.password,
           })
-          .then(() => { 
-            this.$store.dispatch("patchUserInfo", this.register);
-          }).then(() => {
+          .then(() => {
+            this.$store.dispatch("updateUserInfo", this.register);
+          })
+          .then(() => {
             alert("Profile updated!");
           });
     },

@@ -20,9 +20,8 @@ export default new Vuex.Store({
     catgStorage: [],
     catgObjects: {},
     orderList: [],
-
     currentPage: 1,
-    maxPage:null,
+    maxPage: null,
     start: 0,
     end: 10,
     user: [],
@@ -40,7 +39,9 @@ export default new Vuex.Store({
 
       for (let product of products) {
         if (!state.productList.find((item) => item.id === product.id)) {
-          state.productList.push({ ...product })
+          state.productList.push({
+            ...product
+          })
         }
         Vue.set(state.products, product.id, product)
       }
@@ -57,7 +58,9 @@ export default new Vuex.Store({
     saveCategory(state, categoryList) {
       for (let product of categoryList) {
         if (!state.catgStorage.find((item) => item.id === product.id)) {
-          state.catgStorage.push({ ...product })
+          state.catgStorage.push({
+            ...product
+          })
         }
         Vue.set(state.catgObjects, product.id, product)
       }
@@ -88,8 +91,8 @@ export default new Vuex.Store({
 
     // Pagination
 
-    setMaxPage(state){
-      state.maxPage =  Math.ceil(state.productList.length / 10)
+    setMaxPage(state) {
+      state.maxPage = Math.ceil(state.productList.length / 10)
     },
 
     nextPage(state) {
@@ -115,15 +118,12 @@ export default new Vuex.Store({
 
     saveAuthData(state, authData) {
       state.token = authData.token
-      console.log(state.token)
     },
 
     saveUserData(state, userData) {
       state.user = userData
-      console.log(state.user)
+      console.log("saveUserData log", state.user)
     },
-
-
   },
 
 
@@ -151,9 +151,9 @@ export default new Vuex.Store({
       } catch (error) {
         console.log(error)
       }
-     },
+    },
 
-    
+
 
     async fetchCategory(context, payload) {
 
@@ -184,8 +184,6 @@ export default new Vuex.Store({
     },
 
 
-
-
     // async getFavProd(context) {
 
     //   if (context.state.favProduct == null) {
@@ -196,7 +194,10 @@ export default new Vuex.Store({
 
 
 
-    async login(context, { email, password }) {
+    async login(context, {
+      email,
+      password
+    }) {
 
       try {
         const response = await API.login(email, password)
@@ -205,7 +206,7 @@ export default new Vuex.Store({
 
         context.commit('saveAuthData', response.data)
       } catch (error) {
-        console.log(error)
+        console.log("login error!", error)
       }
     },
 
@@ -215,21 +216,28 @@ export default new Vuex.Store({
         const response = await API.getUser()
         context.commit('saveUserData', response.data)
       } catch (error) {
-        console.log(error)
+        console.log("getCurrentUser error", error)
       }
-
     },
 
     async signup(context, payload) {
-
-      const response = await API.registerAccount(payload)
-      if (response) {
-        context.commit('setUser', response.user)
-      } else {
-        throw new Error('could not complete signup')
+      try {
+        await API.registerAccount(payload)
+      } catch (error) {
+        console.log("signup error", error)
       }
+    },
 
+    async updateUserInfo(context, payload) {
 
+      try {
+        const response = await API.updateAccount(payload)
+        context.commit('saveUserData', response.user)
+
+        console.log("updateUserInfo", payload)
+      } catch (error) {
+        console.log("update user error!", error)
+      }
     },
 
 
