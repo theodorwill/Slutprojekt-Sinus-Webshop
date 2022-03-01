@@ -124,6 +124,10 @@ export default new Vuex.Store({
       state.user = userData
       console.log("saveUserData log", state.user)
     },
+
+    signOut(state) {
+      state.token = null;
+    },
   },
 
 
@@ -208,6 +212,10 @@ export default new Vuex.Store({
       } catch (error) {
         console.log("login error!", error)
       }
+    },
+
+    loggingOut(context){
+      context.commit('signOut')
     },
 
     async getCurrentUser(context) {
