@@ -33,10 +33,6 @@ export async function getPage(page){
 
 }
 
-
-
-
-
 export async function getCategory(category){
   return await axios.get('/items?category=' + category)
 
@@ -56,9 +52,10 @@ export async function getOrder() {
   return await axios.get("/orders");
 }
 
-export async function postOrder() {
-  return await axios.post("/orders");
-
+export async function postOrder(items) {
+  return await axios.post("/orders", {
+    items,
+  })
 }
 
 

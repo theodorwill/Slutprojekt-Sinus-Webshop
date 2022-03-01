@@ -127,31 +127,20 @@
           <i class="fa fa-cc-discover" style="color: orange"></i>
         </div>
 
-        <div class="cc-num">
-          <label for="card-num">Credit Card Name.</label>
-          <input type="text" name="card-num" />
-          <label for="card-num">Credit Card No.</label>
-          <input type="number" name="card-num" />
-        </div>
+      
         <div class="cc-info">
-          <div>
-            <label for="card-num">Exp</label>
-            <input type="number" name="expire" placeholder="DD/MM" required />
-          </div>
-          <div>
-            <label for="card-num">CCV</label>
-            <input
-              type="text"
-              name="security"
-              placeholder="3 digits"
-              maxlength="3"
-            />
-          </div>
+          <label for="payment">Select payment options</label>
+         <select name="payment" id="payment">
+           <option value="visa">VISA</option>
+           <option value="master">MASTER</option>
+           <option value="AmericanE">AMERICAN EXP.</option>
+           <option value="discover">DISCOVER</option>
+         </select>
         </div>
        
         
         <router-link to="/user" class="btn"
-          ><button @click="fetchOrders"> Save and Buy </button>
+         @click.native="fetchOrders" >Save and buy
         </router-link>
       </section>
     </div>

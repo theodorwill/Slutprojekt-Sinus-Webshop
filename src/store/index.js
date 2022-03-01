@@ -135,8 +135,6 @@ export default new Vuex.Store({
     async fetchItems(context) {
       try {
         if (context.state.productList.length < 1) {
-
-
           const response = await API.getPage(1)
           context.commit('saveItems', response.data)
           const responseTwo = await API.getPage(2)
@@ -181,6 +179,13 @@ export default new Vuex.Store({
       } catch (error) {
         console.log(error)
       }
+    },
+
+
+    async postOrders(_,items) {
+
+    await  API.postOrder(items)
+      
     },
 
 
@@ -260,7 +265,7 @@ export default new Vuex.Store({
 
   // GETTERS.................
   getters: {
-
+    ids: (state) => state.cart.map(i => i),
     catalogues: (state) => state.productList.slice(state.start, state.end),
 
     cartsProduct: (state) => state.cart.map(id => state.productList.find(product => product.id == id)),
