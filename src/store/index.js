@@ -202,16 +202,10 @@ export default new Vuex.Store({
       email,
       password
     }) {
-
-      try {
         const response = await API.login(email, password)
         console.log(response)
         API.saveToken(response.data.token)
-
-        context.commit('saveAuthData', response.data)
-      } catch (error) {
-        console.log("login error!", error)
-      }
+        context.commit('saveAuthData', response.data)   
     },
 
     loggingOut(context){
@@ -237,15 +231,13 @@ export default new Vuex.Store({
     },
 
     async updateUserInfo(context, payload) {
-
       try {
-        const response = await API.updateAccount(payload)
-        context.commit('saveUserData', response.user)
-
-        console.log("updateUserInfo", payload)
+         await API.updateAccount(payload)
       } catch (error) {
         console.log("update user error!", error)
+        throw error
       }
+      context.commit('saveUserData', payload)
     },
 
 
