@@ -61,10 +61,33 @@
         </router-link>
       </div>
     </section>
+      <h1>Upcoming Products </h1>
     <section class="bottom">
-      <div>
-        <h1>Up comming products</h1>
-      </div>
+      <article class="product-1">
+        <img src="../assets/new-skateboard-3.png" alt="">
+        <h2>skateboard</h2>
+        <p><span>PRICE:</span><span>SEK 599</span></p>
+        <p class="discteption">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet, at.</p>
+      </article>
+      <article class="product-2">
+        <img src="../assets/new-skateboard-3.png" alt="">
+        <h2>skateboard</h2>
+        <p><span>PRICE:</span><span>SEK 599</span></p>
+        <p class="discteption">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet, at.</p>
+      </article>
+      <article class="product-3">
+        <img src="../assets/new-skateboard-3.png" alt="">
+        <h2>skateboard</h2>
+        <p><span>PRICE:</span><span>SEK 599</span></p>
+        <p class="discteption">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet, at.</p>
+      </article>
+      <article class="product-4">
+        <img src="../assets/new-skateboard-3.png" alt="">
+        <h2>skateboard</h2>
+        <p><span>PRICE:</span><span>SEK 599</span></p>
+        <p class="discteption">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet, at.</p>
+      </article>
+     
     </section>
   </div>
 </template>
@@ -83,8 +106,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.contact {
-}
+
 .top {
   width: 100%;
   height: 80px;
@@ -107,7 +129,7 @@ export default {
 .middle-1 {
   h3 {
     padding: 2rem;
-    font-size: 1.5rem;
+    font-size: 2.2rem;
   }
   .container {
     width: 600px;
@@ -150,6 +172,7 @@ export default {
     display: flex;
     margin-left: 4rem;
     padding: 2rem;
+    font-size: 1.8rem;
   }
 
   .product-list-container {
@@ -161,14 +184,83 @@ export default {
     margin: 32px auto;
   }
 }
+h1{
+  margin: 15rem 0 2rem 4rem ;
+  width: 1250px;
+  text-align: start;
+}
 .bottom {
-  width: 1000px;
-  height: 400px;
-  margin: 10rem auto;
-  background-color: #2091f9;
-  h1 {
-    font-size: 4rem;
-    padding: 5rem 0;
+  width: 1250px;
+  height: 500px;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .product-1{
+    // background-color: #2091f9;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    width: 300px;
+    margin: 2rem;
+    img{
+      width: 280px;
+      height: 350px;
+    }
+    p{
+      span{
+        padding: 0.5rem;
+     } 
+    }
+  }
+  .product-2{
+     border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    width: 300px;
+    margin: 2rem;
+    img{
+      width: 280px;
+      height: 350px;
+    }
+    p{
+      span{
+        padding: 0.5rem;
+     } 
+    }
+  }
+  .product-3{
+     border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    width: 300px;
+    margin: 2rem;
+    img{
+      width: 280px;
+      height: 350px;
+    }
+    p{
+      span{
+        padding: 0.5rem;
+     } 
+    }
+  }
+  .product-4{
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    width: 300px;
+    margin: 2rem;
+    img{
+      width: 280px;
+      height: 350px;
+    }
+    p{
+     span{
+       padding: 0.5rem;
+     } 
+    }
   }
 }
 </style>

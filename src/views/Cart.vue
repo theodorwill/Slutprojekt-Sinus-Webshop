@@ -31,7 +31,7 @@
           <span class="vat-info">moms {{ moms }} </span>
           <div class="action-sub">
             <router-link class="pay-now" to="/checkout"> Checkout </router-link>
-            <router-link class="back" to="/products">Back to shop</router-link>
+            <router-link class="back" to="/products">Back To Shop</router-link>
           </div>
         </div>
       </article>

@@ -174,6 +174,7 @@ export default {
         font-size: 1rem;
         cursor: pointer;
         border-radius: 10px;
+        border: 1px solid black;
         &:hover{
           background-color: #0076C4;
           transition: 0.3s;
