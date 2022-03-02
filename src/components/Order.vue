@@ -85,12 +85,17 @@ export default {
       return total;
     },
 
+    color() {
+      const str = this.item.title;
+      return str;
+
     itemsNumber() {
       let num = 0;
       this.cartsProduct.forEach((item) => {
         num += item.amount;
       });
       return num;
+
     },
   },
 };

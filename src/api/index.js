@@ -36,9 +36,7 @@ export async function getPage(page) {
   return await axios.get('/items?page=' + page)
 } 
 
-export async function getSinglgeProduct(id) {
-  return await axios.get('/items/' + id)
-}
+
 
 export async function getCategory(category) {
   return await axios.get('/items?category=' + category)
