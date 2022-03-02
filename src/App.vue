@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <router-view />
+    <router-view class="router-main"/>
     <HuvudPageFooter />
   </div>
 </template>
@@ -17,7 +17,6 @@ export default {
     // LoginModal
   },
 
- 
   created() {
     this.$store.dispatch("fetchItems");
   },
@@ -40,14 +39,24 @@ export default {
   --pagebar-color:  #eb5509;
 }
 
-html, body {
-  width: 1440px;
-  margin: auto;
+body {
+  width: 100vw;
   display: flex;
   flex-flow: column;
+  justify-content: center;
   scroll-behavior: smooth;
-
 }
+
+Header{
+  width: 100vw;
+}
+
+.router-main{
+  margin: auto;
+  width: 1440px;
+  align-self: center;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

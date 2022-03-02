@@ -33,32 +33,32 @@
     </div>
     <h2 style="text-align:" >Our Team</h2>
     <div class="our-teams">
-      <div class="person-1">
-        <img src="../assets/rashadul.png" alt="" />
+      <div class="person">
+        <div class="images rashadul" alt=""/>
         <h2>Rashadul</h2>
         <p class="title">Art Director</p>
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
         <p>rashadul@example.com</p>
         <p><button class="button">Contact</button></p>
       </div>
-      <div class="person-2">
-        <img src="../assets/omar.png" alt="" />
+      <div class="person">
+        <div class="images omar" alt=""/>
         <h2>Omar</h2>
         <p class="title">Art Director</p>
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
         <p>omarhuba@example.com</p>
         <p><button class="button">Contact</button></p>
       </div>
-      <div class="person-3">
-        <img src="../assets/tw.jpg" alt="" />
+      <div class="person">
+        <div class="images theow" alt=""/>
         <h2>Theo</h2>
         <p class="title">Art Director</p>
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
         <p>theow@example.com</p>
         <p><button class="button">Contact</button></p>
       </div>
-      <div class="person-4">
-        <img src="../assets/giash.jpg" alt="" />
+      <div class="person">
+        <div class="images giash" alt=""/>
         <h2>Giash</h2>
         <p class="title">Art Director</p>
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
@@ -74,6 +74,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+
 .top {
   width: 100%;
   height: 80px;
@@ -113,10 +114,7 @@ h2{
   // grid-gap: 1rem;
   padding: 1rem 3rem;
 }
-.person-1,
-.person-2,
-.person-3,
-.person-4 {
+.person {
   width: 300px;
   margin: 1rem 1rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -153,5 +151,36 @@ h2{
       transition: 0.5s;
     }
   }
+}
+
+.images{
+  width: 200px;
+  height: 200px;
+  margin: 2rem auto auto auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+.rashadul{
+  background-image: url("../assets/rashadul.png");
+  background-size: 100%;
+  background-position: center top;
+}
+
+.omar{
+  background-image: url("../assets/omar.png");
+  background-size: 100%;
+}
+
+.theow{
+  background-image: url("../assets/tw.jpg");
+  background-size: cover;
+}
+
+.giash{
+  background-image: url("../assets/giash.jpg");
+  background-size: 100%;
+  background-position: center bottom;
 }
 </style>
