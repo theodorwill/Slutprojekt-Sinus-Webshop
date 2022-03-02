@@ -12,7 +12,9 @@
           <aside>
             <h2>Profile</h2>
             <button @click="signOutController">Sign out</button>
+            
           </aside>
+           <router-link to ="/orders" @click.native="fetchOrders">Order history</router-link>
           <hr>
           <form
             @submit.prevent="updateUserInfo"
@@ -76,14 +78,15 @@
         </div>
       </v-tab>
 
-      <v-tab title="Order history" >
-        <div class="order-history" >
-          <h1>Order history</h1>
+      
+       
+         
           <hr>
-        </div>
-      </v-tab>
+
+     
+     
     </vue-tabs>
-     <button @click="fetchOrders">Order history</button>
+    
   </div>
 </template>
 

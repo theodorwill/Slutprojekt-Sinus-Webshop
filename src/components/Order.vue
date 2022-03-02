@@ -68,6 +68,7 @@
     </table>
     <router-link to="/producs">BACK TO SHOP</router-link>
   </div>
+
 </template>
 
 <script>
