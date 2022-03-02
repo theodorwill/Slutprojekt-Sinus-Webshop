@@ -47,7 +47,8 @@
         <div class="btn">
            <p v-if="eventDisable">*Minimum 1 quantity required!</p>
           <button class="btn-add" :disabled="eventDisable" @click="addToCart">ADD TO CART</button>
-          <button class="btn-back">BACK TO SHOP</button>
+          
+          <button class="btn-back"><router-link to="/products">BACK TO SHOP</router-link></button>
         </div>
       </section>
     </div>
@@ -178,6 +179,9 @@ export default {
         &:hover{
           background-color: #0076C4;
           transition: 0.3s;
+        }
+        a{
+          text-decoration: none;
         }
 
       }
