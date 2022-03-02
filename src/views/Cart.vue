@@ -29,11 +29,11 @@
             <strong>AMOUNT TO PAY:</strong> <strong>{{ netTotal }}</strong>
           </h3>
           <span class="vat-info">moms {{ moms }} </span>
-          <div class="action-sub" v-if="inLoged">
+          <!-- <div class="action-sub" v-if="inLoged">
             <router-link class="pay-now" to="/user" > Checkout </router-link>
             <router-link class="back" to="/products">Back To Shop</router-link>
-          </div>
-          <div class="action-sub" v-else>
+          </div> -->
+          <div class="action-sub">
             <router-link class="pay-now" to="/checkout" > Checkout </router-link>
             <router-link class="back" to="/products">Back To Shop</router-link>
           </div>
@@ -77,10 +77,7 @@ export default {
   
   methods:{
     ...mapActions(['removeAllProduct', 'fetchOrders']),
-    setOrder(){
-       this.$store.dispatch('postOrders', this.ids);
-       this.$store.state.cart = []
-    }
+    
   }
 };
 </script>
