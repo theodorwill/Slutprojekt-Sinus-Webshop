@@ -33,7 +33,7 @@ export default {
 
     color() {
       const str = this.item.title;
-      return str.toLowerCase();
+      return str;
     },
   },
 };
