@@ -39,11 +39,13 @@ export default {
   --color-Btn: #1c1c1c;
   --pagebar-color:  #eb5509;
 }
-html body {
+
+html, body {
   width: 1440px;
   margin: auto;
   display: flex;
   flex-flow: column;
+  scroll-behavior: smooth;
 
 }
 #app {
