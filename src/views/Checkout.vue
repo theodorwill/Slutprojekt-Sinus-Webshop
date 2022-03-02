@@ -127,32 +127,18 @@
           <i class="fa fa-cc-discover" style="color: orange"></i>
         </div>
 
-        <div class="cc-num">
-          <label for="card-num">Credit Card Name.</label>
-          <input type="text" name="card-num" placeholder="Your Name "/>
-          <label for="card-num">Credit Card No.</label>
-          <input type="number" name="card-num" placeholder="Your Card Number"/>
-        </div>
         <div class="cc-info">
-          <div>
-            <label for="card-num">Exp</label>
-            <input type="number" name="expire" placeholder="DD/MM" required />
-          </div>
-          <div>
-            <label for="card-num">CCV</label>
-            <input
-              type="text"
-              name="security"
-              placeholder="XXX"
-              maxlength="3"
-            />
-          </div>
+          <label for="payment">Choose your payment method</label>
+          <select name="payment" id="payment" v-model="userInfo.payMthods">
+            <option value="visa">VISA</option>
+            <option value="master">MASTER</option>
+            <option value="express">EXPRESS</option>
+            <option value="discovery">DISCOVERY</option>
+          </select>
+          <router-link to="/orders" class="btn" @click.native="fetchDelvAddress(userInfo)"
+            >SAVE AND BUY
+          </router-link>
         </div>
-       
-        
-        <router-link to="/user" class="btn"
-          ><button @click="fetchOrders"> Save and Buy </button>
-        </router-link>
       </section>
     </div>
   </div>
@@ -172,12 +158,13 @@ export default {
           city: null,
           zip: null,
         },
+        payMthods: null
       },
     };
   },
 
   methods: {
-    ...mapActions(["fetchOrders"]),
+    ...mapActions(["fetchDelvAddress"]),
   },
 };
 </script>
@@ -339,45 +326,28 @@ hr.solid {
 
 .cc-info {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items:center;
   width: 25%;
   margin: auto;
 
-  div {
-    width: 45%;
-    margin-bottom: 2rem;
-  }
-  input {
-    width: 100%;
-    min-height: 25px;
-    border: 1px blue solid;
-    font-size: 1rem;
-    letter-spacing: 0.15rem;
-    // font-family: "Arimo";
-    margin-top: 5px;
-    border-radius: 4px;
-  }
   label {
-    display: flex;
-    text-transform: uppercase;
     font-size: 1rem;
     letter-spacing: 2px;
+    margin:16px 0px;
   }
-}
-.billing {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-}
 
-.btn {
-
-  button{
+  select{
+    margin: 16px 0px;
+    padding: 8px 32px;
+    border-radius: 10px;
+  
+  }
+  a {
     background-color: #04aa6d;
     color: white;
     padding: 12px;
-    margin: 10px 0;
+    margin: 60px 0px;
     border: 1px solid black;
     width: 200px;
     border-radius: 10px;
@@ -386,6 +356,6 @@ hr.solid {
     &:hover {
       background-color: #45a049;
     }
-  }
+}
 }
 </style>
