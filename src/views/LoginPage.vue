@@ -18,16 +18,18 @@
         <form @submit.prevent="logIn">
           <label for="email">Email</label>
           <input
-            type="text"
+            type="email"
             name="email"
-            placeholder="Type Your Email Here..."
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required
+            placeholder="email@example.com"
             v-model="login.email"
           />
-          <label for="email">Password</label>
+          <label for="password">Password</label>
           <input
             type="password"
-            name="email"
-            placeholder="Type Your Password Here..."
+            name="password"
+            pattern=".{8,}" required
+            placeholder="Password 8 or more letters/symbols"
             v-model="login.password"
           />
           <a href="#">Forget your password ?</a>
