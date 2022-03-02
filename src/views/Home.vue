@@ -76,9 +76,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-html {
-  scroll-behavior: smooth;
-}
+
 .top-main{
     // width: 1440px;
     width: 100%;
