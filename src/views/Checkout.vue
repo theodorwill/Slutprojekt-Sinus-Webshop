@@ -44,12 +44,12 @@
         <form action="">
           <div class="name">
             <div>
-              <label for="f-name">Full Name:</label>
+              <label for="f-name">Name</label>
               <input
                 type="text"
                 name="f-name"
-                placeholder="Full Name"
-                v-model="userInfo.firstName"
+                placeholder="Name"
+                v-model="userInfo.name"
                 required
               />
             </div>
@@ -75,21 +75,6 @@
             />
           </div>
           <div class="address-info">
-            <div>
-              <label for="city">Land</label>
-              <select
-                id="country"
-                name="country"
-                v-model="userInfo.address.land"
-                required
-              >
-                <option value="Sweden">SWEDEN</option>
-                <option value="Norway">NORWAY</option>
-                <option value="Denmark">DANMARK</option>
-                <option value="Finland">FINLAND</option>
-                <option value="IceLand">ICELAND</option>
-              </select>
-            </div>
             <div>
               <label for="state">City</label>
               <input
@@ -135,9 +120,13 @@
             <option value="express">EXPRESS</option>
             <option value="discovery">DISCOVERY</option>
           </select>
-          <router-link to="/orders" class="btn" @click.native="fetchDelvAddress(userInfo)"
-            >SAVE AND BUY
+           <button v-if="customerLoged == true"  class="btn" @click="setOrder"
+            >SAVE AND BUY , Get
+          </button>
+          <router-link  to="/orders" class="btn" @click.native="fetchDelvAddress(userInfo)"
+           v-else >SAVE AND BUY
           </router-link>
+          
         </div>
       </section>
     </div>
@@ -146,26 +135,60 @@
 
 <script>
 import { mapActions } from "vuex";
+import {mapGetters} from "vuex"
 export default {
   data() {
     return {
       userInfo: {
-        firstName: null,
-        lastName: null,
+        email:'',
+        name: '',
         address: {
-          street: null,
-          land: null,
-          city: null,
-          zip: null,
+          street: '',
+          city: '',
+          zip: '',
         },
-        payMthods: null
+        payMthods: ''
       },
     };
   },
 
-  methods: {
-    ...mapActions(["fetchDelvAddress"]),
+ 
+  created(){
+    this.autoFillInfo()
   },
+
+
+   computed:{
+     ...mapGetters(['customerLoged','ids']),
+
+  },
+
+
+
+  methods: {
+    ...mapActions(["fetchDelvAddress", 'postOrders']),
+
+    autoFillInfo(){
+      if(this.$store.token !== null){
+        this.userInfo.email = this.$store.state.user.email;
+        this.userInfo.name = this.$store.state.user.name;
+
+        if (this.$store.state.user.address) {
+        this.userInfo.address.city = this.$store.state.user.address.city;
+        this.userInfo.address.street = this.$store.state.user.address.street;
+        this.userInfo.address.zip = this.$store.state.user.address.zip;
+      }
+      }
+    }, 
+
+    setOrder(){
+       this.$store.dispatch('postOrders', this.ids);
+       this.$store.state.cart = []
+    }
+  },
+
+
+  
 };
 </script>
 

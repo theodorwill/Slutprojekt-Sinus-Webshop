@@ -76,13 +76,14 @@
         </div>
       </v-tab>
 
-      <v-tab title="Order history">
-        <div class="order-history">
+      <v-tab title="Order history" >
+        <div class="order-history" >
           <h1>Order history</h1>
           <hr>
         </div>
       </v-tab>
     </vue-tabs>
+     <button @click="fetchOrders">Order history</button>
   </div>
 </template>
 
@@ -90,6 +91,7 @@
 import { VueTabs, VTab } from "vue-nav-tabs";
 //you can also import this in your style tag
 import "vue-nav-tabs/themes/vue-tabs.css";
+import {mapActions} from 'vuex'
 export default {
   components: {
     VueTabs,
@@ -119,6 +121,7 @@ export default {
   },
 
   methods: {
+    ...mapActions(['fetchOrders']),
     addUserData() {
       console.log("UserProfile, addUserData() log", this.$store.state.user);
 

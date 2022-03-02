@@ -299,7 +299,7 @@ export default new Vuex.Store({
     nextBtnDisabled: (state) => state.currentPage == state.maxPage ? true : false,
     prevBtnDisabled: (state) => state.start == 0 ? true : false,
 
-    inLoged: (state) => state.token == null ? false : true,
+    customerLoged: (state) => (state.token !== null && state.user.role == 'customer' || state.user.role == 'admin') ? true : false,
 
     
 
