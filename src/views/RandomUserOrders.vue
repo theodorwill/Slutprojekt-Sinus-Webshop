@@ -1,19 +1,19 @@
 <template>
   <div>
-    <UserOrder/>
+
+    <h1>Order Successful!</h1>
+
+    <CartOrder />
 
   </div>
 </template>
 
 <script>
-
-import UserOrder from "../components/Order.vue"
+import CartOrder from "../components/CartOrder.vue";
 export default {
-  components: { UserOrder },
-
-}
+  components: { CartOrder },
+};
 </script>
 
 <style>
-
 </style>

@@ -77,28 +77,29 @@
           </form>
         </div>
       </v-tab>
-
-      
-       
-         
+       <v-tab title="Order history" >
+        <div class="order-history" >
+          <h1>Order history</h1>
           <hr>
+          <UserOrder/>
+        </div>
 
-     
-     
+      </v-tab>
     </vue-tabs>
-    
   </div>
 </template>
 
 <script>
 import { VueTabs, VTab } from "vue-nav-tabs";
-//you can also import this in your style tag
 import "vue-nav-tabs/themes/vue-tabs.css";
 import {mapActions} from 'vuex'
+import UserOrder from "../components/Order.vue"
+
 export default {
   components: {
     VueTabs,
     VTab,
+    UserOrder
   },
 
   data() {
