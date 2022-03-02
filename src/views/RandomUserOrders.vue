@@ -4,19 +4,55 @@
       You didn't purchase any product yet!
     </p>
     <div class="top-block">
-      <h1>Category based overview of orders</h1>
-      <div class="summery">
-        <p>Paid amount (sek): {{ subTotal }}</p>
-        <p>Number of category: {{ cartsProduct.length }}</p>
-        <p>Number of items: {{ itemsNumber }}</p>
-      </div>
+      <h2>Order id:</h2>
+      <h2>Status:</h2>
     </div>
 
-    <ul>
+    <ul v-if="customerLoged == true">
+      <li v-for="item in cartHistory" :key="item.id">
+        <Order :item="item" />
+      </li>
+    </ul>
+    <ul v-else>
       <li v-for="item in cartsProduct" :key="item.id">
         <Order :item="item" />
       </li>
     </ul>
+
+    <table>
+      <tr>
+        <th>Order id:</th>
+        <td>123</td>
+      </tr>
+      <tr>
+        <th>Status:</th>
+        <td>inProcess</td>
+      </tr>
+      <tr>
+        <th>Shipping city:</th>
+        <td>something</td>
+      </tr>
+      <tr>
+        <th>Shipping street:</th>
+        <td>something 12</td>
+      </tr>
+      <tr>
+        <th>Shipping zip:</th>
+        <td>12345</td>
+      </tr>
+      <tr>
+        <th>Products:</th>
+        <td>{{ cartsProduct.length }}</td>
+      </tr>
+      <tr>
+        <th>Product quantity:</th>
+        <td>{{ itemsNumber }}</td>
+      </tr>
+      <tr>
+        <th>Total sum:</th>
+        <td>SEK {{ subTotal }}</td>
+      </tr>
+    </table>
     <router-link to="/producs">BACK TO SHOP</router-link>
   </div>
 </template>
@@ -27,7 +63,7 @@ import { mapGetters } from "vuex";
 export default {
   components: { Order },
   computed: {
-    ...mapGetters(["cartsProduct"]),
+    ...mapGetters(["cartsProduct", 'customerLoged', 'cartHistory']),
 
     subTotal() {
       let total = 0;
@@ -55,8 +91,14 @@ export default {
   box-sizing: border-box;
 }
 .products {
-  width: 100%;
-  margin-bottom: 100px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 80%;
+  padding: 50px 0;
+  margin: 50px auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 20%);
 
   .top-block {
     display: flex;
@@ -67,7 +109,7 @@ export default {
     }
 
     .summery {
-       margin-top: 20px; 
+      margin-top: 20px;
       p {
         text-align: center;
         margin: 4px;
@@ -84,13 +126,30 @@ export default {
     margin: 96px auto;
   }
 
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 96%;
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  }
+
   ul {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    width: 94%;
+    display: flex;
+    flex-flow: column;
+    padding: 1rem 0;
 
     li {
       list-style-type: none;
+      margin: 1rem 0;
     }
   }
   a {

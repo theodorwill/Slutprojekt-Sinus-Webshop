@@ -165,6 +165,9 @@ export default new Vuex.Store({
 
 
 
+
+
+
     async fetchCategory(context, payload) {
 
       try {
@@ -182,11 +185,18 @@ export default new Vuex.Store({
       }
     },
 
+   async fetchSingleProduct(contxt,id) {
+     const response = await API.getSinglgeProduct(id)
+     console.log(response)
+  },
+
 
     async fetchOrders(context) {
       try {
         const response = await API.getOrder();
         context.commit("saveOrder", response.data);
+        response.data.forEach(order => order.items.forEach(item => context.dispatch('fetchSingleProduct', item.ProductId)
+          ))
         console.log(response.data)
        
       } catch (error) {
@@ -293,6 +303,11 @@ export default new Vuex.Store({
     catalogues: (state) => state.productList.slice(state.start, state.end),
 
     cartsProduct: (state) => state.cart.map(id => state.productList.find(product => product.id == id)),
+
+    // cartHistory(state){
+     
+    //   },
+      
 
     // singleCategory: (state) => state.catgStorage.filter(product => product.category == state.categoryName),
 

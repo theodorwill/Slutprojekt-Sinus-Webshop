@@ -2,7 +2,6 @@
 <!-- user orders page -->
   <div class="item-model">
     <header>
-      <p>Order details</p>
       <h1 :class="color">{{ item.title }}</h1>
     </header>
     <main>
@@ -19,11 +18,8 @@
         </div>
       </div>
     </main>
-    <footer>
-      <img src="../assets/bar_code.svg" alt="Bar code" />
-      <p>#A2ED7</p>
-    </footer>
   </div>
+
 </template>
 
 <script>
@@ -37,9 +33,8 @@ export default {
 
     color() {
       const str = this.item.title;
-      return str.toLowerCase()
+      return str.toLowerCase();
     },
-
   },
 };
 </script>
@@ -51,33 +46,31 @@ export default {
   box-sizing: border-box;
 }
 .item-model {
-  width: 312px;
-  height: 442px;
+  width: 100%;
+  height: auto;
   background-color: #fff;
   padding: 14px;
-  margin: 80px auto 0px auto;
   border-radius: 5px;
-  
-
-  box-shadow: -1px 0px 17px 12px rgba(82, 82, 82, 0.29);
+  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 20%);
 
   header {
-    height: 88px;
+    
     h1 {
       font-family: "Sansita", sans-serif;
       font-style: normal;
       font-weight: 700;
-      font-size: 26px;
+      font-size: 1.6rem;
       line-height: 30px;
+      padding:1rem;
 
       align-items: center;
 
       color: #eb5509;
-      margin: 20px 0px 0px 10px;
+      
     }
 
-    .Green{
-        color:green;
+    .Green {
+      color: green;
     }
 
     p {
@@ -90,7 +83,7 @@ export default {
       align-items: center;
 
       color: rgba(0, 0, 0, 0.4);
-      margin-left: 10px;
+      
     }
   }
 
@@ -111,7 +104,7 @@ export default {
         align-items: center;
 
         color: rgba(0, 0, 0, 0.4);
-        margin-left: 10px;
+        
       }
 
       h2 {
@@ -124,8 +117,7 @@ export default {
         align-items: center;
 
         color: rgba(0, 0, 0, 0.7);
-        margin: 10px 0px 6px 10px;
-        margin-left: 10px;
+        
       }
 
       .item {
@@ -134,10 +126,7 @@ export default {
         font-weight: bold;
         font-size: 10px;
         line-height: 12px;
-
         align-items: center;
-
-        margin: 0px 0px 32px 10px;
       }
     }
     .others-info {
@@ -148,7 +137,7 @@ export default {
         padding: 12px 0px;
         p {
           text-align: center;
-          
+
           font-style: normal;
           font-weight: 600;
           font-size: 18px;
@@ -173,26 +162,7 @@ export default {
       }
     }
   }
-
-  footer {
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    height: 120px;
-    margin-top: 28px;
-    p {
-      font-family: "Fira Sans", sans-serif;
-      font-style: normal;
-      font-weight: bold;
-      margin-top:8px;
-
-      color: rgba(0, 0, 0, 0.4);
-    }
-  }
 }
 
-
 // styling test
-
 </style>
