@@ -88,7 +88,7 @@ export default {
     color() {
       const str = this.item.title;
       return str;
-
+    },
     itemsNumber() {
       let num = 0;
       this.cartsProduct.forEach((item) => {
