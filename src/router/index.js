@@ -12,6 +12,8 @@ import Admin from '@/views/Admin.vue'
 import SingleProduct from '@/views/SingleProduct.vue'
 import Category from '@/views/Category.vue'
 import Register from '@/views/Register.vue'
+import Orders from '@/views/RandomUserOrders.vue'
+
 
 
 
@@ -42,6 +44,13 @@ const routes = [
     name: Category,
     component: Category
   },
+
+  {
+    path: '/orders',
+    name: Orders,
+    component: Orders
+  },
+
   {
     path: '/contact',
     name: 'contact',

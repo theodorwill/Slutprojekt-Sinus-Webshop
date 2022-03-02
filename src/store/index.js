@@ -25,6 +25,7 @@ export default new Vuex.Store({
     start: 0,
     end: 10,
     user: [],
+    delivery:null
 
 
   },
@@ -113,6 +114,11 @@ export default new Vuex.Store({
       state.orderList = payload
     },
 
+    //ACTIONS REQUIRED ..............................
+    saveDelvAddress(state,data) {
+      state.delivery = data
+    },
+
 
     // Users Authentications
 
@@ -181,7 +187,8 @@ export default new Vuex.Store({
       try {
         const response = await API.getOrder();
         context.commit("saveOrder", response.data);
-        console.log(response)
+        console.log(response.data)
+       
       } catch (error) {
         console.log(error)
       }
@@ -194,9 +201,6 @@ export default new Vuex.Store({
       console.log('My post order' + response)
       
     },
-
-
-
 
     // async getFavProd(context) {
 
@@ -267,6 +271,11 @@ export default new Vuex.Store({
       }
     },
 
+   fetchDelvAddress(context, payload) {
+       context.commit('saveDelvAddress', payload)
+      },
+  
+
     removeProduct(context, payload) {
       context.commit('removeProduct', payload)
     },
@@ -289,6 +298,8 @@ export default new Vuex.Store({
 
     nextBtnDisabled: (state) => state.currentPage == state.maxPage ? true : false,
     prevBtnDisabled: (state) => state.start == 0 ? true : false,
+
+    inLoged: (state) => state.token == null ? false : true,
 
     
 

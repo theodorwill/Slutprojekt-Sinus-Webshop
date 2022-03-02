@@ -1,4 +1,7 @@
 <template>
+
+<!-- user orders page -->
+
   <div class="item-model">
     <header>
       <p>Order details</p>
@@ -191,5 +194,7 @@ export default {
   }
 }
 
+
 // styling test
+
 </style>
