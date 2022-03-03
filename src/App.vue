@@ -38,7 +38,9 @@ export default {
   --color-Btn: #1c1c1c;
   --pagebar-color:  #eb5509;
 }
-
+html{
+  scroll-behavior: smooth;
+}
 body {
   width: 100vw;
   display: flex;
