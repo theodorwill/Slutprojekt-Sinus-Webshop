@@ -11,7 +11,7 @@
     <section class="middle-1">
       <h3>Contact us</h3>
       <div class="container">
-        <form action="/action_page.php">
+        <form action="" prevent >
           <label for="fname">Your Name</label>
           <input
             type="text"

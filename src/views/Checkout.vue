@@ -122,7 +122,11 @@
           </select>
            <router-link to="/user" v-if="customerLoged == true"  class="btn" @click.native="setOrder"
             >SAVE AND BUY , Get
+
           </router-link>
+
+        
+
           <router-link  to="/orders" class="btn" @click.native="fetchDelvAddress(userInfo)"
            v-else >SAVE AND BUY
           </router-link>

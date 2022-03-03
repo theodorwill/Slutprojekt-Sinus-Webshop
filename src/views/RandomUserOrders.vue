@@ -1,4 +1,5 @@
 <template>
+
   <div class="main">
     <section class="top">
       <h1>CONTACT</h1>
@@ -106,10 +107,18 @@
       <router-link to="/producs">BACK TO SHOP</router-link>
      
     </div>
+  
+
+    
+
+ 
+
+
   </div>
 </template>
 
 <script>
+
 import Order from "../components/Order.vue";
 import { mapGetters } from "vuex";
 import {mapState} from 'vuex'
@@ -253,4 +262,6 @@ export default {
     }
   }
 }
+
+
 </style>

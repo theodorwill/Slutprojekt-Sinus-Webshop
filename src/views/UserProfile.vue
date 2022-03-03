@@ -13,7 +13,9 @@
             <h2>Profile</h2>
              <router-link to='/orders' @click.native="fetchOrders">Order history</router-link>
             <button @click="signOutController">Sign out</button>
+            
           </aside>
+           <router-link to ="/orders" @click.native="fetchOrders">Order history</router-link>
           <hr>
           <form
             @submit.prevent="updateUserInfo"
@@ -31,7 +33,10 @@
             <input
               type="text"
               name="name"
-              placeholder="First, Last"
+              placeholder="Firstname Lastname"
+              pattern="[a-zA-Z]{2,16}\s[a-zA-Z]{2,16}" required
+              minlength="5"
+              maxlength="33"
               v-model="register.name"
             />
             <hr>
@@ -61,14 +66,16 @@
             <input
               type="password"
               name="password"
-              placeholder="Change Password"
+              pattern=".{8,}" required
+              placeholder="Password 8 or more letters/symbols"
               v-model="register.password"
             />
             <label for="validation">Confirm password</label>
             <input
               type="password"
               name="validation"
-              placeholder="Change Password"
+              pattern=".{8,}" required
+              placeholder="Re-type your password"
               v-model="validation.password"
             />
             <hr>
@@ -76,27 +83,32 @@
           </form>
         </div>
       </v-tab>
-
-      <v-tab title="Order history" >
+       <v-tab title="Order history" >
         <div class="order-history" >
           <h1>Order history</h1>
           <hr>
+         
         </div>
+
       </v-tab>
     </vue-tabs>
+
      
+
   </div>
 </template>
 
 <script>
 import { VueTabs, VTab } from "vue-nav-tabs";
-//you can also import this in your style tag
 import "vue-nav-tabs/themes/vue-tabs.css";
 import {mapActions} from 'vuex'
+
+
 export default {
   components: {
     VueTabs,
     VTab,
+   
   },
 
   data() {

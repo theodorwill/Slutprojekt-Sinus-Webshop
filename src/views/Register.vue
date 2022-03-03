@@ -9,27 +9,36 @@
             <input
               type="email"
               name="email"
-              placeholder="ex:example@mail.se"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              required
+              placeholder="example@email.com"
               v-model="register.email"
             />
             <label for="name">Name</label>
             <input
               type="text"
               name="name"
-              placeholder="Type your name "
+              placeholder="Firstname Lastname"
+              pattern="[a-zA-Z]{2,16}\s[a-zA-Z]{2,16}" required
+              minlength="5"
+              maxlength="33"
               v-model="register.name"
             />
             <label for="password">Password</label>
             <input
               type="password"
               name="password"
-              placeholder="Type your password "
+              pattern=".{8,}"
+              required
+              placeholder="Password 8 or more letters/symbols"
               v-model="register.password"
             />
-            <label for="email">Confirm password</label>
+            <label for="validation">Confirm password</label>
             <input
               type="password"
-              name="password"
+              name="validation"
+              pattern=".{8,}"
+              required
               placeholder="Re-type your password"
               v-model="validation.password"
             />
@@ -43,7 +52,10 @@
           <hr class="solid" />
           <div class="sign">
             <p>Already have an account?</p>
-            <a href="#" @click="click">Login here</a>
+            <a
+              href="#"
+              @click="click"
+            >Login here</a>
           </div>
         </div>
       </div>
@@ -73,16 +85,17 @@ export default {
   },
 
   methods: {
-      registerAccount() {
+    registerAccount() {
       if (
         this.register.email !== "" &&
         this.register.name !== "" &&
         this.register.password !== "" &&
         this.register.password === this.validation.password
       ) {
-        console.log("Initiate", this.register)
+        console.log("Initiate", this.register);
         this.$store.dispatch("signup", this.register).then(() => {
-            this.$router.push('/login')
+          alert("Success!")
+          this.$router.push("/login");
         });
       } else if (this.register.password !== this.register.validation.password) {
         alert("Password is not matching!");
@@ -92,9 +105,9 @@ export default {
     },
 
     click() {
-      this.$router.push('/login')
+      this.$router.push("/login");
     },
-  }
+  },
 };
 </script>
 
