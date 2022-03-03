@@ -102,13 +102,13 @@
 import { VueTabs, VTab } from "vue-nav-tabs";
 import "vue-nav-tabs/themes/vue-tabs.css";
 import {mapActions} from 'vuex'
-import UserOrder from "../components/Order.vue"
+
 
 export default {
   components: {
     VueTabs,
     VTab,
-    UserOrder
+   
   },
 
   data() {

@@ -296,17 +296,7 @@ export default new Vuex.Store({
 
     cartsProduct: (state) => state.cart.map(id => state.productList.find(product => product.id == id)),
 
-    cartHistory(state) {
-      let items = [];
-      for (let order of state.orderList) {
-        
-        for (let item of order.items) {
-          items.push(item)
-        }
-        
-      }
-      return items;
-    },
+   
 
     // singleCategory: (state) => state.catgStorage.filter(product => product.category == state.categoryName),
 
