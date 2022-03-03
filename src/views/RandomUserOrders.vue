@@ -262,12 +262,6 @@ export default {
     }
   }
 }
-import CartOrder from "../components/CartOrder.vue";
-export default {
-  components: { CartOrder },
-};
-</script>
 
-<style>
 
 </style>
