@@ -1,102 +1,45 @@
 <template>
-  <div class="products">
-    <p
-      class="mgs"
-      v-if="!cartsProduct.length"
-    >
-      You didn't purchase any product yet!
-    </p>
-    <div class="top-block">
-      <h2>Order id:</h2>
-      <h2>Status:</h2>
-    </div>
-    <ul>
-      <li
-        v-for="item in cartsProduct"
-        :key="item.id"
-      >
-        <div class="item-model">
-          <div>
-            <h1>{{ item.title }}</h1>
-            <h2>{{ item.category }}</h2>
-          </div>
-          <div>
-            <p>SEK </p>
-          </div>
-          <div>
-            <p>Product description</p>
-            <p>{{ item.longDesc }}</p>
-
-          </div>
+<!-- user orders page -->
+  <div class="item-model">
+    <header>
+      <p>Order details</p>
+      <h1 :class="color">{{ item.title }}</h1>
+    </header>
+    <main>
+      <div class="item-info">
+        <h2>{{ item.category }}</h2>
+      </div>
+      <div class="others-info">
+        <div class="date-info">
+          <p>Thank you!</p>
         </div>
-      </li>
-    </ul>
-
-    <table>
-      <tr>
-        <th>Order id:</th>
-        <td>123</td>
-      </tr>
-      <tr>
-        <th>Status:</th>
-        <td>inProcess</td>
-      </tr>
-      <tr>
-        <th>Shipping city:</th>
-        <td>something</td>
-      </tr>
-      <tr>
-        <th>Shipping street:</th>
-        <td>something 12</td>
-      </tr>
-      <tr>
-        <th>Shipping zip:</th>
-        <td>12345</td>
-      </tr>
-      <tr>
-        <th>Products:</th>
-        <td>{{ cartsProduct.length }}</td>
-      </tr>
-      <tr>
-        <th>Product quantity:</th>
-        <td>{{ itemsNumber }}</td>
-      </tr>
-      <tr>
-        <th>Total sum:</th>
-        <td>SEK {{ subTotal }}</td>
-      </tr>
-    </table>
-    <router-link to="/producs">BACK TO SHOP</router-link>
+        <div class="short-info">
+          <p>INFO</p>
+          <p>{{ item.longDesc }}</p>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <img src="../assets/bar_code.svg" alt="Bar code" />
+      <p>#A2ED7</p>
+    </footer>
   </div>
-
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 export default {
-  computed: {
-    ...mapGetters(["cartsProduct"]),
+  props: { item: Object },
 
-    subTotal() {
-      let total = 0;
-      this.cartsProduct.forEach((product) => {
-        total += product.price * product.amount;
-      });
-      return total;
+  computed: {
+    totalPrice() {
+      return this.item.price * this.item.amount;
     },
 
     color() {
       const str = this.item.title;
-      return str;
+      return str.toLowerCase()
     },
-    itemsNumber() {
-      let num = 0;
-      this.cartsProduct.forEach((item) => {
-        num += item.amount;
-      });
-      return num;
 
-    },
   },
 };
 </script>
@@ -107,141 +50,149 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-.products {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  width: 80%;
-  padding: 50px 0;
-  margin: 50px auto;
+.item-model {
+  width: 312px;
+  height: 442px;
+  background-color: #fff;
+  padding: 14px;
+  margin: 80px auto 0px auto;
   border-radius: 5px;
-  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 20%);
+  
 
-  .top-block {
-    display: flex;
-    justify-content: space-between;
+  box-shadow: -1px 0px 17px 12px rgba(82, 82, 82, 0.29);
+
+  header {
+    height: 88px;
     h1 {
-      font-size: 1.2rem;
-      margin-top: 32px;
+      font-family: "Sansita", sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 30px;
+
+      align-items: center;
+
+      color: #eb5509;
+      margin: 20px 0px 0px 10px;
     }
 
-    .item-model {
-      width: 100%;
-      height: auto;
-      background-color: #fff;
-      padding: 14px;
-      border-radius: 5px;
-      box-shadow: 0 2px 8px 0 rgb(0 0 0 / 20%);
+    .Green{
+        color:green;
+    }
 
-      h1 {
-        font-family: "Sansita", sans-serif;
-        font-style: normal;
-        font-weight: 700;
-        font-size: 1.6rem;
-        line-height: 30px;
-        padding: 1rem;
-        align-items: center;
-        color: #eb5509;
-      }
+    p {
+      font-family: "Fira Sans", sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 10px;
+      line-height: 12px;
+      display: flex;
+      align-items: center;
 
-      p {
+      color: rgba(0, 0, 0, 0.4);
+      margin-left: 10px;
+    }
+  }
+
+  main {
+    background: rgba(0, 0, 0, 0.03);
+
+    .item-info {
+      border-top: dotted 1px rgba(0, 0, 0, 0.4);
+      border-bottom: dotted 1px rgba(0, 0, 0, 0.4);
+      padding: 8px 0px 0px 0px;
+      .where {
         font-family: "Fira Sans", sans-serif;
         font-style: normal;
         font-weight: bold;
         font-size: 10px;
         line-height: 12px;
-        display: flex;
+
         align-items: center;
+
         color: rgba(0, 0, 0, 0.4);
+        margin-left: 10px;
+      }
+
+      h2 {
+        font-family: "Fira Sans", sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+
+        align-items: center;
+
+        color: rgba(0, 0, 0, 0.7);
+        margin: 10px 0px 6px 10px;
+        margin-left: 10px;
+      }
+
+      .item {
+        font-family: "Fira Sans", sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 10px;
+        line-height: 12px;
+
+        align-items: center;
+
+        margin: 0px 0px 32px 10px;
       }
     }
-
-    .summery {
-      margin-top: 20px;
-      p {
-        text-align: center;
-        margin: 4px;
-        font-weight: 500;
-        width: fit-content;
-      }
-    }
-  }
-
-  .mgs {
-    text-align: center;
-    font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 96px auto;
-  }
-
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 96%;
-    td,
-    th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-  }
-
-  ul {
-    width: 94%;
-    display: flex;
-    flex-flow: column;
-    
-
-    li {
-      width: 100%;
-      height: auto;
-      background-color: rgb(250, 249, 253);
-      border-radius: 5px;
-      box-shadow: 0 2px 8px 0 rgb(0 0 0 / 20%);
-      list-style-type: none;
-      margin: 1rem 0;
-        div:nth-child(1),
-        div:nth-child(3){
-          padding: 1rem 0;
-          > h1 {
-            color:#eb5509;
-          }
-        }
-      div:nth-child(2) {
-        background: #dddddd;
-        border-top: 1px dotted #707070;
-        border-bottom: 1px dotted #707070;
-        padding: 1.5rem 0;
-
+    .others-info {
+      .date-info {
+        margin: auto;
+        background-color: #dadada;
+        border: 1px dotted;
+        padding: 12px 0px;
         p {
-          font-size: 1.5rem;
-          font-weight: bold;
-          color: rgb(56, 56, 56);
+          text-align: center;
+          
+          font-style: normal;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 22px;
+          padding: 0px 12px;
+          color: rgba(0, 0, 0, 0.6);
+        }
+        .from {
+          border-left: 1px dotted rgba(0, 0, 0, 0.4);
+          border-right: 1px dotted rgba(0, 0, 0, 0.4);
         }
       }
-
-      div:nth-child(3){
-        > p:first-of-type{
-          font-weight: bold;
-          font-size: 1.5rem;
-        }
+      .short-info {
+        font-family: "Fira Sans", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        padding: 10px 0px;
+        color: rgba(0, 0, 0, 0.6);
+        border-bottom: 2px gray solid;
       }
-
     }
   }
-  a {
-    font-family: "Fira Sans", sans-serif;
-    font-style: italic;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 12px;
-    text-align: center;
-    position: absolute;
-    bottom: 24px;
-    color: rgba(255, 255, 255, 0.8);
+
+  footer {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    height: 120px;
+    margin-top: 28px;
+    p {
+      font-family: "Fira Sans", sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      margin-top:8px;
+
+      color: rgba(0, 0, 0, 0.4);
+    }
   }
 }
+
+
+// styling test
+
 </style>
