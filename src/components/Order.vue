@@ -1,10 +1,10 @@
 <template>
 <!-- user orders page -->
   <div class="item-model">
-    <header>
+    <div class="header">
       <p>Order details</p>
       <h1 :class="color">{{ item.title }}</h1>
-    </header>
+    </div>
     <main>
       <div class="item-info">
         <h2>{{ item.category }}</h2>
@@ -57,11 +57,12 @@ export default {
   padding: 14px;
   margin: 80px auto 0px auto;
   border-radius: 5px;
-  
-
+  display: flex;
+  flex-flow: column;
+  align-items: center;
   box-shadow: -1px 0px 17px 12px rgba(82, 82, 82, 0.29);
 
-  header {
+  .header {
     height: 88px;
     h1 {
       font-family: "Sansita", sans-serif;
