@@ -27,6 +27,8 @@ export default new Vuex.Store({
     user: [],
     delivery:""
 
+   
+
 
   },
 
@@ -115,7 +117,7 @@ export default new Vuex.Store({
     },
 
     //ACTIONS REQUIRED ..............................
-    saveDelvAddress(state,data) {
+    saveDelvAddress(state, data) {
       state.delivery = data
     },
 
@@ -188,18 +190,18 @@ export default new Vuex.Store({
         const response = await API.getOrder();
         context.commit("saveOrder", response.data);
         console.log(response.data)
-       
+
       } catch (error) {
         console.log(error)
       }
     },
 
-    
-    async postOrders(_,items) {
+
+    async postOrders(_, items) {
 
       const response = await API.postOrder(items)
       console.log('My post order' + response)
-      
+
     },
 
     // async getFavProd(context) {
@@ -216,13 +218,13 @@ export default new Vuex.Store({
       email,
       password
     }) {
-        const response = await API.login(email, password)
-        console.log(response)
-        API.saveToken(response.data.token)
-        context.commit('saveAuthData', response.data)   
+      const response = await API.login(email, password)
+      console.log(response)
+      API.saveToken(response.data.token)
+      context.commit('saveAuthData', response.data)
     },
 
-    loggingOut(context){
+    loggingOut(context) {
       context.commit('signOut')
     },
 
@@ -246,7 +248,7 @@ export default new Vuex.Store({
 
     async updateUserInfo(context, payload) {
       try {
-         await API.updateAccount(payload)
+        await API.updateAccount(payload)
       } catch (error) {
         console.log("update user error!", error)
         throw error
@@ -271,10 +273,10 @@ export default new Vuex.Store({
       }
     },
 
-   fetchDelvAddress(context, payload) {
-       context.commit('saveDelvAddress', payload)
-      },
-  
+    fetchDelvAddress(context, payload) {
+      context.commit('saveDelvAddress', payload)
+    },
+
 
     removeProduct(context, payload) {
       context.commit('removeProduct', payload)
@@ -288,11 +290,23 @@ export default new Vuex.Store({
   // GETTERS.................
   getters: {
 
-    ids: (state)=> state.cart.map(id => id),
+    ids: (state) => state.cart.map(id => id),
 
     catalogues: (state) => state.productList.slice(state.start, state.end),
 
     cartsProduct: (state) => state.cart.map(id => state.productList.find(product => product.id == id)),
+
+    cartHistory(state) {
+      let items = [];
+      for (let order of state.orderList) {
+        
+        for (let item of order.items) {
+          items.push(item)
+        }
+        
+      }
+      return items;
+    },
 
     // singleCategory: (state) => state.catgStorage.filter(product => product.category == state.categoryName),
 
@@ -300,6 +314,7 @@ export default new Vuex.Store({
     prevBtnDisabled: (state) => state.start == 0 ? true : false,
 
     customerLoged: (state) => (state.token !== null && state.user.role == 'customer' || state.user.role == 'admin') ? true : false,
+
 
     cartHistory(state) {
       let items = [];
@@ -319,6 +334,9 @@ export default new Vuex.Store({
       }
 
     
+
+
+
 
   }
 
