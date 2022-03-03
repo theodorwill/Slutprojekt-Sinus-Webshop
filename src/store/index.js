@@ -25,7 +25,7 @@ export default new Vuex.Store({
     start: 0,
     end: 10,
     user: [],
-    delivery:null
+    delivery:""
 
 
   },
@@ -300,6 +300,23 @@ export default new Vuex.Store({
     prevBtnDisabled: (state) => state.start == 0 ? true : false,
 
     customerLoged: (state) => (state.token !== null && state.user.role == 'customer' || state.user.role == 'admin') ? true : false,
+
+    cartHistory(state) {
+      let items = [];
+      for (let order of state.orderList) {
+        
+        for (let item of order.items) {
+          items.push(item)
+        }
+        
+      }
+      let arr = [];
+      for (let n of items) {
+        arr.push(n.ProductId)
+      }
+
+      return arr
+      }
 
     
 

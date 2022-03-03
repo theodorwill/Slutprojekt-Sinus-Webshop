@@ -1,33 +1,123 @@
 <template>
-  <div class="products">
-    <p class="mgs" v-if="!cartsProduct.length">
+  <div class="main">
+    <section class="top">
+      <h1>CONTACT</h1>
+      <p>
+        <router-link to="/"><span>Home</span></router-link>
+        <img src="../assets/right.svg" alt="" />
+        <span>Contact</span>
+      </p>
+    </section>
+    <p class="mgs" v-if="!cartHistory.length">
       You didn't purchase any product yet!
     </p>
-    <div class="top-block">
-      <h1>Category based overview of orders</h1>
-      <div class="summery">
-        <p>Paid amount (sek): {{ subTotal }}</p>
-        <p>Number of category: {{ cartsProduct.length }}</p>
-        <p>Number of items: {{ itemsNumber }}</p>
-      </div>
-    </div>
 
-    <ul>
-      <li v-for="item in cartsProduct" :key="item.id">
-        <Order :item="item" />
-      </li>
-    </ul>
-    <router-link to="/producs">BACK TO SHOP</router-link>
+    <div class="products" >
+      <h1>Category based overview of orders</h1>
+
+      <ul class="order-list" v-if="customerLoged==false">
+        <li v-for="item in cartsProduct" :key="item.id">
+          <Order :item="item" />
+        </li>
+      </ul>
+      <ul class="order-list" v-else>
+        <li v-for="item in carts" :key="item.id">
+          <Order :item="item" />
+        </li>
+      </ul>
+     
+      <table v-if="customerLoged==false">
+        <tr>
+          <th>Order id:</th>
+          <td >1339</td>
+  
+        </tr>
+        <tr>
+          <th>Status:</th>
+          <td>inProcess</td>
+        </tr>
+        <tr>
+          <th>Shipping city:</th>
+          <td >Stockholm</td>
+       
+        </tr>
+        <tr>
+          <th>Shipping street:</th>
+          <td >81</td>
+         
+        </tr>
+        <tr>
+          <th>Shipping zip:</th>
+          <td >12</td>
+          
+        </tr>
+        <tr>
+          <th>Products:</th>
+          <td>{{ cartsProduct.length }}</td>
+        </tr>
+        <tr>
+          <th>Product quantity:</th>
+          <td>{{ itemsNumber }}</td>
+        </tr>
+        <tr>
+          <th>Total sum:</th>
+          <td>SEK {{ subTotal }}</td>
+        </tr>
+      </table>
+       <!-- Conditional rendering's divider -->
+       <table v-else >
+        <tr>
+          <th>Order id:</th>
+          <td >{{orderId}}</td>
+  
+        </tr>
+        <tr>
+          <th>Status:</th>
+          <td>inProcess</td>
+        </tr>
+        <tr>
+          <th>Shipping city:</th>
+          <td >{{user.address.city}}</td>
+       
+        </tr>
+        <tr>
+          <th>Shipping street:</th>
+          <td >{{user.address.street}}</td>
+         
+        </tr>
+        <tr>
+          <th>Shipping zip:</th>
+          <td >{{user.address.zip}}</td>
+          
+        </tr>
+        <tr>
+          <th>Products:</th>
+          <td>{{ carts.length }}</td>
+        </tr>
+        <tr>
+          <th>Product quantity:</th>
+          <td>{{ itemsAmount }}</td>
+        </tr>
+        <tr>
+          <th>Total sum:</th>
+          <td>SEK {{ total }}</td>
+        </tr>
+      </table>
+      <router-link to="/producs">BACK TO SHOP</router-link>
+     
+    </div>
   </div>
 </template>
 
 <script>
 import Order from "../components/Order.vue";
 import { mapGetters } from "vuex";
+import {mapState} from 'vuex'
 export default {
   components: { Order },
   computed: {
-    ...mapGetters(["cartsProduct"]),
+    ...mapGetters(["cartsProduct","cartHistory","customerLoged"]),
+    ...mapState(['user', 'orderList', 'delivery']),
 
     subTotal() {
       let total = 0;
@@ -44,7 +134,35 @@ export default {
       });
       return num;
     },
+
+
+    total() {
+      let total = 0;
+      this.carts.forEach((product) => {
+        total += product.price * product.amount;
+      });
+      return total;
+    },
+
+    itemsAmount() {
+      let num = 0;
+      this.carts.forEach((item) => {
+        num += item.amount;
+      });
+      return num;
+    },
+
+    carts() {
+      return this.cartHistory.map(id => this.$store.state.productList.find(product => product.id == id))
+    },
+
+    orderId(){
+      return this.orderList.map(obj => obj.id )
+    }
+
   },
+
+  
 };
 </script>
 
@@ -54,55 +172,85 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-.products {
+.main {
   width: 100%;
-  margin-bottom: 100px;
-
-  .top-block {
-    display: flex;
-    justify-content: space-between;
-    h1 {
-      font-size: 1.2rem;
-      margin-top: 32px;
-    }
-
-    .summery {
-       margin-top: 20px; 
-      p {
-        text-align: center;
-        margin: 4px;
-        font-weight: 500;
-        width: fit-content;
-      }
-    }
-  }
-
   .mgs {
     text-align: center;
     font-size: 1.5rem;
     color: rgba(255, 255, 255, 0.8);
     margin: 96px auto;
   }
-
-  ul {
+  .top {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    li {
-      list-style-type: none;
+    height: 80px;
+    background-color: #aaa;
+    font-family: "Times New Roman", Times, serif;
+    h1,
+    p {
+      display: flex;
+      margin: 0;
+      padding: 5px 2rem;
+      color: white;
+    }
+    h1 {
+      color: black;
+    }
+    a {
+      text-decoration: none;
     }
   }
-  a {
-    font-family: "Fira Sans", sans-serif;
-    font-style: italic;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 12px;
-    text-align: center;
-    position: absolute;
-    bottom: 24px;
-    color: rgba(255, 255, 255, 0.8);
+  .products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 100px;
+
+    h1 {
+      font-size: 1.2rem;
+      margin:24px 0px 0px 16px ;
+    }
+
+    .order-list {
+      width: 320px;
+      display: grid;
+      grid-auto-rows: 15px;
+      height: 750px;
+
+      li {
+        list-style-type: none;
+      }
+
+      li:hover {
+        z-index: 1;
+      }
+    }
+
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 96%;
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    }
+    a {
+      font-family: "Fira Sans", sans-serif;
+      font-style: italic;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 12px;
+      text-align: center;
+      position: absolute;
+      bottom: 24px;
+      color: rgba(255, 255, 255, 0.8);
+    }
   }
 }
 </style>

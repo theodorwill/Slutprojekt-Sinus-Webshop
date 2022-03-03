@@ -11,6 +11,7 @@
         <div>
           <aside>
             <h2>Profile</h2>
+             <router-link to='/orders' @click.native="fetchOrders">Order history</router-link>
             <button @click="signOutController">Sign out</button>
           </aside>
           <hr>
@@ -83,7 +84,7 @@
         </div>
       </v-tab>
     </vue-tabs>
-     <button @click="fetchOrders">Order history</button>
+     
   </div>
 </template>
 

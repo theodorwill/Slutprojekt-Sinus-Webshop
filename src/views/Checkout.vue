@@ -120,9 +120,9 @@
             <option value="express">EXPRESS</option>
             <option value="discovery">DISCOVERY</option>
           </select>
-           <button v-if="customerLoged == true"  class="btn" @click="setOrder"
+           <router-link to="/user" v-if="customerLoged == true"  class="btn" @click.native="setOrder"
             >SAVE AND BUY , Get
-          </button>
+          </router-link>
           <router-link  to="/orders" class="btn" @click.native="fetchDelvAddress(userInfo)"
            v-else >SAVE AND BUY
           </router-link>
@@ -143,9 +143,9 @@ export default {
         email:'',
         name: '',
         address: {
-          street: '',
-          city: '',
-          zip: '',
+          street: 'Gril',
+          city: 'korv',
+          zip: 'paj',
         },
         payMthods: ''
       },
