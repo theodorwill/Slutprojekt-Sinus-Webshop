@@ -11,7 +11,7 @@
       </div>
       <div class="others-info">
         <div class="date-info">
-          <p>SEK {{ totalPrice }}</p>
+          <p>Thank you!</p>
         </div>
         <div class="short-info">
           <p>INFO</p>
