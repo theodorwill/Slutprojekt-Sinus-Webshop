@@ -2,24 +2,24 @@
   <div id="nav">
     <div class="header">
       <router-link to="/">
-        <section class="top">
-          <div class="logo"></div>
+        <section>
+          <div class="logo"/>
         </section>
       </router-link>
 
-      <section class="middle">
+      <section class="searchbar">
         <router-link to="/category">
           <input
             type="text"
             class="search"
             v-model="category"
             @change="fetchCategory(category)"
-            placeholder="Serch by category"
+            placeholder="Search by category"
           />
         </router-link>
       </section>
 
-      <section class="bottom">
+      <section class="user-navigation">
         <router-link to="/cart">
           <div class="card">
             <p>{{cart.length}}</p>
@@ -93,7 +93,7 @@ export default {
     justify-content: space-around;
     padding: 1rem;
   }
-  .top {
+  .logo {
     width: 200px;
     height: 50px;
     background-image: url("~@/assets/sinus_logo.svg");
@@ -101,15 +101,15 @@ export default {
     background-position: center;
     background-size: 100%;
   }
-  .middle {
+  .searchbar {
     input {
       margin: 0;
       padding-left: 1rem;
       width: 500px;
       height: 50px;
       border-radius: 2rem;
-      border: 1.33px solid;
-      border-color: #ff6e40;
+      border: 2px solid;
+      border-color: #64b5f6;
       background-image: url("~@/assets/search.svg");
       background-position: right top;
       background-repeat: no-repeat;
@@ -119,7 +119,7 @@ export default {
       text-transform: capitalize;
     }
   }
-  .bottom {
+  .user-navigation {
     display: flex;
     justify-content: space-evenly;
     width: 200px;
@@ -166,7 +166,7 @@ export default {
       width: 1.2rem;
       height: 1.2rem;
       border-radius: 100%;
-      background-color: #0076c4;
+      background-color: #2286c3;
       color: #fff;
       text-align: center;
       font-style: 1.3rem;
@@ -190,27 +190,25 @@ export default {
   }
 }
   .navbar {
-    color: #ff6e40;
+    color: #9be7ff;
     display: flex;
     flex-flow: row;
     justify-content: space-evenly;
     padding: 1rem;
     font-size: 1.1rem;
-    background-color: rgb(34, 34, 34);
+    background-color: #1f2633;
     > a {
       color: #ffffff;
       text-decoration: none;
       font-size: 1.3rem;
       font-weight: bold;
       &.router-link-exact-active {
-        color: #ff6e40;
-        text-decoration: underline;
-        text-decoration-thickness: 0.15rem;
+        color: #9be7ff;
       }
     }
     & a:hover {
       transition: 0.5s;
-      color: #ff6e40;
+      color: #64b5f6;
     }
   }
 }
