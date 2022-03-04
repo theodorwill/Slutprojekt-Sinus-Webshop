@@ -1,6 +1,6 @@
 <template>
   <div class="single-product">
-    <section class="top">
+    <section class="breadcrumbs">
       <h1>SINGLE PRODUCT</h1>
       <p>
         <router-link to="/"><span>Home</span></router-link>
@@ -9,6 +9,9 @@
         <img src="../assets/right.svg" alt="" />
         <span>Single Product</span>
       </p>
+      <div>
+        <hr>
+      </div>
     </section>
 
     <SingleProductCard :product="product" />
@@ -64,23 +67,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.single-product{
-.top {
-  width: 100%;
-  height: 80px;
-  background-color: #e3e242;
-  // font-family: "Times New Roman", Times, serif;
-  h1,
-  p {
-    display: flex;
-    margin: 0;
-    padding: 5px 2rem;
-  }
-  a {
-    text-decoration: none;
-  }
-}
-}
+
 .upcoming{
   margin: 5rem 0 4rem 4rem ;
   width: 1250px;

@@ -1,13 +1,5 @@
 <template>
   <div class="about">
-    <section class="top">
-      <h1>ABOUT</h1>
-      <p>
-        <router-link to="/"><span>Home</span></router-link>
-        <img src="../assets/right.svg" alt="" />
-        <span>About</span>
-      </p>
-    </section>
     <div class="about-section">
       <h1>About Us</h1>
       <p>Some text about who we are and what we do.</p>
