@@ -34,11 +34,11 @@
       </section>
       <section class="role" v-if="adminLoged">
         <h2>Admin loged</h2>
-        <p>logout</p>
+        <p @click="signOutController">logout</p>
       </section>
       <section class="role" v-if="customer">
-        <h2>Customer loged</h2>
-        <p>logout</p>
+        <h2>{{user.name}}</h2>
+        <p @click="signOutController">logout</p>
       </section>
 
     </div>
@@ -61,7 +61,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["cart"]),
+    ...mapState(["cart","user"]),
     ...mapGetters(['adminLoged', 'customer'])
   },
   methods: {
@@ -75,6 +75,10 @@ export default {
       } else if (this.$route.path !== "/user") {
         this.$router.push("/user");
       }
+    },
+    signOutController() {
+      this.$store.dispatch("loggingOut");
+      this.$router.push("/login");
     },
   },
 };
@@ -182,6 +186,7 @@ export default {
     font-weight: bold;
     color: #ff6e40;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    cursor:pointer;
   }
 }
   .navbar {

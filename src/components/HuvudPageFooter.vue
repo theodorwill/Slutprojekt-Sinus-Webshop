@@ -16,8 +16,8 @@
         <section>
           <h3>Users action</h3>
           <router-link to="/login">Login</router-link>
-          <router-link to="/login">Resgister</router-link>
-          <router-link to="/about">My orders</router-link>
+          <router-link to="/register">Resgister</router-link>
+          <router-link to="/orders">My orders</router-link>
           <router-link to="/admin">Admin</router-link>
         </section>
         <section>
