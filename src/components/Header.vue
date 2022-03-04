@@ -32,6 +32,9 @@
         >
         </div>
       </section>
+      <section class="role">
+        <h1>Admin</h1>
+      </section>
 
     </div>
 

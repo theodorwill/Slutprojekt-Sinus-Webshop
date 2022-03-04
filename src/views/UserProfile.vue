@@ -7,15 +7,17 @@
       :start-index="1"
       direction="vertical"
     >
-      <v-tab title="Profile">
+      <v-tab title="Profile" >
         <div>
           <aside>
-            <h2>Profile</h2>
-             <router-link to='/orders' @click.native="fetchOrders">Order history</router-link>
+            <h2></h2>
+             
             <button @click="signOutController">Sign out</button>
             
           </aside>
-           <router-link to ="/orders" @click.native="fetchOrders">Order history</router-link>
+          <article class="order-history">
+           <router-link to='/orders' @click.native="fetchOrders">Order history</router-link>
+          </article>
           <hr>
           <form
             @submit.prevent="updateUserInfo"
@@ -83,9 +85,10 @@
           </form>
         </div>
       </v-tab>
-       <v-tab title="Order history" >
+       <v-tab title="" >
+         
         <div class="order-history" >
-          <h1>Order history</h1>
+          <h1></h1>
           <hr>
          
         </div>
@@ -215,7 +218,24 @@ hr.solid {
   text-align: left;
   width: 100%;
 }
-
+.order-history{
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  // background-color: #337ab7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-115px,-15px);
+  // border: 1px solid black;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  a{
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+}
 .tab-view {
   padding: 0.5rem 0.5rem;
   border-radius: 0.3rem;
