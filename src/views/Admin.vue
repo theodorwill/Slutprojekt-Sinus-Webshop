@@ -7,73 +7,73 @@
     <div class="admin-tasks">
       <section class="add-product">
         <h3>Add product</h3>
-        <form>
-          <input type="text" placeholder="title" vi-model="product.title" />
+        <form @submit.prevent="addProducts(product)">
+          <input type="text" placeholder="title" v-model="product.title" />
           <input
             type="text"
-            placeholder="shortDesc"
-            vi-model="product.shortDesc"
+            placeholder="short desc"
+            v-model="product.shortDesc"
           />
           <input
             type="text"
-            placeholder="longDesc"
-            vi-model="product.longDesc"
+            placeholder="long desc"
+            v-model="product.longDesc"
           />
-          <input type="text" placeholder="imgFile" vi-model="product.imgFile" />
+          <input type="text" placeholder="img file" v-model="product.imgFile" />
           <input
             type="text"
             placeholder="category"
-            vi-model="product.category"
+            v-model="product.category"
           />
-          <input type="text" placeholder="price" vi-model="product.price" />
+          <input type="text" placeholder="price" v-model="product.price" />
           <button>Add product</button>
         </form>
       </section>
       <section>
         <h3>Update product</h3>
-        <form>
+        <form @submit.prevent="updateProducts(updateProduct)">
           <input
             type="text"
             placeholder="id number"
-            vi-model="updateProduct.title"
+            v-model="updateProduct.id"
           />
           <input
             type="text"
             placeholder="title"
-            vi-model="updateProduct.title"
+            v-model="updateProduct.title"
           />
           <input
             type="text"
             placeholder="shortDesc"
-            vi-model="updateProduct.shortDesc"
+            v-model="updateProduct.shortDesc"
           />
           <input
             type="text"
             placeholder="longDesc"
-            vi-model="updateProduct.longDesc"
+            v-model="updateProduct.longDesc"
           />
           <input
             type="text"
             placeholder="imgFile"
-            vi-model="updateProduct.imgFile"
+            v-model="updateProduct.imgFile"
           />
           <input
             type="text"
             placeholder="category"
-            vi-model="updateProduct.category"
+            v-model="updateProduct.category"
           />
           <input
             type="text"
             placeholder="price"
-            vi-model="updateProduct.price"
+            v-model="updateProduct.price"
           />
-          <button>Add product</button>
+          <button>Update product</button>
         </form>
       </section>
       <section>
         <h3>Delete Product</h3>
-        <form>
-          <input type="text" placeholder="product id" />
+        <form @submit.prevent="deleteProducts(id)">
+          <input type="text" placeholder="product id" v-model="id" />
           <button>Delete product</button>
         </form>
       </section>
@@ -93,7 +93,7 @@
           <input
             type="text"
             placeholder="order status"
-            vi-model="orderSatus.status"
+            v-model="orderSatus.status"
           />
           <button>Update Status</button>
         </form>
@@ -103,16 +103,18 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
       product: {
-        title: null,
-        shortDesc: null,
-        longDesc: null,
-        imgFile: null,
-        category: null,
-        price: null,
+        title: "Ash",
+        shortDesc: "unisex",
+        longDesc:
+          "Durometer deck coffin ollie hole lipslide switch Hard Corps pool",
+        imgFile: "sinus-hoodie-ash.png",
+        category: "hoodie",
+        price: "599",
       },
       updateProduct: {
         id: null,
@@ -127,7 +129,12 @@ export default {
       orderSatus: {
         status: "shipped",
       },
+      id: "",
     };
+  },
+
+  methods: {
+    ...mapActions(["addProducts", "deleteProducts", "updateProducts"]),
   },
 };
 </script>

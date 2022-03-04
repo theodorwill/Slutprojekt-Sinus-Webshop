@@ -147,9 +147,9 @@ export default {
         email:'',
         name: '',
         address: {
-          street: 'Gril',
-          city: 'korv',
-          zip: 'paj',
+          street: '',
+          city: '',
+          zip: '',
         },
         payMthods: ''
       },
