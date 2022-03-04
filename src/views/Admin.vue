@@ -2,7 +2,7 @@
   <div class="admin">
     <div class="logout">
       <h2>Admin</h2>
-      <p>logout</p>
+      <button @click="signOutController">logout</button>
     </div>
     <div class="admin-tasks">
       <section class="add-product">
@@ -108,13 +108,13 @@ export default {
   data() {
     return {
       product: {
-        title: "Ash",
-        shortDesc: "unisex",
+        title: "",
+        shortDesc: "",
         longDesc:
-          "Durometer deck coffin ollie hole lipslide switch Hard Corps pool",
+          "",
         imgFile: "sinus-hoodie-ash.png",
-        category: "hoodie",
-        price: "599",
+        category: "",
+        price: "",
       },
       updateProduct: {
         id: null,
@@ -135,6 +135,10 @@ export default {
 
   methods: {
     ...mapActions(["addProducts", "deleteProducts", "updateProducts"]),
+     signOutController() {
+      this.$store.dispatch("loggingOut");
+      this.$router.push("/login");
+    },
   },
 };
 </script>
