@@ -8,7 +8,7 @@
       <section class="add-product">
         <h3>Add product</h3>
         <form @submit.prevent="addProducts(product)">
-          <input type="text" placeholder="title" v-model="product.title" />
+          <input type="text" placeholder="Ash/Green/Blue/Red/Purple" v-model="product.title" />
           <input
             type="text"
             placeholder="short desc"
@@ -22,7 +22,7 @@
           <input type="text" placeholder="img file" v-model="product.imgFile" />
           <input
             type="text"
-            placeholder="category"
+            placeholder="cap/hoodie/skateboard/socks/wheel/totebag"
             v-model="product.category"
           />
           <input type="text" placeholder="price" v-model="product.price" />

@@ -16,8 +16,8 @@
         <section>
           <h3>Users action</h3>
           <router-link to="/login">Login</router-link>
-          <router-link to="/login">Resgister</router-link>
-          <router-link to="/about">My orders</router-link>
+          <router-link to="/register">Resgister</router-link>
+          <router-link to="/orders">My orders</router-link>
           <router-link to="/admin">Admin</router-link>
         </section>
         <section>
@@ -55,9 +55,11 @@
   width: 1440px;
   margin: auto;
   height: 17rem;
-  background-color: #474e5d;
+
+  background-color: #e0e0e0;
+
   position:relative;
-//   bottom: 0;
+
 
   .footer-upper-block {
     display: flex;
@@ -84,6 +86,7 @@
         line-height: 1.5rem;
         text-align: start;
         letter-spacing: -0.2px;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         color: white;
         opacity: .9;
       }
@@ -154,6 +157,7 @@
         letter-spacing: -0.2px;
         font-weight: bold;
         color: #ffffff;
+        opacity: 0.6;
         margin: 0px 0.5rem;
       }
     }
