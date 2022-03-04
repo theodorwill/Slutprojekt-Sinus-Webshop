@@ -1,22 +1,24 @@
 <template>
   <div class="cart-view">
-      <!-- v-if no product on cart !!!!!!!!-->
-    <!-- <div class="information">
+    <section class="top">
+      <h1>CART</h1>
+      <p>
+        <router-link to="/"><span>Home</span></router-link>
+        <img src="../assets/right.svg" alt="" />
+        <span>Cart</span>
+      </p>
+    </section>
+    <div class="information" v-if="!cartsProduct.length">
       <span>Your shopping cart is empty.</span>
-    </div> -->
+    </div>
 
-    <div class="checkout-container">
+    <div class="checkout-container" v-else>
       <article class="cart-items">
-          <!-- v-for products in cart -->
-        <div >
-          <ModelCardCart/>
-          <ModelCardCart/>
-          <ModelCardCart/>
-          <ModelCardCart/>
-         
+        <div v-for="(item, idx) in cartsProduct" :key="item.id" :idx="idx">
+          <ModelCardCart :product="item" :idx="idx" />
         </div>
       </article>
-      <!-- vi if product in cart -->
+      <button class="btn-remove" @click="removeAllProduct">Remove All</button>
       <article class="payment">
         <div class="our-social-careness">
           <img src="@/assets/sustainability.svg" alt="sust-img" />
@@ -24,55 +26,98 @@
         <div class="payment-details">
           <p>
             <strong>PRICE:</strong>
-            <strong>grandTotal</strong>
+            <strong>{{ grandTotal }}</strong>
           </p>
           <p>
-            <strong>DISCOUNTS:</strong> <strong>-Discount</strong>
+            <strong>DISCOUNTS:</strong> <strong>-{{ discount }}</strong>
           </p>
         </div>
         <div class="payment-action">
           <h3>
-            <strong>AMOUNT TO PAY:</strong> <strong>netTotal</strong>
+            <strong>AMOUNT TO PAY:</strong> <strong>{{ netTotal }}</strong>
           </h3>
-          <span class="vat-info"
-            >VAT
-          </span>
+          <span class="vat-info">moms {{ moms }} </span>
+          <!-- <div class="action-sub" v-if="inLoged">
+            <router-link class="pay-now" to="/user" > Checkout </router-link>
+            <router-link class="back" to="/products">Back To Shop</router-link>
+          </div> -->
           <div class="action-sub">
-            <button class="pay-now">Checkout</button>
-            <!-- <router-link to="/products">Back to shop</router-link> -->
-            <button class="back">Back to shop</button>
+            <router-link class="pay-now" to="/checkout"> Checkout </router-link>
+            <router-link class="back" to="/products">Back To Shop</router-link>
           </div>
         </div>
       </article>
     </div>
     <div class="misc-block">
-      MISC BLOCK FIXAS EFTER DISKUSSION.
+      <h1>Keep eyes here to see our next special edition </h1>
     </div>
   </div>
 </template>
 
 <script>
-import ModelCardCart from '../components/ModelCardCart.vue'
+import ModelCardCart from "../components/ModelCardCart.vue";
+import { mapGetters } from "vuex";
+import { mapActions } from "vuex";
 export default {
-    components:{ModelCardCart}
-}
+  components: { ModelCardCart },
+  computed: {
+    ...mapGetters(["cartsProduct", "ids", "inLoged"]),
+    grandTotal() {
+      let total = 0;
+      this.cartsProduct.forEach((product) => {
+        total += product.price * product.amount;
+      });
+      return total;
+    },
+
+    discount() {
+      return Math.round(this.grandTotal * 0.1);
+    },
+
+    netTotal() {
+      return this.grandTotal - this.discount;
+    },
+
+    moms() {
+      return (this.grandTotal * 0.15).toFixed(2);
+    },
+  },
+
+  methods: {
+    ...mapActions(["removeAllProduct", "fetchOrders"]),
+  },
+};
 </script>
 
-
-
 <style lang="scss" scoped>
-
-
-.cart-view{
+.cart-view {
   display: block;
-
+  .top {
+  width: 100%;
+  height: 80px;
+  background-color: #f69e03;
+  // font-family: "Times New Roman", Times, serif;
+  h1,
+  p {
+    display: flex;
+    padding: 5px;
+    padding-left: 2rem;
+    margin: 0px;
+    color: white;
+  }
+  h1 {
+    color: black;
+  }
+  a {
+    text-decoration: none;
+  }
+}
   .information {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    height: 600px;
     font-size: 1.2rem;
-    height: 300px;
   }
 
   .checkout-container {
@@ -82,6 +127,17 @@ export default {
     .cart-items {
       display: block;
       margin-left: 24px;
+    }
+
+    .btn-remove {
+      height: 35px;
+      width: 120px;
+      margin-top: 40px;
+      text-align: center;
+      background-color: #1c1c1c;
+      color: #fff;
+      border-radius: 5px;
+      
     }
 
     .payment {
@@ -104,7 +160,7 @@ export default {
         max-height: 50px;
 
         margin: 0px;
-        font-family: "Lato", sans-serif;
+        // font-family: "Lato", sans-serif;
 
         font-weight: 400;
         color: #545454;
@@ -118,11 +174,10 @@ export default {
           }
         }
 
-        p:nth-of-type(2){
-          strong{
+        p:nth-of-type(2) {
+          strong {
             color: red;
           }
-
         }
       }
 
@@ -131,7 +186,7 @@ export default {
         height: 300px;
         margin: 50px auto 0px auto;
         border-top: solid 1px #545454;
-        font-family: "Lato", sans-serif;
+        // font-family: "Lato", sans-serif;
 
         h3 {
           display: flex;
@@ -156,18 +211,32 @@ export default {
           flex-direction: column;
           margin-top: 80px;
           .pay-now {
-            padding: 5px 16px;
+            padding: 9px 18px;
             background-color: #1c1c1c;
             color: #fff;
             cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            &:hover{
+              background-color: #45a049;
+              transition: 0.7s;
+            }
           }
 
           .back {
-            padding: 3px 16px;
+            padding: 5px 18px;
             text-decoration: none;
             text-align: center;
             margin-top: 16px;
             border: solid 2px #1c1c1c;
+            border-radius: 5px;
+            color: black;
+            font-size: 1rem;
+            &:hover{
+              background-color: #45a049;
+              transition: 0.7s;
+            }
           }
         }
       }
@@ -176,15 +245,17 @@ export default {
   .misc-block {
     display: flex;
     justify-content: center;
-
+    align-items: center;
+    background-color: #0076C4;
     width: 100%;
     height: 300px;
-    font-size: 0.8rem;
-    background-color: #c0bebe;
-    margin: 196px 0px;
+    margin: 100px 0 0 0 ; 
 
-    h2 {
-      margin-top: 64px;
+    h1 {
+      color: white;
+      font-size: 3rem;
+      text-align: center;
+      
     }
   }
 }

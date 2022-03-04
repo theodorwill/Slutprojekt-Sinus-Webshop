@@ -11,20 +11,21 @@
 
           <h3>Help</h3>
           <router-link to="/about">About us</router-link>
-          <router-link to="/about">Contact us</router-link>
+          <router-link to="/contact">Contact us</router-link>
         </section>
         <section>
           <h3>Users action</h3>
-          <router-link to="/about">Login</router-link>
-          <router-link to="/about">Resgister</router-link>
-          <router-link to="/about">My orders</router-link>
+          <router-link to="/login">Login</router-link>
+          <router-link to="/register">Resgister</router-link>
+          <router-link to="/orders">My orders</router-link>
+          <router-link to="/admin">Admin</router-link>
         </section>
         <section>
           <h3>Others</h3>
-          <router-link to="/about">Lorem, ipsum.</router-link>
-          <router-link to="/about">Lorem, ipsum.</router-link>
-          <router-link to="/about">Lorem, ipsum.</router-link>
-          <router-link to="/about">Lorem, ipsum.</router-link>
+          <router-link to="/about">Lorem</router-link>
+          <router-link to="/about">Lorem</router-link>
+          <router-link to="/about">Lorem</router-link>
+          <router-link to="/about">Lorem</router-link>
         </section>
       </div>
     </div>
@@ -51,11 +52,14 @@
   box-sizing: border-box;
 }
 .footer-container {
-  width: 100%;
+  width: 1440px;
+  margin: auto;
   height: 17rem;
-  background-color: #e0e0e0;
+
+  background-color: #474e5d;
+
   position:relative;
-//   bottom: 0;
+
 
   .footer-upper-block {
     display: flex;
@@ -75,15 +79,16 @@
       }
       p {
         width: 24rem;
-        font-family: Montserrat;
+        // font-family: Montserrat;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.5rem;
         text-align: start;
         letter-spacing: -0.2px;
-
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        color: white;
+        opacity: .9;
       }
     }
 
@@ -95,31 +100,36 @@
       margin: 1.6rem 6.5rem 0rem 0rem;
 
       h3 {
-        font-family: Montserrat;
         font-style: normal;
         font-weight: 600;
-        font-size: 1rem;
+        font-size: 1.3rem;
         line-height: 1.25rem;
+        margin-bottom: 0.7rem;
+        color: #64b5f6;
       }
 
       a {
         display: block;
-        font-family: Montserrat;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
-        line-height: 1.5rem;
-
+        line-height: 1.7rem;
+        text-decoration: none ;
         letter-spacing: -0.2px;
-
-        opacity: 0.7;
+        opacity: .9;
+        color: #FFFFFF;
+        font-weight: bold;
+        &:hover{
+          color: #64b5f6;
+          transition: 0.4s;
+        }
       }
     }
   }
 
   .footer-lower-block {
     height: 3rem;
-    background-color: #9da1a7;
+    background-color: #1f2633;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -138,17 +148,15 @@
       display: flex;
       margin-right: 1.5rem;
       a {
-        font-family: Montserrat;
         font-style: normal;
         font-weight: normal;
-        font-size: 0.9rem;
+        font-size: 1rem;
         line-height: 1.5rem;
-
+        text-decoration: none;
         text-align: center;
         letter-spacing: -0.2px;
-
+        font-weight: bold;
         color: #ffffff;
-
         opacity: 0.6;
         margin: 0px 0.5rem;
       }
