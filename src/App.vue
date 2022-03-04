@@ -2,18 +2,18 @@
   <div id="app">
     <Header />
     <router-view class="router-main"/>
-    <HuvudPageFooter />
+    <Footer />
   </div>
 </template>
 <script>
 import Header from "@/components/Header.vue";
-import HuvudPageFooter from "@/components/HuvudPageFooter.vue";
+import Footer from "@/components/Footer.vue";
 // import LoginModal from "@/components/LoginModal.vue";
 
 export default {
   components: {
     Header,
-    HuvudPageFooter,
+    Footer,
     // LoginModal
   },
 
@@ -85,6 +85,36 @@ Header{
     bottom: 0px;
     left: 0px;
     right: 0px;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  width: 100%;
+  margin: 1rem 0;
+  h1,
+  p {
+    display: flex;
+    margin: 0 1.2rem;
+  }
+  p > :first-of-type {
+    font-size: 1.2rem;
+    padding-left: 1rem;
+  }
+
+  a:link,
+  a:visited {
+    color: #2c3e50;
+  }
+  > div {
+    width: 100%;
+    hr {
+      background: #2c3e50;
+      height: 1px; 
+      width: 96%;
+    }
   }
 }
 
