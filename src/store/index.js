@@ -344,6 +344,8 @@ export default new Vuex.Store({
     prevBtnDisabled: (state) => state.start == 0 ? true : false,
 
     customerLoged: (state) => (state.token !== null && state.user.role == 'customer' || state.user.role == 'admin') ? true : false,
+    adminLoged: (state) => (state.token !== null && state.user.role == 'admin') ? true : false,
+    customer: (state) => (state.token !== null && state.user.role == 'customer') ? true : false,
 
 
     cartHistory(state) {

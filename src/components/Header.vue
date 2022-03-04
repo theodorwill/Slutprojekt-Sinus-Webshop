@@ -32,8 +32,11 @@
         >
         </div>
       </section>
-      <section class="role">
-        <h1>Admin</h1>
+      <section class="role" v-if="adminLoged">
+        <h2>Admin loged</h2>
+      </section>
+      <section class="role" v-if="customer">
+        <h2>Customer loged</h2>
       </section>
 
     </div>
@@ -48,7 +51,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState,mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -57,6 +60,7 @@ export default {
   },
   computed: {
     ...mapState(["cart"]),
+    ...mapGetters(['adminLoged', 'customer'])
   },
   methods: {
     ...mapActions(["fetchCategory"]),
