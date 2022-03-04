@@ -56,7 +56,7 @@
   margin: auto;
   height: 17rem;
 
-  background-color: #e0e0e0;
+  background-color: #474e5d;
 
   position:relative;
 
