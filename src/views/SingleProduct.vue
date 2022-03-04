@@ -69,7 +69,7 @@ export default {
   width: 100%;
   height: 80px;
   background-color: #e3e242;
-  font-family: "Times New Roman", Times, serif;
+  // font-family: "Times New Roman", Times, serif;
   h1,
   p {
     display: flex;

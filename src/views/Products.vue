@@ -101,7 +101,7 @@ export default {
   width: 100%;
   height: 80px;
   background-color: #0076c4;
-  font-family: "Times New Roman", Times, serif;
+  // font-family: "Times New Roman", Times, serif;
   padding-left: 2rem;
   h1,
   p {

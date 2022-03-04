@@ -22,10 +22,10 @@
         </section>
         <section>
           <h3>Others</h3>
-          <router-link to="/about">Lorem, ipsum.</router-link>
-          <router-link to="/about">Lorem, ipsum.</router-link>
-          <router-link to="/about">Lorem, ipsum.</router-link>
-          <router-link to="/about">Lorem, ipsum.</router-link>
+          <router-link to="/about">Lorem</router-link>
+          <router-link to="/about">Lorem</router-link>
+          <router-link to="/about">Lorem</router-link>
+          <router-link to="/about">Lorem</router-link>
         </section>
       </div>
     </div>
@@ -52,7 +52,8 @@
   box-sizing: border-box;
 }
 .footer-container {
-  width: 100%;
+  width: 1440px;
+  margin: auto;
   height: 17rem;
   background-color: #e0e0e0;
   position:relative;
@@ -76,7 +77,7 @@
       }
       p {
         width: 24rem;
-        font-family: Montserrat;
+        // font-family: Montserrat;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
@@ -96,24 +97,28 @@
       margin: 1.6rem 6.5rem 0rem 0rem;
 
       h3 {
-        font-family: Montserrat;
         font-style: normal;
         font-weight: 600;
-        font-size: 1rem;
+        font-size: 1.3rem;
         line-height: 1.25rem;
+        margin-bottom: 0.7rem;
       }
 
       a {
         display: block;
-        font-family: Montserrat;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
-        line-height: 1.5rem;
-
+        line-height: 1.7rem;
+        text-decoration: none ;
         letter-spacing: -0.2px;
-
         opacity: 0.7;
+        color: #3669b6;
+        font-weight: bold;
+        &:hover{
+          color: red;
+          transition: 0.4s;
+        }
       }
     }
   }
@@ -139,15 +144,14 @@
       display: flex;
       margin-right: 1.5rem;
       a {
-        font-family: Montserrat;
         font-style: normal;
         font-weight: normal;
-        font-size: 0.9rem;
+        font-size: 1rem;
         line-height: 1.5rem;
-
+        text-decoration: none;
         text-align: center;
         letter-spacing: -0.2px;
-
+        font-weight: bold;
         color: #ffffff;
 
         opacity: 0.6;

@@ -193,7 +193,7 @@ export default {
     width: 100%;
     height: 80px;
     background-color: #aaa;
-    font-family: "Times New Roman", Times, serif;
+    // font-family: "Times New Roman", Times, serif;
     h1,
     p {
       display: flex;
@@ -236,7 +236,7 @@ export default {
     }
 
     table {
-      font-family: arial, sans-serif;
+      // font-family: arial, sans-serif;
       border-collapse: collapse;
       width: 96%;
       td,
@@ -250,7 +250,7 @@ export default {
       }
     }
     a {
-      font-family: "Fira Sans", sans-serif;
+      // font-family: "Fira Sans", sans-serif;
       font-style: italic;
       font-weight: normal;
       font-size: 12px;

@@ -129,7 +129,7 @@ export default {
       box-shadow: 0 2px 8px 0 rgb(0 0 0 / 20%);
 
       h1 {
-        font-family: "Sansita", sans-serif;
+        // font-family: "Sansita", sans-serif;
         font-style: normal;
         font-weight: 700;
         font-size: 1.6rem;
@@ -140,7 +140,7 @@ export default {
       }
 
       p {
-        font-family: "Fira Sans", sans-serif;
+        // font-family: "Fira Sans", sans-serif;
         font-style: normal;
         font-weight: bold;
         font-size: 10px;
@@ -170,7 +170,7 @@ export default {
   }
 
   table {
-    font-family: arial, sans-serif;
+    // font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 96%;
     td,
@@ -228,7 +228,7 @@ export default {
     }
   }
   a {
-    font-family: "Fira Sans", sans-serif;
+    // font-family: "Fira Sans", sans-serif;
     font-style: italic;
     font-weight: normal;
     font-size: 12px;

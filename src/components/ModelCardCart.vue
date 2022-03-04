@@ -96,7 +96,7 @@ export default {
       h3 {
         width: 138px;
         margin: 0px;
-        font-family: Montserrat;
+        // font-family: Montserrat;
         font-size: 1rem;
 
         font-weight: bold;
@@ -104,7 +104,7 @@ export default {
         color: #545454;
       }
       p {
-        font-family: Montserrat;
+        // font-family: Montserrat;
         font-style: normal;
         font-weight: normal;
         font-size: 12px;
@@ -133,7 +133,7 @@ export default {
       line-height: 18px;
       letter-spacing: -0.2px;
       margin-left: 4px;
-      color: #9da1a7;
+      color: #7c7d80;
     }
   }
 
@@ -156,11 +156,13 @@ export default {
     }
 
     button {
-      padding: 0px 8px;
+      padding: 2px 8px;
       background-color: rgba(196, 21, 20, 0.8);
       color: #fff;
       margin-left: 18px;
       align-items: center;
+      border-radius: 5px;
+      // padding: 5px;
     }
   }
 }

@@ -80,7 +80,7 @@ export default {
     padding: auto;
 
     .product-name {
-      font-family: "Oswald", sans-serif;
+      // font-family: "Oswald", sans-serif;
       font-style: normal;
       font-weight: 600;
       font-size: 16px;
@@ -110,7 +110,7 @@ export default {
       margin-left: 8px;
       margin-top: 0px;
 
-      font-family: Inter;
+      // font-family: Inter;
       font-style: normal;
       font-weight: normal;
       font-size: 10px;
@@ -125,7 +125,7 @@ export default {
       text-align: start;
       margin: 0px 0px 0px 8px;
 
-      font-family: Inter;
+      // font-family: Inter;
       font-style: normal;
       font-weight: 600;
       font-size: 12px;

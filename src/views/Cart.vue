@@ -1,5 +1,13 @@
 <template>
   <div class="cart-view">
+    <section class="top">
+      <h1>CART</h1>
+      <p>
+        <router-link to="/"><span>Home</span></router-link>
+        <img src="../assets/right.svg" alt="" />
+        <span>Cart</span>
+      </p>
+    </section>
     <div class="information" v-if="!cartsProduct.length">
       <span>Your shopping cart is empty.</span>
     </div>
@@ -10,7 +18,7 @@
           <ModelCardCart :product="item" :idx="idx" />
         </div>
       </article>
-      <button class="btn" @click="removeAllProduct">Remove All</button>
+      <button class="btn-remove" @click="removeAllProduct">Remove All</button>
       <article class="payment">
         <div class="our-social-careness">
           <img src="@/assets/sustainability.svg" alt="sust-img" />
@@ -34,13 +42,15 @@
             <router-link class="back" to="/products">Back To Shop</router-link>
           </div> -->
           <div class="action-sub">
-            <router-link class="pay-now" to="/checkout" > Checkout </router-link>
+            <router-link class="pay-now" to="/checkout"> Checkout </router-link>
             <router-link class="back" to="/products">Back To Shop</router-link>
           </div>
         </div>
       </article>
     </div>
-    <div class="misc-block">MISC BLOCK FIXAS EFTER DISKUSSION.</div>
+    <div class="misc-block">
+      <h1>Keep eyes here to see our next special edition </h1>
+    </div>
   </div>
 </template>
 
@@ -51,7 +61,7 @@ import { mapActions } from "vuex";
 export default {
   components: { ModelCardCart },
   computed: {
-    ...mapGetters(["cartsProduct","ids",'inLoged']),
+    ...mapGetters(["cartsProduct", "ids", "inLoged"]),
     grandTotal() {
       let total = 0;
       this.cartsProduct.forEach((product) => {
@@ -69,32 +79,45 @@ export default {
     },
 
     moms() {
-      return this.grandTotal * 0.15;
+      return (this.grandTotal * 0.15).toFixed(2);
     },
-
-    
   },
-  
-  methods:{
-    ...mapActions(['removeAllProduct', 'fetchOrders']),
-    
-  }
+
+  methods: {
+    ...mapActions(["removeAllProduct", "fetchOrders"]),
+  },
 };
 </script>
-
-
 
 <style lang="scss" scoped>
 .cart-view {
   display: block;
-
+  .top {
+  width: 100%;
+  height: 80px;
+  background-color: #f69e03;
+  // font-family: "Times New Roman", Times, serif;
+  h1,
+  p {
+    display: flex;
+    padding: 5px;
+    padding-left: 2rem;
+    margin: 0px;
+    color: white;
+  }
+  h1 {
+    color: black;
+  }
+  a {
+    text-decoration: none;
+  }
+}
   .information {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    height: 600px;
     font-size: 1.2rem;
-    height: 300px;
   }
 
   .checkout-container {
@@ -106,11 +129,15 @@ export default {
       margin-left: 24px;
     }
 
-    .btn{
-      height: 24px;
-      margin-top:40px;
+    .btn-remove {
+      height: 35px;
+      width: 120px;
+      margin-top: 40px;
+      text-align: center;
       background-color: #1c1c1c;
-      color:#fff;
+      color: #fff;
+      border-radius: 5px;
+      
     }
 
     .payment {
@@ -133,7 +160,7 @@ export default {
         max-height: 50px;
 
         margin: 0px;
-        font-family: "Lato", sans-serif;
+        // font-family: "Lato", sans-serif;
 
         font-weight: 400;
         color: #545454;
@@ -159,7 +186,7 @@ export default {
         height: 300px;
         margin: 50px auto 0px auto;
         border-top: solid 1px #545454;
-        font-family: "Lato", sans-serif;
+        // font-family: "Lato", sans-serif;
 
         h3 {
           display: flex;
@@ -184,19 +211,32 @@ export default {
           flex-direction: column;
           margin-top: 80px;
           .pay-now {
-            padding: 5px 16px;
+            padding: 9px 18px;
             background-color: #1c1c1c;
             color: #fff;
             cursor: pointer;
             text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            &:hover{
+              background-color: #45a049;
+              transition: 0.7s;
+            }
           }
 
           .back {
-            padding: 3px 16px;
+            padding: 5px 18px;
             text-decoration: none;
             text-align: center;
             margin-top: 16px;
             border: solid 2px #1c1c1c;
+            border-radius: 5px;
+            color: black;
+            font-size: 1rem;
+            &:hover{
+              background-color: #45a049;
+              transition: 0.7s;
+            }
           }
         }
       }
@@ -205,15 +245,17 @@ export default {
   .misc-block {
     display: flex;
     justify-content: center;
-
+    align-items: center;
+    background-color: #0076C4;
     width: 100%;
     height: 300px;
-    font-size: 0.8rem;
-    background-color: #c0bebe;
-    margin: 196px 0px;
+    margin: 100px 0 0 0 ; 
 
-    h2 {
-      margin-top: 64px;
+    h1 {
+      color: white;
+      font-size: 3rem;
+      text-align: center;
+      
     }
   }
 }

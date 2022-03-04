@@ -116,7 +116,7 @@ export default {
   width: 100%;
   height: 80px;
   background-color: #aaa;
-  font-family: "Times New Roman", Times, serif;
+  // font-family: "Times New Roman", Times, serif;
   h1,
   p {
     display: flex;
@@ -131,7 +131,8 @@ export default {
     text-decoration: none;
   }
 }
-.login-form {
+.register-page{
+  margin: 5rem 0 11rem 0;
   h3 {
     font-size: 2rem;
   }

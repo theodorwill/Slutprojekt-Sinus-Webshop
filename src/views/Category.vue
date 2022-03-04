@@ -18,9 +18,9 @@
           <li>Wheel</li>
         <h2>New Products</h2>
         <!-- <ModelCardProductsList  :product="favouriteProd"/> -->
-        <!-- <img src="../assets/skateboard-1.png" alt=""> -->
+        <img src="../assets/skateboard-1.png" alt="">
         <img src="../assets/new-skateboard-3.png" alt="">
-        <img src="../assets/new-skateboard-3.png" alt="">
+        <!-- <img src="../assets/new-skateboard.png" alt=""> -->
       </div>
 
       <div class="product-list">
@@ -61,7 +61,7 @@ export default {
   width: 100%;
   height: 80px;
   background-color: #0076c4;
-  font-family: "Times New Roman", Times, serif;
+  // font-family: "Times New Roman", Times, serif;
   padding-left: 2rem;
   h1,
   p {
