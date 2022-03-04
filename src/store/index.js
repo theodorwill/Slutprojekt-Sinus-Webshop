@@ -165,6 +165,8 @@ export default new Vuex.Store({
           context.commit('saveItems', responseThree.data)
           const responseFour = await API.getPage(4)
           context.commit('saveItems', responseFour.data)
+         
+         
 
           context.commit('setMaxPage')
         }
