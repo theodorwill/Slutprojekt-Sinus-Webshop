@@ -2,11 +2,11 @@
 
   <div class="main">
     <section class="top">
-      <h1>CONTACT</h1>
+      <h1>ORDER HISTORY</h1>
       <p>
-        <router-link to="/"><span>Home</span></router-link>
+        <router-link to="/user"><span>Profile</span></router-link>
         <img src="../assets/right.svg" alt="" />
-        <span>Contact</span>
+        <span>Order history</span>
       </p>
     </section>
     <p class="mgs" v-if="cartHistory.length == 0 || cartsProduct.length == 0">
@@ -192,7 +192,7 @@ export default {
   .top {
     width: 100%;
     height: 80px;
-    background-color: #aaa;
+    background-color: #f69e03;
     // font-family: "Times New Roman", Times, serif;
     h1,
     p {
