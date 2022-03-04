@@ -84,7 +84,7 @@ export default {
   width: 100%;
   height: 80px;
   background-color: #aaa;
-  font-family: "Times New Roman", Times, serif;
+  // font-family: "Times New Roman", Times, serif;
   h1,
   p {
     display: flex;
@@ -155,6 +155,9 @@ export default {
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     margin: 32px auto;
+    a{
+      text-decoration: none;
+    }
   }
 }
 

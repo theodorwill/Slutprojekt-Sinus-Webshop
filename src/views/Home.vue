@@ -91,7 +91,7 @@ export default {
         text-align: center;
         font-size: 3rem;
         color: white;
-        font-family: --showcase-fontfamily;
+        // font-family: 'Lora', serif;
     }
         a{
             text-decoration: none;
@@ -109,7 +109,6 @@ export default {
         border-radius: 50px;
         background: none;
         color: white;
-        font-family: var(--);
 
     }
 }

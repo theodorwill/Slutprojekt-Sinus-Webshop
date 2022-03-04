@@ -27,12 +27,10 @@ export default {
 
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 :root{
   --showcase-fontfamily: 'Lora', serif;
-  --navbar-fontfamily: 'Oswald', sans-serif;
-  --allheadlines-fontfamily: 'Oswald', sans-serif;
-  --paragraph-fontfamily: 'Oswald', sans-serif;
+
   --primery-color: #0076C4;
   --secondary-color: #f69e03;
   --color-Btn: #1c1c1c;
@@ -42,7 +40,9 @@ html{
   scroll-behavior: smooth;
 }
 body {
-  width: 100vw;
+  font-family: 'Montserrat', sans-serif;
+  width: 1440px;
+  margin: auto;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -60,7 +60,7 @@ Header{
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  // font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

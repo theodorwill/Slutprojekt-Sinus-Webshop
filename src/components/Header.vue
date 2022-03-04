@@ -73,6 +73,8 @@ export default {
 
 <style lang="scss" scoped>
 #nav {
+  width: 1440px;
+  margin: auto;
   .header {
     display: flex;
     justify-content: space-around;

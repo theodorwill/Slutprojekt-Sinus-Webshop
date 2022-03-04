@@ -65,7 +65,7 @@ export default {
   .header {
     height: 88px;
     h1 {
-      font-family: "Sansita", sans-serif;
+      // font-family: "Sansita", sans-serif;
       font-style: normal;
       font-weight: 700;
       font-size: 26px;
@@ -82,7 +82,7 @@ export default {
     }
 
     p {
-      font-family: "Fira Sans", sans-serif;
+      // font-family: "Fira Sans", sans-serif;
       font-style: normal;
       font-weight: bold;
       font-size: 10px;
@@ -103,7 +103,7 @@ export default {
       border-bottom: dotted 1px rgba(0, 0, 0, 0.4);
       padding: 8px 0px 0px 0px;
       .where {
-        font-family: "Fira Sans", sans-serif;
+        // font-family: "Fira Sans", sans-serif;
         font-style: normal;
         font-weight: bold;
         font-size: 10px;
@@ -116,7 +116,7 @@ export default {
       }
 
       h2 {
-        font-family: "Fira Sans", sans-serif;
+        // font-family: "Fira Sans", sans-serif;
         font-style: normal;
         font-weight: 600;
         font-size: 18px;
@@ -130,7 +130,7 @@ export default {
       }
 
       .item {
-        font-family: "Fira Sans", sans-serif;
+        // font-family: "Fira Sans", sans-serif;
         font-style: normal;
         font-weight: bold;
         font-size: 10px;
@@ -163,7 +163,7 @@ export default {
         }
       }
       .short-info {
-        font-family: "Fira Sans", sans-serif;
+        // font-family: "Fira Sans", sans-serif;
         font-style: normal;
         font-weight: normal;
         font-size: 12px;
@@ -183,7 +183,7 @@ export default {
     height: 120px;
     margin-top: 28px;
     p {
-      font-family: "Fira Sans", sans-serif;
+      // font-family: "Fira Sans", sans-serif;
       font-style: normal;
       font-weight: bold;
       margin-top:8px;

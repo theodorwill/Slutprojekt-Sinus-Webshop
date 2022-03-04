@@ -28,13 +28,12 @@
         ut, reprehenderit officia vel corporis! Excepturi veritatis officiis id
         odit ea laboriosam voluptates. Velit veniam nemo quis suscipit! Vel iste
         architecto accusantium sapiente totam enim? Culpa, quam. Ut debitis
-       
       </p>
     </div>
-    <h2 style="text-align:" >Our Team</h2>
+    <h2 style="text-align: ">Our Team</h2>
     <div class="our-teams">
       <div class="person">
-        <div class="images rashadul" alt=""/>
+        <div class="images rashadul" alt="" />
         <h2>Rashadul</h2>
         <p class="title">Art Director</p>
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
@@ -42,7 +41,7 @@
         <p><button class="button">Contact</button></p>
       </div>
       <div class="person">
-        <div class="images omar" alt=""/>
+        <div class="images omar" alt="" />
         <h2>Omar</h2>
         <p class="title">Art Director</p>
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
@@ -50,7 +49,7 @@
         <p><button class="button">Contact</button></p>
       </div>
       <div class="person">
-        <div class="images theow" alt=""/>
+        <div class="images theow" alt="" />
         <h2>Theo</h2>
         <p class="title">Art Director</p>
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
@@ -58,7 +57,7 @@
         <p><button class="button">Contact</button></p>
       </div>
       <div class="person">
-        <div class="images giash" alt=""/>
+        <div class="images giash" alt="" />
         <h2>Giash</h2>
         <p class="title">Art Director</p>
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
@@ -74,12 +73,11 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-
 .top {
   width: 100%;
   height: 80px;
   background-color: #aaa;
-  font-family: "Times New Roman", Times, serif;
+  // font-family: "Times New Roman", Times, serif;
   h1,
   p {
     display: flex;
@@ -88,7 +86,7 @@ export default {};
     margin: 0px;
     color: white;
   }
-   h1{
+  h1 {
     color: black;
   }
   a {
@@ -100,12 +98,13 @@ export default {};
   text-align: center;
   background-color: #474e5d;
   color: white;
-  p{
+  line-height: 1.6rem;
+  p {
     width: 70%;
     margin: 20px auto;
   }
 }
-h2{
+h2 {
   font-size: 2.7rem;
 }
 .our-teams {
@@ -124,7 +123,7 @@ h2{
     height: 200px;
   }
   h2 {
-    font-family: Arial, Helvetica, sans-serif;
+    // font-family: Arial, Helvetica, sans-serif;
     font-size: 1.7rem;
   }
   .title {
@@ -153,7 +152,7 @@ h2{
   }
 }
 
-.images{
+.images {
   width: 200px;
   height: 200px;
   margin: 2rem auto auto auto;
@@ -162,23 +161,23 @@ h2{
   border-radius: 50%;
 }
 
-.rashadul{
+.rashadul {
   background-image: url("../assets/rashadul.png");
   background-size: 100%;
   background-position: center top;
 }
 
-.omar{
+.omar {
   background-image: url("../assets/omar.png");
   background-size: 100%;
 }
 
-.theow{
+.theow {
   background-image: url("../assets/tw.jpg");
   background-size: cover;
 }
 
-.giash{
+.giash {
   background-image: url("../assets/giash.jpg");
   background-size: 100%;
   background-position: center bottom;
