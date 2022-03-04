@@ -10,12 +10,12 @@
         <h2>{{ item.category }}</h2>
       </div>
       <div class="others-info">
-        <div class="date-info">
-          <p>Thank you!</p>
-        </div>
         <div class="short-info">
-          <p>INFO</p>
-          <p>{{ item.longDesc }}</p>
+          <p class="short-size">{{item.shortDesc}}</p>
+          <p>{{item.longDesc}}</p>
+        </div>
+        <div class="greetings">
+          <p>Thank You!</p>
         </div>
       </div>
     </main>
@@ -102,18 +102,6 @@ export default {
       border-top: dotted 1px rgba(0, 0, 0, 0.4);
       border-bottom: dotted 1px rgba(0, 0, 0, 0.4);
       padding: 8px 0px 0px 0px;
-      .where {
-        // font-family: "Fira Sans", sans-serif;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 10px;
-        line-height: 12px;
-
-        align-items: center;
-
-        color: rgba(0, 0, 0, 0.4);
-        margin-left: 10px;
-      }
 
       h2 {
         // font-family: "Fira Sans", sans-serif;
@@ -121,7 +109,7 @@ export default {
         font-weight: 600;
         font-size: 18px;
         line-height: 22px;
-
+        text-transform: capitalize;
         align-items: center;
 
         color: rgba(0, 0, 0, 0.7);
@@ -142,7 +130,7 @@ export default {
       }
     }
     .others-info {
-      .date-info {
+      .greetings {
         margin: auto;
         background-color: #dadada;
         border: 1px dotted;
@@ -171,6 +159,9 @@ export default {
         padding: 10px 0px;
         color: rgba(0, 0, 0, 0.6);
         border-bottom: 2px gray solid;
+        .short-size{
+          font-weight: 600;
+        }
       }
     }
   }
