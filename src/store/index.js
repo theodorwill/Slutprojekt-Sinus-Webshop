@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 
 
 
+
 import * as API from '@/api'
 
 
@@ -25,9 +26,9 @@ export default new Vuex.Store({
     start: 0,
     end: 10,
     user: [],
-    delivery:""
+    delivery: ""
 
-   
+
 
 
   },
@@ -81,6 +82,7 @@ export default new Vuex.Store({
     removeProduct(state, payload) {
       state.cart.splice(payload, 1)
     },
+    
     removeAllProduct(state) {
       state.cart = []
     },
@@ -135,9 +137,15 @@ export default new Vuex.Store({
 
     signOut(state) {
       state.token = null;
+
+    },
+
+    newProduct(state, product) {
+      state.productList.push(product)
     },
   },
 
+  
 
 
 
@@ -284,7 +292,37 @@ export default new Vuex.Store({
 
     removeAllProduct(context) {
       context.commit('removeAllProduct')
-    }
+      
+    },
+
+    // Admin
+    async addProducts(context,object) {
+      const response = await API.addProduct(object.title, 
+        object.shortDesc,
+        object.longDesc,
+        object.imgFile,
+        object.category,
+        object.price)
+      
+      context.commit('newProduct', response.data)
+      console.log('new'+ response)
+      
+    },
+
+    async updateProducts(_,object) {
+      const response = await API.patchProduct(object.id, object.title,object.shortDesc,
+        object.longDesc,
+        object.imgFile,
+        object.category,
+        object.price,)
+      console.log(response.data)
+    },
+
+
+    async deleteProducts(_,id) {
+      const response = await API.deleteProduct(id)
+      console.log(response.data)
+    },
   },
 
   // GETTERS.................
@@ -296,7 +334,7 @@ export default new Vuex.Store({
 
     cartsProduct: (state) => state.cart.map(id => state.productList.find(product => product.id == id)),
 
-   
+
 
     // singleCategory: (state) => state.catgStorage.filter(product => product.category == state.categoryName),
 
@@ -309,23 +347,14 @@ export default new Vuex.Store({
     cartHistory(state) {
       let items = [];
       for (let order of state.orderList) {
-        
+
         for (let item of order.items) {
-          items.push(item)
+          items.push(item.ProductId)
         }
-        
+
       }
-      let arr = [];
-      for (let n of items) {
-        arr.push(n.ProductId)
-      }
-
-      return arr
-      }
-
-    
-
-
+      return items
+    }
 
 
   }

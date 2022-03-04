@@ -9,7 +9,7 @@
         <span>Contact</span>
       </p>
     </section>
-    <p class="mgs" v-if="!cartHistory.length">
+    <p class="mgs" v-if="cartHistory.length == 0 || cartsProduct.length == 0">
       You didn't purchase any product yet!
     </p>
 

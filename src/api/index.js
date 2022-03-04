@@ -34,7 +34,7 @@ export async function getUser() {
 //Page functionality 
 export async function getPage(page) {
   return await axios.get('/items?page=' + page)
-} 
+}
 
 
 
@@ -57,21 +57,31 @@ export async function postOrder(items) {
   return await axios.post("/orders", {
     items
   });
- 
+
 }
 
 
 
 
 //ADMIN............................................................
+export async function addProduct(title, shortDesc, longDesc, imgFile, category, price) {
 
-export async function addProduct() {
-  return await axios.post('/items')
+  return await axios.post('/items/', {
+    title,
+    shortDesc,
+    longDesc,
+    imgFile,
+    category,
+    price
+  })
+
+
 }
 
-
-export async function patchProduct(id) {
-  return await axios.patch('/items/' + id)
+export async function patchProduct(id, title, shortDesc, longDesc, imgFile, category, price) {
+  return await axios.patch('/items/' + id, {
+    title, shortDesc, longDesc, imgFile, category, price
+  })
 }
 
 export async function deleteProduct(id) {
