@@ -34,9 +34,11 @@
       </section>
       <section class="role" v-if="adminLoged">
         <h2>Admin loged</h2>
+        <p>logout</p>
       </section>
       <section class="role" v-if="customer">
         <h2>Customer loged</h2>
+        <p>logout</p>
       </section>
 
     </div>
@@ -167,7 +169,21 @@ export default {
       font-weight: bold;
     }
   }
-
+.role{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h2{
+    margin-right: 20px;
+  }
+  p{
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #ff6e40;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+}
   .navbar {
     color: #ff6e40;
     display: flex;
