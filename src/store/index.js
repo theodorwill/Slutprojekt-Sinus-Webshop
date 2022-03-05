@@ -26,11 +26,10 @@ export default new Vuex.Store({
     start: 0,
     end: 10,
     user: [],
-    delivery: ""
-
-
-
-
+    delivery: "",
+    images:["sinus-skateboard-logo.png"],
+    productCategory: ['cap', 'hoodie', 'wheel', 'skateboard', 'totebag'],
+    productTitle: ['Ash', 'Green', 'Blue', 'Red', 'Fire'],
   },
 
 
@@ -82,7 +81,7 @@ export default new Vuex.Store({
     removeProduct(state, payload) {
       state.cart.splice(payload, 1)
     },
-    
+
     removeAllProduct(state) {
       state.cart = []
     },
@@ -143,9 +142,16 @@ export default new Vuex.Store({
     newProduct(state, product) {
       state.productList.push(product)
     },
+
+    // Images
+
+    saveImage(state,imgArray) {
+      state.images = imgArray
+    }
+
   },
 
-  
+
 
 
 
@@ -165,8 +171,8 @@ export default new Vuex.Store({
           context.commit('saveItems', responseThree.data)
           const responseFour = await API.getPage(4)
           context.commit('saveItems', responseFour.data)
-         
-         
+
+
 
           context.commit('setMaxPage')
         }
@@ -294,37 +300,70 @@ export default new Vuex.Store({
 
     removeAllProduct(context) {
       context.commit('removeAllProduct')
-      
+
     },
 
     // Admin
-    async addProducts(context,object) {
-      const response = await API.addProduct(object.title, 
-        object.shortDesc,
-        object.longDesc,
-        object.imgFile,
-        object.category,
-        object.price)
-      
-      context.commit('newProduct', response.data)
-      console.log('new'+ response)
-      
-    },
+    async addProducts(context, object) {
+      try {
+        const response = await API.addProduct(object.title,
+          object.shortDesc,
+          object.longDesc,
+          object.imgFile,
+          object.category,
+          object.price)
 
-    async updateProducts(_,object) {
-      const response = await API.patchProduct(object.id, object.title,object.shortDesc,
-        object.longDesc,
-        object.imgFile,
-        object.category,
-        object.price,)
-      console.log(response.data)
-    },
+        context.commit('newProduct', response.data.product)
+        context.commit('setMaxPage')
+        console.log('new' + response.data)
+      } catch (error) {
+        console.log('add products '+ error)
+      }
 
 
-    async deleteProducts(_,id) {
-      const response = await API.deleteProduct(id)
-      console.log(response.data)
     },
+
+    async updateProducts(_, object) {
+      try {
+        const response = await API.patchProduct(object.id, object.title, object.shortDesc,
+          object.longDesc,
+          object.imgFile,
+          object.category,
+          object.price)
+        console.log(response.data)
+      } catch (error) {
+        console.log('update products '+ error)
+      }
+
+    },
+
+
+    async deleteProducts(_, id) {
+      try {
+        const response = await API.deleteProduct(id)
+        console.log(response.data)
+      } catch (error) { console.log('delete products '+ error) }
+
+    },
+
+    async updateOrderStatus(_, object) {
+      try {
+        const response = await API.patchOrder(object.id, object.status)
+        console.log('Order status ' + response.data.status)
+      } catch (error) {
+        console.log('update order status '+ error)
+      }
+
+    },
+
+    async fetchAllImages(context) {
+      if (context.state.images.length < 2) {
+        const response = await API.getImages()
+        context.commit('saveImage', response.data)
+        console.log('Images ' + response.data.images)
+     }
+     
+    }
   },
 
   // GETTERS.................
@@ -343,9 +382,11 @@ export default new Vuex.Store({
     nextBtnDisabled: (state) => state.currentPage == state.maxPage ? true : false,
     prevBtnDisabled: (state) => state.start == 0 ? true : false,
 
-    customerLoged: (state) => (state.token !== null && state.user.role == 'customer' || state.user.role == 'admin') ? true : false,
+    customerLoged: (state) => (state.token !== null && state.user.role == 'customer') ? true : false,
+
     adminLoged: (state) => (state.token !== null && state.user.role == 'admin') ? true : false,
-    customer: (state) => (state.token !== null && state.user.role == 'customer') ? true : false,
+
+    // customer: (state) => (state.token !== null && state.user.role == 'customer') ? true : false,
 
 
     cartHistory(state) {

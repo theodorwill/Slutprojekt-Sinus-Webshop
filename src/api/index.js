@@ -60,10 +60,16 @@ export async function postOrder(items) {
 
 }
 
+export async function patchOrder(id, status) {
+  return await axios.patch("/orders/" + id, {
+    status
+  });
 
-
+}
 
 //ADMIN............................................................
+
+
 export async function addProduct(title, shortDesc, longDesc, imgFile, category, price) {
 
   return await axios.post('/items/', {
@@ -86,4 +92,10 @@ export async function patchProduct(id, title, shortDesc, longDesc, imgFile, cate
 
 export async function deleteProduct(id) {
   return await axios.delete('/items/' + id)
+}
+
+
+export async function getImages() {
+  return await axios.get("/images");
+
 }

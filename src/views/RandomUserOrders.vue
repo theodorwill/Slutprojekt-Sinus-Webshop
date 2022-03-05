@@ -1,5 +1,4 @@
 <template>
-
   <div class="main">
     <section class="top">
       <h1>ORDER HISTORY</h1>
@@ -9,14 +8,14 @@
         <span>Order history</span>
       </p>
     </section>
-    <p class="mgs" v-if="cartHistory.length == 0 || cartsProduct.length == 0">
+    <p class="mgs" v-if="cartHistory.length < 1">
       You didn't purchase any product yet!
     </p>
 
-    <div class="products" >
+    <div class="products" v-else>
       <h1>Category based overview of orders</h1>
 
-      <ul class="order-list" v-if="customerLoged==false">
+      <ul class="order-list" v-if="customerLoged == false">
         <li v-for="item in cartsProduct" :key="item.id">
           <Order :item="item" />
         </li>
@@ -26,12 +25,11 @@
           <Order :item="item" />
         </li>
       </ul>
-     
-      <table v-if="customerLoged==false">
+
+      <table v-if="customerLoged == false">
         <tr>
           <th>Order id:</th>
-          <td >1339</td>
-  
+          <td>1339</td>
         </tr>
         <tr>
           <th>Status:</th>
@@ -39,18 +37,15 @@
         </tr>
         <tr>
           <th>Shipping city:</th>
-          <td >Stockholm</td>
-       
+          <td>Stockholm</td>
         </tr>
         <tr>
           <th>Shipping street:</th>
-          <td >81</td>
-         
+          <td>81</td>
         </tr>
         <tr>
           <th>Shipping zip:</th>
-          <td >12</td>
-          
+          <td>12</td>
         </tr>
         <tr>
           <th>Products:</th>
@@ -65,12 +60,11 @@
           <td>SEK {{ subTotal }}</td>
         </tr>
       </table>
-       <!-- Conditional rendering's divider -->
-       <table v-else >
+      <!-- Conditional rendering's divider -->
+      <table v-else>
         <tr>
           <th>Order id:</th>
-          <td >{{orderId}}</td>
-  
+          <td>{{ orderId }}</td>
         </tr>
         <tr>
           <th>Status:</th>
@@ -78,18 +72,15 @@
         </tr>
         <tr>
           <th>Shipping city:</th>
-          <td >{{user.address.city}}</td>
-       
+          <td>{{ user.address.city }}</td>
         </tr>
         <tr>
           <th>Shipping street:</th>
-          <td >{{user.address.street}}</td>
-         
+          <td>{{ user.address.street }}</td>
         </tr>
         <tr>
           <th>Shipping zip:</th>
-          <td >{{user.address.zip}}</td>
-          
+          <td>{{ user.address.zip }}</td>
         </tr>
         <tr>
           <th>Products:</th>
@@ -105,28 +96,19 @@
         </tr>
       </table>
       <router-link to="/producs">BACK TO SHOP</router-link>
-     
     </div>
-  
-
-    
-
- 
-
-
   </div>
 </template>
 
 <script>
-
 import Order from "../components/Order.vue";
 import { mapGetters } from "vuex";
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 export default {
   components: { Order },
   computed: {
-    ...mapGetters(["cartsProduct","cartHistory","customerLoged"]),
-    ...mapState(['user', 'orderList', 'delivery']),
+    ...mapGetters(["cartsProduct", "cartHistory", "customerLoged"]),
+    ...mapState(["user", "orderList", "delivery"]),
 
     subTotal() {
       let total = 0;
@@ -143,7 +125,6 @@ export default {
       });
       return num;
     },
-
 
     total() {
       let total = 0;
@@ -162,16 +143,15 @@ export default {
     },
 
     carts() {
-      return this.cartHistory.map(id => this.$store.state.productList.find(product => product.id == id))
+      return this.cartHistory.map((id) =>
+        this.$store.state.productList.find((product) => product.id == id)
+      );
     },
 
-    orderId(){
-      return this.orderList.map(obj => obj.id )
-    }
-
+    orderId() {
+      return this.orderList.map((obj) => obj.id);
+    },
   },
-
-  
 };
 </script>
 
@@ -186,7 +166,6 @@ export default {
   .mgs {
     text-align: center;
     font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.8);
     margin: 96px auto;
   }
   .top {
@@ -217,7 +196,7 @@ export default {
 
     h1 {
       font-size: 1.2rem;
-      margin:24px 0px 0px 16px ;
+      margin: 24px 0px 0px 16px;
     }
 
     .order-list {
@@ -262,6 +241,4 @@ export default {
     }
   }
 }
-
-
 </style>
