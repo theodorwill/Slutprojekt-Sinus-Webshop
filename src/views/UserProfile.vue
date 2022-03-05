@@ -15,8 +15,11 @@
             <button @click="signOutController">Sign out</button>
             
           </aside>
-          <article class="order-history">
+          <article class="order-history" v-if="customerLoged">
            <router-link to='/orders' @click.native="fetchOrders">Order history</router-link>
+          </article>
+           <article class="order-history" v-else>
+           <router-link to='/admin' @click.native="fetchOrders();fetchAllImages();">Admin page</router-link>
           </article>
           <hr>
           <form
@@ -104,7 +107,7 @@
 <script>
 import { VueTabs, VTab } from "vue-nav-tabs";
 import "vue-nav-tabs/themes/vue-tabs.css";
-import {mapActions} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 
 
 export default {
@@ -136,8 +139,12 @@ export default {
     this.addUserData();
   },
 
+  computed:{
+    ...mapGetters(['customerLoged'])
+  },
+
   methods: {
-    ...mapActions(['fetchOrders']),
+    ...mapActions(['fetchOrders','fetchAllImages']),
     addUserData() {
       console.log("UserProfile, addUserData() log", this.$store.state.user);
 

@@ -120,17 +120,21 @@
             <option value="express">EXPRESS</option>
             <option value="discovery">DISCOVERY</option>
           </select>
-           <router-link to="/user" v-if="customerLoged == true"  class="btn" @click.native="setOrder"
+          <router-link
+            to="/user"
+            v-if=" customerLoged == true"
+            class="btn"
+            @click.native="setOrder"
             >SAVE AND BUY , Get
-
           </router-link>
 
-        
-
-          <router-link  to="/orders" class="btn" @click.native="fetchDelvAddress(userInfo)"
-           v-else >SAVE AND BUY
+          <router-link
+            to="/orders"
+            class="btn"
+            @click.native="fetchDelvAddress(userInfo)"
+            v-else
+            >SAVE AND BUY
           </router-link>
-          
         </div>
       </section>
     </div>
@@ -139,60 +143,52 @@
 
 <script>
 import { mapActions } from "vuex";
-import {mapGetters} from "vuex"
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
       userInfo: {
-        email:'',
-        name: '',
+        email: "",
+        name: "",
         address: {
-          street: '',
-          city: '',
-          zip: '',
+          street: "",
+          city: "",
+          zip: "",
         },
-        payMthods: ''
+        payMthods: "",
       },
     };
   },
 
- 
-  created(){
-    this.autoFillInfo()
+  created() {
+    this.autoFillInfo();
   },
 
-
-   computed:{
-     ...mapGetters(['customerLoged','ids']),
-
+  computed: {
+    ...mapGetters([" customerLoged", "ids"]),
   },
-
-
 
   methods: {
-    ...mapActions(["fetchDelvAddress", 'postOrders']),
+    ...mapActions(["fetchDelvAddress", "postOrders"]),
 
-    autoFillInfo(){
-      if(this.$store.token !== null){
+    autoFillInfo() {
+      if (this.$store.token !== null) {
         this.userInfo.email = this.$store.state.user.email;
         this.userInfo.name = this.$store.state.user.name;
 
         if (this.$store.state.user.address) {
-        this.userInfo.address.city = this.$store.state.user.address.city;
-        this.userInfo.address.street = this.$store.state.user.address.street;
-        this.userInfo.address.zip = this.$store.state.user.address.zip;
+          this.userInfo.address.city = this.$store.state.user.address.city;
+          this.userInfo.address.street = this.$store.state.user.address.street;
+          this.userInfo.address.zip = this.$store.state.user.address.zip;
+        }
       }
-      }
-    }, 
+    },
 
-    setOrder(){
-       this.$store.dispatch('postOrders', this.ids);
-       this.$store.state.cart = []
-    }
+    setOrder() {
+      this.$store.dispatch("postOrders", this.ids);
+      // this.$store.state.cart = [];
+    },
   },
-
-
-  
 };
 </script>
 
@@ -252,10 +248,9 @@ hr.solid {
   }
 }
 .name {
-
   width: 50%;
   margin: 2rem auto;
-  
+
   input {
     width: 100%;
     min-height: 25px;
@@ -354,21 +349,20 @@ hr.solid {
 .cc-info {
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   width: 25%;
   margin: auto;
 
   label {
     font-size: 1rem;
     letter-spacing: 2px;
-    margin:16px 0px;
+    margin: 16px 0px;
   }
 
-  select{
+  select {
     margin: 16px 0px;
     padding: 8px 32px;
     border-radius: 10px;
-  
   }
   a {
     background-color: #04aa6d;
@@ -383,6 +377,6 @@ hr.solid {
     &:hover {
       background-color: #45a049;
     }
-}
+  }
 }
 </style>
