@@ -43,12 +43,12 @@
             <strong>AMOUNT TO PAY:</strong> <strong>{{ netTotal }}</strong>
           </h3>
           <span class="vat-info">moms {{ moms }} </span>
-          <div class="action-sub" v-if="customerLoged">
+          <div class="action-sub" v-if="customerLoged || adminLoged">
             <router-link class="pay-now" to="/checkout" > Checkout </router-link>
             <router-link class="back" to="/products">Back To Shop</router-link>
           </div>
           <div class="action-sub" v-else>
-            <router-link class="pay-now" to="/checkout"> Checkout </router-link>
+            <router-link class="pay-now" to="/register"> Checkout </router-link>
             <router-link class="back" to="/products">Back To Shop</router-link>
           </div>
         </div>
@@ -67,7 +67,7 @@ import { mapActions } from "vuex";
 export default {
   components: { ModelCardCart },
   computed: {
-    ...mapGetters(["cartsProduct", "ids", "customerLoged"]),
+    ...mapGetters(["cartsProduct", "ids", "customerLoged", "adminLoged"]),
     grandTotal() {
       let total = 0;
       this.cartsProduct.forEach((product) => {

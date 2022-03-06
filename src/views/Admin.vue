@@ -174,6 +174,10 @@ export default {
     };
   },
 
+  created(){
+    
+  },
+
   computed: {
     ...mapState([
       "productCategory",
@@ -271,7 +275,6 @@ export default {
       this.$store.dispatch("loggingOut");
       this.$router.push("/login");
     },
-
    
   },
 };
