@@ -1,5 +1,11 @@
 # sinus-webshop-slutprojekt
 
+## General Info
+
+Latest stable version pushed onto Main.
+
+Latest version pushed onto develop. 
+
 ## Project setup
 ```
 npm install
