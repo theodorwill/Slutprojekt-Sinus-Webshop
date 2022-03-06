@@ -1,12 +1,15 @@
 <template>
   <div class="main">
-    <section class="top">
-      <h1>ORDER HISTORY</h1>
+    <section class="breadcrumbs">
+      <h1>ORDER</h1>
       <p>
         <router-link to="/user"><span>Profile</span></router-link>
         <img src="../assets/right.svg" alt="" />
-        <span>Order history</span>
+        <span>Order</span>
       </p>
+      <div>
+        <hr>
+      </div>
     </section>
     <p class="mgs" v-if="cartHistory.length < 1 && cartsProduct.length < 1" >
       You didn't purchase any product yet!
@@ -15,18 +18,18 @@
     <div class="products" v-else>
       <h1>Category based overview of orders</h1>
 
-      <ul class="order-list" v-if="customerLoged == false">
+      <ul class="order-list">
         <li v-for="item in cartsProduct" :key="item.id">
           <Order :item="item" />
         </li>
       </ul>
-      <ul class="order-list" v-else>
+      <!-- <ul class="order-list" v-else>
         <li v-for="item in carts" :key="item.id">
           <Order :item="item" />
         </li>
-      </ul>
+      </ul> -->
 
-      <table v-if="customerLoged == false">
+      <table>
         <tr>
           <th>Order id:</th>
           <td>1339</td>
@@ -61,7 +64,7 @@
         </tr>
       </table>
       <!-- Conditional rendering's divider -->
-      <table v-else>
+      <!-- <table v-else>
         <tr>
           <th>Order id:</th>
           <td>{{ orderId }}</td>
@@ -84,17 +87,17 @@
         </tr>
         <tr>
           <th>Products:</th>
-          <td>{{ carts.length }}</td>
+          <td>{{ cartsProduct.length }}</td>
         </tr>
         <tr>
           <th>Product quantity:</th>
-          <td>{{ itemsAmount }}</td>
+          <td>{{ itemsNumber }}</td>
         </tr>
         <tr>
           <th>Total sum:</th>
-          <td>SEK {{ total }}</td>
+          <td>SEK {{ subTotal }}</td>
         </tr>
-      </table>
+      </table> -->
       <router-link to="/producs">BACK TO SHOP</router-link>
     </div>
   </div>
@@ -152,6 +155,17 @@ export default {
       return this.orderList.map((obj) => obj.id);
     },
   },
+
+  created(){
+    if(this.$store.state.token === null){
+      this.$router.push("/");
+    }
+  },
+
+
+  destroyed(){
+    this.$store.state.cart = [];
+  }
 };
 </script>
 

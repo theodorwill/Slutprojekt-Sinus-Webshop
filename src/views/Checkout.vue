@@ -4,17 +4,26 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <section class="top">
+    <section class="breadcrumbs">
       <h1>SINGLE PRODUCT</h1>
       <p>
         <router-link to="/"><span>Home</span></router-link>
-        <img src="../assets/right.svg" alt="" />
-        <router-link to="/products"><span>Products</span></router-link>
-        <img src="../assets/right.svg" alt="" />
-        <router-link to="/products"><span>Single Product</span></router-link>
-        <img src="../assets/right.svg" alt="" />
+        <img
+          src="../assets/right.svg"
+          alt=""
+        />
+        
+        <router-link to="/cart"><span>Products</span></router-link>
+        <img
+          src="../assets/right.svg"
+          alt=""
+        />
+        
         <span>Checkout</span>
       </p>
+      <div>
+        <hr>
+      </div>
     </section>
     <div class="wrapper">
       <section class="top-section">
@@ -22,35 +31,109 @@
         <hr class="solid" />
         <div class="container">
           <div class="container-1">
-            <input type="radio" id="huey" name="drone" value="huey" checked />
+            <input
+              type="radio"
+              id="huey"
+              name="drone"
+              value="huey"
+              checked
+            />
             <label for="huey">Express delivery</label>
             <p>3-4 days via DHL</p>
           </div>
           <div class="container-2">
-            <input type="radio" id="huey" name="drone" value="huey" checked />
+            <input
+              type="radio"
+              id="huey"
+              name="drone"
+              value="huey"
+              checked
+            />
             <label for="huey">Normal delivery </label>
             <p>20 - 30 days via post</p>
           </div>
           <div class="container-3">
-            <input type="radio" id="huey" name="drone" value="huey" checked />
+            <input
+              type="radio"
+              id="huey"
+              name="drone"
+              value="huey"
+              checked
+            />
             <label for="huey">Pick up</label>
             <p>From nearest store</p>
           </div>
         </div>
       </section>
+      <section class="bottom-section">
+        <h3>Payment options</h3>
+        <hr class="solid" />
+        <div class="icon-container">
+          <i
+            class="fa fa-cc-visa"
+            style="color: navy"
+          ></i>
+          <i
+            class="fa fa-cc-mastercard"
+            style="color: chocolate"
+          ></i>
+          <i
+            class="fa fa-cc-amex"
+            style="color: blue"
+          ></i>
+          <i
+            class="fa fa-cc-discover"
+            style="color: orange"
+          ></i>
+        </div>
+
+        <div class="cc-info">
+          <label for="payment">Choose your payment method</label>
+          <select
+            name="payment"
+            id="payment"
+            v-model="userInfo.payMthods"
+          >
+            <option value="visa">VISA</option>
+            <option value="master">MASTER</option>
+            <option value="express">EXPRESS</option>
+            <option value="discovery">DISCOVERY</option>
+          </select>
+          <!-- <router-link
+            to="/user"
+            v-if="customerLoged == true"
+            class="btn"
+            @click.native="setOrder"
+            >SAVE AND BUY
+          </router-link>
+
+          <router-link
+            to="/orders"
+            class="btn"
+            @click.native="setOrder"
+            v-else
+            >SAVE AND BUY
+          </router-link> -->
+
+          
+        </div>
+      </section>
       <section class="middle-section">
         <h3>Delivery address</h3>
         <hr class="solid" />
-        <form action="">
+        <form @submit.prevent="setOrder">
           <div class="name">
             <div>
-              <label for="f-name">Name</label>
+              <label for="name">Name</label>
               <input
                 type="text"
-                name="f-name"
-                placeholder="Name"
-                v-model="userInfo.name"
+                name="name"
+                placeholder="Firstname Lastname"
+                pattern="[a-zA-Z]{2,16}\s[a-zA-Z]{2,16}"
                 required
+                minlength="5"
+                maxlength="33"
+                v-model="userInfo.name"
               />
             </div>
             <!-- <div>
@@ -64,22 +147,24 @@
               />
             </div> -->
           </div>
+
           <div class="street">
-            <label for="name">Street</label>
+            <label for="street">Street</label>
             <input
               type="text"
-              name="address"
-              placeholder="Street Name"
+              name="street"
+              placeholder="Street, nr"
               v-model="userInfo.address.street"
               required
             />
           </div>
           <div class="address-info">
             <div>
-              <label for="state">City</label>
+              <label for="city">City</label>
               <input
                 type="text"
-                name="state"
+                name="city"
+                placeholder="City"
                 v-model="userInfo.address.city"
                 required
               />
@@ -89,6 +174,7 @@
               <input
                 type="text"
                 name="zip"
+                placeholder="Zip, 5 digits"
                 v-model="userInfo.address.zip"
                 required
               />
@@ -96,46 +182,17 @@
           </div>
           <div class="billing">
             <label>
-              <input type="checkbox" checked="checked" name="sameadr" />
+              <input
+                type="checkbox"
+                checked="checked"
+                name="sameadr"
+              />
               Shipping address same as billing
             </label>
           </div>
+          <button>Purchase</button>
         </form>
-      </section>
-      <section class="bottom-section">
-        <h3>Payment options</h3>
-        <hr class="solid" />
-        <div class="icon-container">
-          <i class="fa fa-cc-visa" style="color: navy"></i>
-          <i class="fa fa-cc-mastercard" style="color: chocolate"></i>
-          <i class="fa fa-cc-amex" style="color: blue"></i>
-          <i class="fa fa-cc-discover" style="color: orange"></i>
-        </div>
-
-        <div class="cc-info">
-          <label for="payment">Choose your payment method</label>
-          <select name="payment" id="payment" v-model="userInfo.payMthods">
-            <option value="visa">VISA</option>
-            <option value="master">MASTER</option>
-            <option value="express">EXPRESS</option>
-            <option value="discovery">DISCOVERY</option>
-          </select>
-          <router-link
-            to="/user"
-            v-if="customerLoged == true"
-            class="btn"
-            @click.native="setOrder"
-            >SAVE AND BUY
-          </router-link>
-
-          <router-link
-            to="/orders"
-            class="btn"
-            @click.native="fetchDelvAddress(userInfo)"
-            v-else
-            >SAVE AND BUY
-          </router-link>
-        </div>
+      
       </section>
     </div>
   </div>
@@ -161,11 +218,16 @@ export default {
   },
 
   created() {
-    this.autoFillInfo();
+    if(this.$store.state.token !== null){
+      this.autoFillInfo();
+    } else {
+      alert("Please register first.")
+      this.$router.push("/register")
+    }
   },
 
   computed: {
-    ...mapGetters(["customerLoged", "ids"]),
+    ...mapGetters(["customerLoged","adminLoged", "ids"]),
   },
 
   methods: {
@@ -185,8 +247,15 @@ export default {
     },
 
     setOrder() {
-      this.$store.dispatch("postOrders", this.ids);
-      this.$store.state.cart = [];
+      if (
+        this.userInfo.name !== "" &&
+        this.userInfo.address.street !== "" &&
+        this.userInfo.address.city !== "" &&
+        this.userInfo.address.zip !== ""
+      ) {
+        this.$store.dispatch("postOrders", this.ids);
+        this.$router.push("/orders");
+      }
     },
   },
 };
@@ -194,6 +263,24 @@ export default {
 
 
 <style scoped lang="scss">
+form{
+  > button {
+  padding: .8rem 1rem;
+  margin: 1rem 0;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  background-color: #db7070;
+  transition: ease-in-out 0.17s;
+  &:hover {
+    background-color: #f14242;
+  }
+}
+}
+
+
 .top {
   width: 100%;
   height: 80px;
