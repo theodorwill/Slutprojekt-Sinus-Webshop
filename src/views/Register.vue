@@ -1,5 +1,18 @@
 <template>
   <div>
+    <section class="breadcrumbs">
+      <h1>REGISTER</h1>
+      <p>
+        <router-link to="/"><span>Home</span></router-link>
+        <img src="../assets/right.svg" alt="" />
+        <router-link to="/login"><span>Login</span></router-link>
+        <img src="../assets/right.svg" alt="" />
+        <span>Register</span>
+      </p>
+      <div>
+        <hr>
+      </div>
+    </section>
     <section class="register-form">
       <div class="register-page">
         <h3>Register</h3>
