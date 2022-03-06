@@ -1,6 +1,9 @@
 <template>
   <div class="admin">
-     <p  class="mgs">*Required sections in related form must be filled up before getting button as active.</p>
+    <p class="mgs">
+      *Required sections in related form must be filled up before getting button
+      as active.
+    </p>
     <div class="admin-tasks">
       <section class="add-product">
         <h3>Add product</h3>
@@ -20,10 +23,10 @@
             placeholder="long desc"
             v-model="product.longDesc"
           />
-           <select name="image" id="image" v-model="product.imgFile">
+          <select name="image" id="image" v-model="product.imgFile">
             <option v-for="image in images.images" :key="image" :value="image">
-          {{ image }}
-          </option>
+              {{ image }}
+            </option>
           </select>
           <input
             type="text"
@@ -59,8 +62,8 @@
           />
           <select name="image" id="image" v-model="updateProduct.imgFile">
             <option v-for="image in images.images" :key="image" :value="image">
-          {{ image }}
-          </option>
+              {{ image }}
+            </option>
           </select>
           <input
             type="text"
@@ -100,48 +103,43 @@
         </form>
       </section>
     </div>
-    
-    <table v-if=" adminLoged">
-      <h3>Order summery</h3>
-        <tr>
-          <th>Order id:</th>
-          <td >{{orderId}}</td>
-  
-        </tr>
-        <tr>
-          <th>Status:</th>
-          <td>inProcess</td>
-        </tr>
-        <tr>
-          <th>Shipping city:</th>
-          <td >{{user.address.city}}</td>
-       
-        </tr>
-        <tr>
-          <th>Shipping street:</th>
-          <td >{{user.address.street}}</td>
-         
-        </tr>
-        <tr>
-          <th>Shipping zip:</th>
-          <td >{{user.address.zip}}</td>
-          
-        </tr>
-        <tr>
-          <th>Products:</th>
-          <td>{{ carts.length }}</td>
-        </tr>
-        <tr>
-          <th>Product quantity:</th>
-          <td>{{ itemsAmount }}</td>
-        </tr>
-        <tr>
-          <th>Total sum:</th>
-          <td>SEK {{ total }}</td>
-        </tr>
-      </table>
-      <h3 v-else>No order history to show</h3>
 
+    <table v-if="orderList.length > 0">
+      <h3>Order summery</h3>
+      <tr>
+        <th>Order id:</th>
+        <td>{{ orderId }}</td>
+      </tr>
+      <tr>
+        <th>Status:</th>
+        <td>inProcess</td>
+      </tr>
+      <tr>
+        <th>Shipping city:</th>
+        <td>{{ user.address.city }}</td>
+      </tr>
+      <tr>
+        <th>Shipping street:</th>
+        <td>{{ user.address.street }}</td>
+      </tr>
+      <tr>
+        <th>Shipping zip:</th>
+        <td>{{ user.address.zip }}</td>
+      </tr>
+      <tr>
+        <th>Products:</th>
+        <td>{{ carts.length }}</td>
+      </tr>
+      <tr>
+        <th>Product quantity:</th>
+        <td>{{ itemsAmount }}</td>
+      </tr>
+      <tr>
+        <th>Total sum:</th>
+        <td>SEK {{ total }}</td>
+      </tr>
+    </table>
+    <p class="info" v-else>No order history to show</p>
   </div>
 </template>
 
@@ -177,15 +175,21 @@ export default {
   },
 
   computed: {
-    ...mapState(["productCategory", "productTitle","user","orderList","images"]),
-   ...mapGetters(["cartHistory","adminLoged"]),
+    ...mapState([
+      "productCategory",
+      "productTitle",
+      "user",
+      "orderList",
+      "images",
+    ]),
+    ...mapGetters(["cartHistory", "adminLoged"]),
 
     errorsAdd() {
       let error = 0;
       let categoryName = this.productCategory.filter(
         (name) => name == this.product.category
       );
-     
+
       let titleName = this.productTitle.filter(
         (name) => name == this.product.title
       );
@@ -203,7 +207,7 @@ export default {
       let categoryName = this.productCategory.filter(
         (name) => name == this.updateProduct.category
       );
-      
+
       let titleName = this.productTitle.filter(
         (name) => name == this.updateProduct.title
       );
@@ -224,11 +228,13 @@ export default {
     },
 
     errorStatus() {
-      return this.orderStatus.id < 1 || this.orderStatus.status == '' ? true : false;
+      return this.orderStatus.id < 1 || this.orderStatus.status == ""
+        ? true
+        : false;
     },
 
-    orderId(){
-      return this.orderList.map(obj => obj.id )
+    orderId() {
+      return this.orderList.map((obj) => obj.id);
     },
 
     total() {
@@ -248,16 +254,25 @@ export default {
     },
 
     carts() {
-      return this.cartHistory.map(id => this.$store.state.productList.find(product => product.id == id))
+      return this.cartHistory.map((id) =>
+        this.$store.state.productList.find((product) => product.id == id)
+      );
     },
   },
 
   methods: {
-    ...mapActions(["addProducts", "deleteProducts", "updateProducts","updateOrderStatus"]),
+    ...mapActions([
+      "addProducts",
+      "deleteProducts",
+      "updateProducts",
+      "updateOrderStatus",
+    ]),
     signOutController() {
       this.$store.dispatch("loggingOut");
       this.$router.push("/login");
     },
+
+   
   },
 };
 </script>
@@ -271,17 +286,15 @@ export default {
 
 .admin {
   width: 100%;
-  min-height:1200px;
-  display:flex;
+  min-height: 1200px;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  .mgs{
-    font-size: .6rem;
+  .mgs {
+    font-size: 0.6rem;
     margin-top: 24px;
     font-weight: bold;
   }
-
-  
 
   .admin-tasks {
     display: grid;
@@ -301,32 +314,36 @@ export default {
           margin: 12px 0px;
           border-radius: 5px;
           padding: 2px 0px;
-          
         }
-        select{
+        select {
           width: 100%;
         }
       }
     }
-
   }
 
   table {
-      // font-family: arial, sans-serif;
-      h3{text-align: start;
-        margin-bottom: 32px;
-      }
-      border-collapse: collapse;
-      width: 96%;
-      td,
-      th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-      }
-      tr:nth-child(even) {
-        background-color: #dddddd;
-      }
+    // font-family: arial, sans-serif;
+    h3 {
+      text-align: start;
+      margin-bottom: 32px;
     }
+    border-collapse: collapse;
+    width: 96%;
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  }
+  .info{
+    width: fit-content;
+    text-align: start;
+    margin: 72px 0px 96px 24px;
+  }
 }
 </style>

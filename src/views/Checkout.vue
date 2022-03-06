@@ -122,10 +122,10 @@
           </select>
           <router-link
             to="/user"
-            v-if=" customerLoged == true"
+            v-if="customerLoged == true"
             class="btn"
             @click.native="setOrder"
-            >SAVE AND BUY , Get
+            >SAVE AND BUY
           </router-link>
 
           <router-link
@@ -165,7 +165,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters([" customerLoged", "ids"]),
+    ...mapGetters(["customerLoged", "ids"]),
   },
 
   methods: {
@@ -186,7 +186,7 @@ export default {
 
     setOrder() {
       this.$store.dispatch("postOrders", this.ids);
-      // this.$store.state.cart = [];
+      this.$store.state.cart = [];
     },
   },
 };
