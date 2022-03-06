@@ -1,12 +1,18 @@
 <template>
   <div class="cart-view">
-    <section class="top">
+    <section class="breadcrumbs">
       <h1>CART</h1>
       <p>
         <router-link to="/"><span>Home</span></router-link>
-        <img src="../assets/right.svg" alt="" />
+        <img
+          src="../assets/right.svg"
+          alt=""
+        />
         <span>Cart</span>
       </p>
+      <div>
+        <hr>
+      </div>
     </section>
     <div class="information" v-if="!cartsProduct.length">
       <span>Your shopping cart is empty.</span>
@@ -92,26 +98,7 @@ export default {
 <style lang="scss" scoped>
 .cart-view {
   display: block;
-  .top {
-  width: 100%;
-  height: 80px;
-  background-color: #f69e03;
-  // font-family: "Times New Roman", Times, serif;
-  h1,
-  p {
-    display: flex;
-    padding: 5px;
-    padding-left: 2rem;
-    margin: 0px;
-    color: white;
-  }
-  h1 {
-    color: black;
-  }
-  a {
-    text-decoration: none;
-  }
-}
+  
   .information {
     display: flex;
     justify-content: center;

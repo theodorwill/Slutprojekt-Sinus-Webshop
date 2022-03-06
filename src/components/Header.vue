@@ -33,7 +33,7 @@
         </div>
       </section>
       <section class="role" v-if="adminLoged">
-        <h2>Admin loged</h2>
+        <h2>Admin</h2>
         <p @click="signOutController">logout</p>
       </section>
       <section class="role" v-if="customerLoged">

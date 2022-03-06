@@ -1,17 +1,19 @@
 <template>
   <div>
-    <section class="top">
+    <section class="breadcrumbs">
       <h1>LOGIN</h1>
       <p>
         <router-link to="/"><span>Home</span></router-link>
         <img
           src="../assets/right.svg"
           alt=""
-        >
+        />
         <span>Login</span>
       </p>
+      <div>
+        <hr>
+      </div>
     </section>
-
     <section class="login-form">
       <h3>Login</h3>
       <div class="login-container">
@@ -20,7 +22,8 @@
           <input
             type="email"
             name="email"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            required
             placeholder="email@example.com"
             v-model="login.email"
           />
@@ -28,7 +31,8 @@
           <input
             type="password"
             name="password"
-            pattern=".{8,}" required
+            pattern=".{8,}"
+            required
             placeholder="Password 8 or more letters/symbols"
             v-model="login.password"
           />
@@ -65,13 +69,15 @@ export default {
   methods: {
     async logIn() {
       if (this.login.email !== "" && this.login.password !== "") {
-        await this.$store.dispatch("login", {
-          email: this.login.email,
-          password: this.login.password,
-        }).catch(error => {
-          alert("Invalid Email/password or timed out.", error)
-          throw error
-        })
+        await this.$store
+          .dispatch("login", {
+            email: this.login.email,
+            password: this.login.password,
+          })
+          .catch((error) => {
+            alert("Invalid Email/password or timed out.", error);
+            throw error;
+          });
         await this.$store.dispatch("getCurrentUser");
         this.$router.push("/user");
       } else {
@@ -87,25 +93,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.top {
-  width: 100%;
-  height: 80px;
-  background-color: #aaa;
-  // font-family: "Times New Roman", Times, serif;
-  h1,
-  p {
-    display: flex;
-    margin: 0;
-    padding: 5px 2rem;
-    color: white;
-  }
-  h1 {
-    color: black;
-  }
-  a {
-    text-decoration: none;
-  }
-}
+
 .login-form {
   margin: 6rem 0 11rem 0;
 

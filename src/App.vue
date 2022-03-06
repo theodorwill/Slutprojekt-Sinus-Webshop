@@ -53,6 +53,13 @@ Header{
   width: 100vw;
 }
 
+a,
+  a:hover,
+  a:focus,
+  a:active {
+    color: inherit;
+  }
+
 .router-main{
   margin: auto;
   width: 1440px;
@@ -94,20 +101,28 @@ Header{
   align-items: flex-start;
   width: 100%;
   margin: 1rem 0;
-  h1,
-  p {
+  h1{
     display: flex;
     margin: 0 1.2rem;
   }
-  p > :first-of-type {
+  
+  p {
+    display: flex;
+    margin: 0 1.2rem;
+    padding: 0 2rem;
     font-size: 1.2rem;
-    padding-left: 1rem;
+    span{
+      padding: 0 .4rem;
+    }
   }
 
-  a:link,
-  a:visited {
-    color: #2c3e50;
+  span{
+
+    p{
+      font-size: 1.2rem;
+    }
   }
+
   > div {
     width: 100%;
     hr {

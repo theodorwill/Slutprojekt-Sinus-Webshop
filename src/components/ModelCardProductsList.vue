@@ -1,7 +1,16 @@
 <template>
   <article class="model-card">
+    <div class="overlay">
+      <h1>{{ product.title }}</h1>
+      <h1>{{ product.category }}</h1>
+      <p>View details</p>
+    </div>
     <div class="image-block">
-      <img class="cart-icon" src="@/assets/love_icon.svg" alt="Love icon" />
+      <img
+        class="cart-icon"
+        src="@/assets/love_icon.svg"
+        alt="Love icon"
+      />
       <!-- Här kommer dynamiska bilder istället för hoodie_red -->
       <img
         class="product-image"
@@ -26,6 +35,7 @@
       <button class="btn">VIEW DETAILS</button>
     </div>
   </article>
+
 </template>
 
 <script>
@@ -41,13 +51,68 @@ export default {
   box-sizing: border-box;
   text-align: start;
 }
+
+p {
+  color: #2c3e50;
+}
+
 .model-card {
-  width: 224px;
+  display: flex;
+  flex-flow: column;
+  width: 225px;
   height: 360px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.376), 0 3px 6px rgba(0, 0, 0, 0.23);
   background-color: #e0e0e0;
   font-size: 75%;
- 
+  border-radius: 10px;
+
+  a,
+  a:hover,
+  a:focus,
+  a:active {
+    text-decoration: none;
+  }
+
+  .overlay {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 360px;
+    width: 225px;
+    z-index: 100;
+    border-radius: 10px;
+    position: absolute;
+    transition: ease-in-out 0.2s;
+    &:hover {
+      background: #000000e3;
+      > p,
+      h1 {
+        display: block;
+      }
+    }
+
+    p {
+      display: none;
+      color: white;
+      width: fit-content;
+      height: fit-content;
+      font-size: 1rem;
+      padding: 0.3rem;
+      border-bottom: 2px solid white;
+      transition: ease-in-out 0.2s;
+    }
+
+    h1 {
+      display: none;
+      transition: ease-in-out 0.2s;
+      color: #64b5f6;
+    }
+
+    h1:first-of-type {
+      color: #9be7ff;
+    }
+  }
 
   .image-block {
     width: 100%;
@@ -56,6 +121,7 @@ export default {
     justify-content: center;
     align-items: center;
     position: relative;
+    border-radius: 10px;
 
     .product-image {
       height: 170px;
@@ -73,7 +139,8 @@ export default {
 
   .product-info {
     height: 170px;
-
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     background-color: #ffffff;
     padding: 8px;
     position: relative;
@@ -141,12 +208,13 @@ export default {
     }
 
     .btn {
-      background-color: #1c1c1c;
+      background-color: white;
+      border: none;
       padding: 4px 8px;
-      color: #fff;
+      color: #1c1c1c;
       cursor: pointer;
-      font-size: 0.55rem;
-      margin: 25px 0px 0px 65px;
+      font-size: 0.7rem;
+      margin: 25px auto 0 auto;
     }
 
     .btn:hover {
