@@ -1,12 +1,15 @@
 <template>
   <div class="contact">
-    <section class="top">
+    <section class="breadcrumbs">
       <h1>CONTACT</h1>
       <p>
         <router-link to="/"><span>Home</span></router-link>
         <img src="../assets/right.svg" alt="" />
         <span>Contact</span>
       </p>
+      <div>
+        <hr>
+      </div>
     </section>
     <section class="middle-1">
       <h3>Contact us</h3>
@@ -80,25 +83,6 @@ export default {
 
 <style lang="scss" scoped>
 
-.top {
-  width: 100%;
-  height: 80px;
-  background-color: #aaa;
-  // font-family: "Times New Roman", Times, serif;
-  h1,
-  p {
-    display: flex;
-    margin: 0;
-    padding: 5px 2rem;
-    color: white;
-  }
-  h1 {
-    color: black;
-  }
-  a {
-    text-decoration: none;
-  }
-}
 .middle-1 {
   h3 {
     padding: 2rem;

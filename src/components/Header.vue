@@ -33,10 +33,10 @@
         </div>
       </section>
       <section class="role" v-if="adminLoged">
-        <h2>Admin loged</h2>
+        <h2>Admin</h2>
         <p @click="signOutController">logout</p>
       </section>
-      <section class="role" v-if="customer">
+      <section class="role" v-if="customerLoged">
         <h2>{{user.name}}</h2>
         <p @click="signOutController">logout</p>
       </section>
@@ -62,7 +62,7 @@ export default {
   },
   computed: {
     ...mapState(["cart","user"]),
-    ...mapGetters(['adminLoged', 'customer'])
+    ...mapGetters(['adminLoged','customerLoged'])
   },
   methods: {
     ...mapActions(["fetchCategory"]),

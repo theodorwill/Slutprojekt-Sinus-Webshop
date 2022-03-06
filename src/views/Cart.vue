@@ -1,12 +1,18 @@
 <template>
   <div class="cart-view">
-    <section class="top">
+    <section class="breadcrumbs">
       <h1>CART</h1>
       <p>
         <router-link to="/"><span>Home</span></router-link>
-        <img src="../assets/right.svg" alt="" />
+        <img
+          src="../assets/right.svg"
+          alt=""
+        />
         <span>Cart</span>
       </p>
+      <div>
+        <hr>
+      </div>
     </section>
     <div class="information" v-if="!cartsProduct.length">
       <span>Your shopping cart is empty.</span>
@@ -37,12 +43,12 @@
             <strong>AMOUNT TO PAY:</strong> <strong>{{ netTotal }}</strong>
           </h3>
           <span class="vat-info">moms {{ moms }} </span>
-          <!-- <div class="action-sub" v-if="inLoged">
-            <router-link class="pay-now" to="/user" > Checkout </router-link>
+          <div class="action-sub" v-if="customerLoged || adminLoged">
+            <router-link class="pay-now" to="/checkout" > Checkout </router-link>
             <router-link class="back" to="/products">Back To Shop</router-link>
-          </div> -->
-          <div class="action-sub">
-            <router-link class="pay-now" to="/checkout"> Checkout </router-link>
+          </div>
+          <div class="action-sub" v-else>
+            <router-link class="pay-now" to="/register"> Checkout </router-link>
             <router-link class="back" to="/products">Back To Shop</router-link>
           </div>
         </div>
@@ -61,7 +67,7 @@ import { mapActions } from "vuex";
 export default {
   components: { ModelCardCart },
   computed: {
-    ...mapGetters(["cartsProduct", "ids", "inLoged"]),
+    ...mapGetters(["cartsProduct", "ids", "customerLoged", "adminLoged"]),
     grandTotal() {
       let total = 0;
       this.cartsProduct.forEach((product) => {
@@ -92,26 +98,7 @@ export default {
 <style lang="scss" scoped>
 .cart-view {
   display: block;
-  .top {
-  width: 100%;
-  height: 80px;
-  background-color: #f69e03;
-  // font-family: "Times New Roman", Times, serif;
-  h1,
-  p {
-    display: flex;
-    padding: 5px;
-    padding-left: 2rem;
-    margin: 0px;
-    color: white;
-  }
-  h1 {
-    color: black;
-  }
-  a {
-    text-decoration: none;
-  }
-}
+  
   .information {
     display: flex;
     justify-content: center;

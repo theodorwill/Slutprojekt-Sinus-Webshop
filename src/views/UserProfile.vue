@@ -7,17 +7,20 @@
       :start-index="1"
       direction="vertical"
     >
-      <v-tab title="Profile" >
+      <v-tab class="profile" title="Profile">
         <div>
           <aside>
-            <h2></h2>
-             
+            <h2>Profile</h2>
+            <button
+              v-if="adminLoged"
+              @click="goToAdmin"
+            >
+              Admin Settings
+            </button>
             <button @click="signOutController">Sign out</button>
-            
+
           </aside>
-          <article class="order-history">
-           <router-link to='/orders' @click.native="fetchOrders">Order history</router-link>
-          </article>
+
           <hr>
           <form
             @submit.prevent="updateUserInfo"
@@ -36,7 +39,8 @@
               type="text"
               name="name"
               placeholder="Firstname Lastname"
-              pattern="[a-zA-Z]{2,16}\s[a-zA-Z]{2,16}" required
+              pattern="[a-zA-Z]{2,16}\s[a-zA-Z]{2,16}"
+              required
               minlength="5"
               maxlength="33"
               v-model="register.name"
@@ -68,7 +72,8 @@
             <input
               type="password"
               name="password"
-              pattern=".{8,}" required
+              pattern=".{8,}"
+              required
               placeholder="Password 8 or more letters/symbols"
               v-model="register.password"
             />
@@ -76,27 +81,26 @@
             <input
               type="password"
               name="validation"
-              pattern=".{8,}" required
+              pattern=".{8,}"
+              required
               placeholder="Re-type your password"
               v-model="validation.password"
             />
             <hr>
             <button>Update profile</button>
+
           </form>
+
         </div>
       </v-tab>
-       <v-tab title="" >
-         
-        <div class="order-history" >
-          <h1></h1>
-          <hr>
-         
+      <v-tab class="order-history" title="Order History">
+        <div>
+        <h2>Order History</h2>  
+        <hr>
+        <OrderList />
         </div>
-
       </v-tab>
     </vue-tabs>
-
-     
 
   </div>
 </template>
@@ -104,14 +108,14 @@
 <script>
 import { VueTabs, VTab } from "vue-nav-tabs";
 import "vue-nav-tabs/themes/vue-tabs.css";
-import {mapActions} from 'vuex'
-
+import { mapActions, mapGetters } from "vuex";
+import OrderList from "@/components/OrderList.vue";
 
 export default {
   components: {
     VueTabs,
     VTab,
-   
+    OrderList,
   },
 
   data() {
@@ -136,8 +140,12 @@ export default {
     this.addUserData();
   },
 
+  computed: {
+    ...mapGetters(["adminLoged"]),
+  },
+
   methods: {
-    ...mapActions(['fetchOrders']),
+    ...mapActions(["fetchOrders", "fetchAllImages"]),
     addUserData() {
       console.log("UserProfile, addUserData() log", this.$store.state.user);
 
@@ -184,14 +192,37 @@ export default {
       this.$store.dispatch("loggingOut");
       this.$router.push("/login");
     },
+
+    async goToAdmin() {
+      await this.$store.dispatch("fetchOrders");
+      await this.$store.dispatch("fetchAllImages");
+      this.$router.push("/admin");
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+
+ .profile,
+.order-history{
+  width: 600px;
+  padding: 0 1.5rem 0 2rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+
+   >div{
+     display: flex;
+     flex-flow: column;
+    width: 100%;
+  }
+  }
+
+
 button {
-  height: 50px;
-  padding: 0 1rem;
+  padding: .8rem 1rem;
   margin: 1rem 0;
   border-radius: 5px;
   border: none;
@@ -218,32 +249,13 @@ hr.solid {
   text-align: left;
   width: 100%;
 }
-.order-history{
-  width: 120px;
-  height: 40px;
-  border-radius: 5px;
-  // background-color: #337ab7;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translate(-115px,-15px);
-  // border: 1px solid black;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  a{
-    text-decoration: none;
-    color: black;
-    text-align: center;
-    font-size: 0.9rem;
-  }
-}
+
 .tab-view {
   padding: 0.5rem 0.5rem;
   border-radius: 0.3rem;
-  width: auto;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   div {
-    width: 600px;
-    padding: 0 1.5rem 0 2rem;
+    
     > aside {
       display: flex;
       flex-flow: row;
@@ -253,6 +265,10 @@ hr.solid {
         margin: 0.5rem 0;
       }
     }
+  }
+
+  hr{
+    width: 100%;
   }
 }
 
@@ -284,6 +300,8 @@ hr.solid {
     }
   }
 
+
+ 
   hr {
     margin: 2rem 0;
     width: 100%;
