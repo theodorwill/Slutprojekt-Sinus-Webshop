@@ -6,6 +6,8 @@ Latest stable version pushed onto Main.
 
 Latest version pushed onto develop. 
 
+Runs on backend from https://github.com/iths-feu-jsu-2021/instruktioner-slutprojekt
+
 ## Project setup
 ```
 npm install
