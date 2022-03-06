@@ -8,7 +8,7 @@
         <span>Order history</span>
       </p>
     </section>
-    <p class="mgs" v-if="cartHistory.length < 1">
+    <p class="mgs" v-if="cartHistory.length < 1 && cartsProduct.length < 1" >
       You didn't purchase any product yet!
     </p>
 
@@ -166,7 +166,8 @@ export default {
   .mgs {
     text-align: center;
     font-size: 1.5rem;
-    margin: 96px auto;
+    height: 100vh;
+    margin-top: 96px;
   }
   .top {
     width: 100%;
