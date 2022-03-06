@@ -132,10 +132,11 @@
             to="/orders"
             class="btn"
             @click.native="fetchDelvAddress(userInfo)"
-            v-else
+            v-if="!errorAddres"
             >SAVE AND BUY
           </router-link>
         </div>
+        <p>*All field must need to be filluped for purchasing*</p>
       </section>
     </div>
   </div>
@@ -166,6 +167,15 @@ export default {
 
   computed: {
     ...mapGetters(["customerLoged", "ids"]),
+
+    errorAddres(){
+     let error = 0;
+     this.userInfo.name == '' || this.userInfo.email == '' || this.userInfo.address.street == '' || this.userInfo.address.city == '' || this.userInfo.address.street == '' || this.userInfo.address.zip == '' || this.userInfo.payMthods == '' ? error++ : '';
+
+      console.log("add products errors nr " + error);
+      return error > 0 ? true : false;
+
+    },
   },
 
   methods: {
