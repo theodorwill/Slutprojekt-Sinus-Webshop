@@ -41,11 +41,11 @@
         </tr>
         <tr>
           <th>Shipping street:</th>
-          <td>81</td>
+          <td>Norutberg 12</td>
         </tr>
         <tr>
           <th>Shipping zip:</th>
-          <td>12</td>
+          <td>234 56</td>
         </tr>
         <tr>
           <th>Products:</th>

@@ -26,7 +26,7 @@ export default new Vuex.Store({
     start: 0,
     end: 10,
     user: [],
-    delivery: "",
+    delivery: {},
     images:["sinus-skateboard-logo.png"],
     productCategory: ['cap', 'hoodie', 'wheel', 'skateboard', 'totebag'],
     productTitle: ['Ash', 'Green', 'Blue', 'Red', 'Fire'],

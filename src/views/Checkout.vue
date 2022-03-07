@@ -53,16 +53,6 @@
                 required
               />
             </div>
-            <!-- <div>
-              <label for="l-name">Last Name:</label>
-              <input
-                type="text"
-                name="l-name"
-                placeholder="Last Name"
-                v-model="userInfo.lastName"
-                required
-              />
-            </div> -->
           </div>
           <div class="street">
             <label for="name">Street</label>
@@ -120,23 +110,23 @@
             <option value="express">EXPRESS</option>
             <option value="discovery">DISCOVERY</option>
           </select>
+        
           <router-link
             to="/user"
-            v-if="customerLoged == true"
+            v-if="customerLoged && !errorAddres"
             class="btn"
             @click.native="setOrder"
             >SAVE AND BUY
           </router-link>
 
-          <router-link
+          <router-link class="order" v-if="!errorAddres && !customerLoged" 
             to="/orders"
-            class="btn"
-            @click.native="fetchDelvAddress(userInfo)"
-            v-else
-            >SAVE AND BUY
+            @click.native="fetchDelvAddress(userInfo)" >Confirm purchase
           </router-link>
+          <p :class="displayMgs">* Please fill up the form and select a payment method to proceed!</p>
         </div>
       </section>
+      
     </div>
   </div>
 </template>
@@ -166,6 +156,19 @@ export default {
 
   computed: {
     ...mapGetters(["customerLoged", "ids"]),
+
+    errorAddres(){
+     let error = 0;
+     this.userInfo.name == '' || this.userInfo.email == '' || this.userInfo.address.street == '' || this.userInfo.address.city == '' || this.userInfo.address.street == '' || this.userInfo.address.zip == '' || this.userInfo.payMthods == '' ? error++ : '';
+
+      console.log("add products errors nr " + error);
+      return error > 0 ? true : false;
+
+    },
+
+    displayMgs(){
+      return this.errorAddres ? 'show-mgs-true' : 'show-mgs-false'
+    }
   },
 
   methods: {
@@ -364,19 +367,47 @@ hr.solid {
     padding: 8px 32px;
     border-radius: 10px;
   }
+
+  .border-color{
+    border: 1px solid red ;
+  }
+
   a {
     background-color: #04aa6d;
     color: white;
     padding: 12px;
-    margin: 60px 0px;
+    margin: 20px 0px;
     border: 1px solid black;
     width: 200px;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 17px;
+    text-decoration: none;
     &:hover {
       background-color: #45a049;
     }
+
+    a.order{
+      background-color: #04aa6d;
+    color: white;
+    padding: 12px;
+    margin: 20px 0px;
+    border: 1px solid black;
+    width: 200px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    &:hover {
+      background-color: #45a049;
+    }
+    }
+  }
+  .show-mgs-true{
+    text-align: center;
+    color: #fa2121;
+  }
+
+  .show-mgs-false{
+    display: none;
   }
 }
 </style>
