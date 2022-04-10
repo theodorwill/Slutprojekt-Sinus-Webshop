@@ -13,6 +13,9 @@ export default new Vuex.Store({
     products: {},
     cart: [],
     categoryName: null,
+    // $FEEDBACK: We can configure webpack to minify the production code
+    // so there is no reason for names to be abbreviated unless they are very long.
+    // Doing it reduces readability
     catgStorage: [],
     catgObjects: {},
     orderList: [],

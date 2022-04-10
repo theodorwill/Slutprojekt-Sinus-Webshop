@@ -21,6 +21,7 @@ export async function registerAccount(payload) {
   axios.post('/register', payload)
 }
 
+// $FEEDBACK: Caller of this function doesn't know when the operation is finished
 export async function updateAccount(payload) {
   console.log("update payload:", payload)
   axios.patch('/me', payload)

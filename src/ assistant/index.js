@@ -6,6 +6,7 @@ export function getLocalStorage(key) {
     try {
       return JSON.parse(localStorage.getItem(key))
     } catch (e) {
+      // $COMMENT: error is not defined, typo?
       console.error('Error in getting data from localStorage', error)
       return null
     }

@@ -43,6 +43,7 @@
       <hr class="solid" />
       <div class="sign">
         <p>Don’t have an account?</p>
+        <!-- $FEEDBACK: Use a router-link for static routing -->
         <a
           href="#"
           @click="click"
@@ -69,12 +70,14 @@ export default {
   methods: {
     async logIn() {
       if (this.login.email !== "" && this.login.password !== "") {
+        // $FEEDBACK: Don't mix async/await with .then/.catch
         await this.$store
           .dispatch("login", {
             email: this.login.email,
             password: this.login.password,
           })
           .catch((error) => {
+            // $COMMENT: Don't use alerts
             alert("Invalid Email/password or timed out.", error);
             throw error;
           });
