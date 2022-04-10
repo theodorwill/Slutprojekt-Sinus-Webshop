@@ -70,6 +70,7 @@ export default {
 
   computed:{
     eventDisable() {
+      // $COMMENT: return !this.item.amount;
       return this.item.amount == undefined ? true : false;
     },
   },

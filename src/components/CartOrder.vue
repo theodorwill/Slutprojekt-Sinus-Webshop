@@ -77,6 +77,7 @@ export default {
   computed: {
     ...mapGetters(["cartsProduct"]),
 
+    // $FEEDBACK: Move this to a getter
     subTotal() {
       let total = 0;
       this.cartsProduct.forEach((product) => {

@@ -2,6 +2,7 @@
   <article class="model-card-cart">
     <div class="product-info">
       <div class="card-image">
+        <!-- $TIPS: Move 'http://localhost:5000' to an environment variable -->
         <img
           :src="`http://localhost:5000/images/${item.imgFile}`"
           alt="Product's image"

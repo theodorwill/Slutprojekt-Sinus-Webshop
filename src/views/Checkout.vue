@@ -234,6 +234,7 @@ export default {
     ...mapActions(["fetchDelvAddress", "postOrders"]),
 
     autoFillInfo() {
+      // $COMMENT: Destructuring here would improve readability
       if (this.$store.token !== null) {
         this.userInfo.email = this.$store.state.user.email;
         this.userInfo.name = this.$store.state.user.name;
@@ -253,6 +254,7 @@ export default {
         this.userInfo.address.city !== "" &&
         this.userInfo.address.zip !== ""
       ) {
+        // $COMMENT: postOrders is async, the navigation is performed before it is finished
         this.$store.dispatch("postOrders", this.ids);
         this.$router.push("/orders");
       }
