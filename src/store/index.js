@@ -30,6 +30,7 @@ export default new Vuex.Store({
     images:["sinus-skateboard-logo.png"],
     productCategory: ['cap', 'hoodie', 'wheel', 'skateboard', 'totebag'],
     productTitle: ['Ash', 'Green', 'Blue', 'Red', 'Fire'],
+    // new added
     errors:''
   },
 
