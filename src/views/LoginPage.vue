@@ -16,6 +16,7 @@
     </section>
     <section class="login-form">
       <h3>Login</h3>
+      <p v-if="err" class = 'error-mgs'>{{err.error}}</p>
       <div class="login-container">
         <form @submit.prevent="logIn">
           <label for="email">Email</label>
@@ -53,6 +54,7 @@
 </template>
 
 <script>
+
 // import ModelCardProductsList from "../components/ModelCardProductsList.vue";
 export default {
   components: {},
@@ -66,23 +68,30 @@ export default {
     };
   },
 
+computed:{
+  err(){
+    return this.$store.state.errors 
+  }
+},
+
   methods: {
     async logIn() {
-      if (this.login.email !== "" && this.login.password !== "") {
+      try{
+        if (this.login.email !== "" && this.login.password !== "") {
         await this.$store
           .dispatch("login", {
             email: this.login.email,
             password: this.login.password,
           })
-          .catch((error) => {
-            alert("Invalid Email/password or timed out.", error);
-            throw error;
-          });
+          
         await this.$store.dispatch("getCurrentUser");
         this.$router.push("/user");
-      } else {
-        alert("Please input both email and password.");
+      } 
+      }catch(error){
+        await this.$store.dispatch("catchErr", error.response.data);
+        console.log(error)
       }
+      
     },
 
     click() {
@@ -96,6 +105,9 @@ export default {
 
 .login-form {
   margin: 6rem 0 11rem 0;
+  .error-mgs{
+    color: red;
+  }
 
   h3 {
     font-size: 2rem;

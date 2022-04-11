@@ -30,6 +30,7 @@ export default new Vuex.Store({
     images:["sinus-skateboard-logo.png"],
     productCategory: ['cap', 'hoodie', 'wheel', 'skateboard', 'totebag'],
     productTitle: ['Ash', 'Green', 'Blue', 'Red', 'Fire'],
+    errors:''
   },
 
 
@@ -87,11 +88,6 @@ export default new Vuex.Store({
     },
 
 
-    // saveFavProd(state, payload) {
-    //   state.favProduct = payload
-    // },
-
-
 
     // Pagination
 
@@ -147,6 +143,10 @@ export default new Vuex.Store({
 
     saveImage(state,imgArray) {
       state.images = imgArray
+    },
+
+    catchErr(state, payload) {
+      state.errors = payload 
     }
 
   },
@@ -235,9 +235,14 @@ export default new Vuex.Store({
       password
     }) {
       const response = await API.login(email, password)
-      console.log(response)
-      API.saveToken(response.data.token)
+ 
+      await API.saveToken(response.data.token)
       context.commit('saveAuthData', response.data)
+      
+    },
+
+    catchErr(context, payload) {
+      context.commit('catchErr', payload)
     },
 
     loggingOut(context) {
@@ -281,12 +286,19 @@ export default new Vuex.Store({
       context.commit('nextPage')
     },
 
-    toCart(context, payload) {
+   async toCart (context, payload) {
       if (!context.state.cart.includes(payload)) {
         context.commit("toCart", payload)
+        console.log(payload)
       } else {
-        alert('This item already in the cart!')
+
+        // added after feedback
+        await context.getters.cartsProduct.forEach(product => {
+          product.id == payload ? product.amount++ : ''
+        });
+        
       }
+     
     },
 
     fetchDelvAddress(context, payload) {
